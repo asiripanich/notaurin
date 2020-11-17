@@ -25,8 +25,7 @@ browse_aurin_catalogue = function() {
 #' @param username character. Your username.
 #' @param password character. Your password.
 #' @param add_to_renviron logical, default as `FALSE`. If `TRUE` then the file directory
-#' of the authentication file will be added to your `.Renviron` file.
-#' in the `.dir`.
+#'  of the authentication file will be added to your `.Renviron` file.
 #' @param overwrite Logical. Default as `FALSE`. If `TRUE` the authentication file will be overwritten.
 #' @param save_dir a custom directory where the authentication file will be saved at.
 #'  If not given it will be saved in your home directory, as returns by Sys.getenv("HOME").

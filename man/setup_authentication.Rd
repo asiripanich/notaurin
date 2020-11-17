@@ -18,8 +18,7 @@ setup_authentication(
 \item{password}{character. Your password.}
 
 \item{add_to_renviron}{logical, default as \code{FALSE}. If \code{TRUE} then the file directory
-of the authentication file will be added to your \code{.Renviron} file.
-in the \code{.dir}.}
+of the authentication file will be added to your \code{.Renviron} file.}
 
 \item{overwrite}{Logical. Default as \code{FALSE}. If \code{TRUE} the authentication file will be overwritten.}
 
