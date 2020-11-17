@@ -16,4 +16,8 @@ Useful links:
 }
 
 }
+\author{
+\strong{Maintainer}: Amarin Siripanich \email{amarin.siri@gmail.com}
+
+}
 \keyword{internal}
