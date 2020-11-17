@@ -9,13 +9,13 @@
 status](https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurinapi/actions)
 <!-- badges: end -->
 
-The goal of aurinapi is to provide an easy way for R users to import
-data from AURIN through their
+The goal of aurinapi is to provide an easy way for R users to download
+[AURIN](https://aurin.org.au/) datasets using their
 [API](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/).
 
 ## Installation
 
-You can install the released version of aurinapi from
+You can install the released version of `aurinapi` from
 [GitHub](https://github.com/asiripanich/aurinapi) with:
 
 ``` r
@@ -25,8 +25,9 @@ remotes::install_github("asiripanich/aurinapi")
 
 ## Example
 
-This is how you can use the package. Let’s recreate this [AURIN’s R
-example](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/).
+Let’s recreate this [AURIN API AND
+R](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/)
+example using `aurinapi`.
 
 ``` r
 library(aurinapi)
@@ -39,7 +40,7 @@ if (FALSE) {
 # download this public toilet dataset.
 public_toilets_open_api_id = "aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"
 public_toilets = aurinapi::fetch_aurin(open_api_id = public_toilets_open_api_id)
-#> Reading layer `output' from data source `/private/var/folders/0d/9srpj_750lxbkfs2_8nwkcpw0000gn/T/Rtmppe8kAm/output.geojson' using driver `GeoJSON'
+#> Reading layer `output' from data source `/private/var/folders/0d/9srpj_750lxbkfs2_8nwkcpw0000gn/T/RtmpeF3jRX/output.geojson' using driver `GeoJSON'
 #> Simple feature collection with 18789 features and 46 fields
 #> geometry type:  POINT
 #> dimension:      XY

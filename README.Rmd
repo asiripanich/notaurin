@@ -19,11 +19,11 @@ knitr::opts_chunk$set(
 [![R build status](https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurinapi/actions)
 <!-- badges: end -->
 
-The goal of aurinapi is to provide an easy way for R users to import data from AURIN through their [API](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/).
+The goal of aurinapi is to provide an easy way for R users to download [AURIN](https://aurin.org.au/) datasets using their [API](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/).
 
 ## Installation
 
-You can install the released version of aurinapi from [GitHub](https://github.com/asiripanich/aurinapi) with:
+You can install the released version of `aurinapi` from [GitHub](https://github.com/asiripanich/aurinapi) with:
 
 ``` r
 install.packages("remotes")
@@ -32,9 +32,9 @@ remotes::install_github("asiripanich/aurinapi")
 
 ## Example
 
-This is how you can use the package. Let's recreate this [AURIN's R example](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/).
+Let's recreate this [AURIN API AND R](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/) example using `aurinapi`.
 
-```{r example}
+```{r example, dpi=300}
 library(aurinapi)
 
 if (FALSE) {
