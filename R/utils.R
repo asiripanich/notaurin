@@ -29,8 +29,8 @@ browse_aurin_catalogue = function() {
 #' in the `.dir`.
 #' @param overwrite Logical. Default as `FALSE`. If `TRUE` the authentication file will be overwritten.
 #' @param save_dir a custom directory where the authentication file will be saved at.
-#' If not given it will be saved in your home directory. Regardless, of the
-#' directory the file will be saved as "aurin_wfs_connection.xml".
+#'  If not given it will be saved in your home directory, as returns by Sys.getenv("HOME").
+#'  Regardless, of the directory the file will be saved as "aurin_wfs_connection.xml".
 #'
 #' @return NULL
 #' @export
@@ -45,7 +45,7 @@ setup_authentication = function(username,
                                 password,
                                 add_to_renviron = FALSE,
                                 overwrite = FALSE,
-                                save_dir = fs::path_home()) {
+                                save_dir = Sys.getenv("HOME")) {
 
   checkmate::assert_string(username)
   checkmate::assert_string(password)

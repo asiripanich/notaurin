@@ -9,7 +9,7 @@ setup_authentication(
   password,
   add_to_renviron = FALSE,
   overwrite = FALSE,
-  save_dir = fs::path_home()
+  save_dir = Sys.getenv("HOME")
 )
 }
 \arguments{
@@ -24,8 +24,8 @@ in the \code{.dir}.}
 \item{overwrite}{Logical. Default as \code{FALSE}. If \code{TRUE} the authentication file will be overwritten.}
 
 \item{save_dir}{a custom directory where the authentication file will be saved at.
-If not given it will be saved in your home directory. Regardless, of the
-directory the file will be saved as "aurin_wfs_connection.xml".}
+If not given it will be saved in your home directory, as returns by Sys.getenv("HOME").
+Regardless, of the directory the file will be saved as "aurin_wfs_connection.xml".}
 }
 \description{
 Create an AURIN authentication file.
