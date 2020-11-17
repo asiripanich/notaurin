@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # aurinapi
 
 <!-- badges: start -->
+[![R build status](https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurinapi/actions)
 <!-- badges: end -->
 
 The goal of aurinapi is to provide an easy way for R users to import data from AURIN through their [API](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/).

@@ -4,6 +4,9 @@
 # aurinapi
 
 <!-- badges: start -->
+
+[![R build
+status](https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurinapi/actions)
 <!-- badges: end -->
 
 The goal of aurinapi is to provide an easy way for R users to import
@@ -36,7 +39,7 @@ if (FALSE) {
 # download this public toilet dataset.
 public_toilets_open_api_id = "aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"
 public_toilets = aurinapi::fetch_aurin(open_api_id = public_toilets_open_api_id)
-#> Reading layer `output' from data source `/private/var/folders/0d/9srpj_750lxbkfs2_8nwkcpw0000gn/T/RtmpdFyGAr/output.geojson' using driver `GeoJSON'
+#> Reading layer `output' from data source `/private/var/folders/0d/9srpj_750lxbkfs2_8nwkcpw0000gn/T/Rtmppe8kAm/output.geojson' using driver `GeoJSON'
 #> Simple feature collection with 18789 features and 46 fields
 #> geometry type:  POINT
 #> dimension:      XY
