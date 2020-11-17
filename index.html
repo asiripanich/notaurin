@@ -73,7 +73,7 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#aurinapi" class="anchor"></a>aurinapi</h1></div>
 <!-- badges: start -->
-<!-- badges: end -->
+
 <p>The goal of aurinapi is to provide an easy way for R users to import data from AURIN through their <a href="https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/">API</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -98,7 +98,7 @@
 <span class="co"># download this public toilet dataset.</span>
 <span class="va">public_toilets_open_api_id</span> <span class="op">=</span> <span class="st">"aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"</span>
 <span class="va">public_toilets</span> <span class="op">=</span> <span class="fu">aurinapi</span><span class="fu">::</span><span class="fu"><a href="reference/fetch_aurin.html">fetch_aurin</a></span><span class="op">(</span>open_api_id <span class="op">=</span> <span class="va">public_toilets_open_api_id</span><span class="op">)</span>
-<span class="co">#&gt; Reading layer `output' from data source `/private/var/folders/0d/9srpj_750lxbkfs2_8nwkcpw0000gn/T/RtmpdFyGAr/output.geojson' using driver `GeoJSON'</span>
+<span class="co">#&gt; Reading layer `output' from data source `/private/var/folders/0d/9srpj_750lxbkfs2_8nwkcpw0000gn/T/Rtmppe8kAm/output.geojson' using driver `GeoJSON'</span>
 <span class="co">#&gt; Simple feature collection with 18789 features and 46 fields</span>
 <span class="co">#&gt; geometry type:  POINT</span>
 <span class="co">#&gt; dimension:      XY</span>
@@ -142,7 +142,13 @@
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/asiripanich/aurinapi/actions"><img src="https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
