@@ -1,3 +1,7 @@
+# aurinapi 0.3.1
+
+* Refactored the WFS's GetFeature request constructor in `aurinapi_get()` as its own function.
+
 # aurinapi 0.3.0
 
 * Added `aurinapi_meta()`, this function returns a data.frame that contains metadata of all available AURIN datasets through their API.
