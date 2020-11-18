@@ -1,8 +1,8 @@
 Package: aurinapi
-Title: A Package for Downloading AURIN Datasets Through their API.
-Version: 0.1.0
+Title: Access AURIN datasets from R
+Version: 0.2.0
 Authors@R: person('Amarin', 'Siripanich', email = 'amarin.siri@gmail.com', role = c('cre', 'aut'))
-Description: A Package for Downloading AURIN Datasets Through their API.
+Description: Access AURIN datasets from R.
 License: MIT + file LICENSE
 Encoding: UTF-8
 URL: https://github.com/asiripanich/aurinapi
@@ -12,11 +12,11 @@ Suggests:
     testthat,
     covr
 Imports: 
-    sf,
-    gdalUtils,
-    checkmate,
-    cli,
-    stringr,
-    glue
+    sf (>= 0.9.0),
+    checkmate (>= 2.0.0),
+    cli (>= 2.1.0),
+    stringr (>= 1.4.0),
+    glue (>= 1.4.0),
+    httr (>= 1.4.0)
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1

@@ -4,9 +4,9 @@
 \name{aurinapi-package}
 \alias{aurinapi}
 \alias{aurinapi-package}
-\title{aurinapi: A Package for Downloading AURIN Datasets Through their API.}
+\title{aurinapi: Access AURIN datasets from R}
 \description{
-A Package for Downloading AURIN Datasets Through their API.
+Access AURIN datasets from R.
 }
 \seealso{
 Useful links:

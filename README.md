@@ -7,8 +7,8 @@
 
 [![R build
 status](https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurinapi/actions)
-<!-- badges: end -->
 
+<!-- badges: end -->
 <p align="center">
 <img src="https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png" />
 </p>
@@ -38,34 +38,41 @@ Let’s recreate this [AURIN API AND
 R](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/)
 example using `aurinapi`.
 
+First, you must add your [AURIN API username and
+password](https://aurin.org.au/resources/aurin-apis/sign-up/) as an R
+environment variable to your `.Renviron` file. `aurinapi` provides
+`aurinapi_register()` function to help you with this step. If you choose
+to set `add_to_renviron = TRUE` you won’t need to run this step again on
+current machine after you restart your R session.
+
 ``` r
 library(aurinapi)
 
 # add_to_renviron = TRUE, so you won't need to run this step again on current machine.
-setup_authentication("your-username", password = "your-password", add_to_renviron = T)  
+aurinapi_register(username = "your-username", password = "your-password", add_to_renviron = T)  
 ```
 
-`browse_aurin_catalogue()` opens [the data catalogue of
+`aurinapi_browse()` opens [the data catalogue of
 AURIN](https://data.aurin.org.au/dataset) on your default browser.
 
 ``` r
-browse_aurin_catalogue()
+aurinapi_browse()
 ```
 
-Identify the ‘AURIN Open API ID’ field on the ‘Additional Info’ table of
-the dataset that you want to download. For example, for [the public
-toilet 2017
+Identify the ‘**AURIN Open API ID**’ field on the ‘Additional Info’
+table of the dataset that you want to download. For example, for this
+[public toilet 2017
 dataset](https://data.aurin.org.au/dataset/au-govt-dss-national-public-toilets-2017-na)
-its ‘AURIN Open API ID’ field is
+its ‘**AURIN Open API ID**’ field is
 `"aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"`.
 
-> Note that, some datasets on AURIN may not have ‘AURIN Open API ID’,
-> meaning that it cannot be downloaded via their API.
+> Note that, some datasets on AURIN may not have ‘**AURIN Open API
+> ID**’, meaning that it cannot be downloaded via their API.
 
 ``` r
 # download this public toilet dataset.
 open_api_id = "aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"
-public_toilets = fetch_aurin(open_api_id = open_api_id)
+public_toilets = aurinapi_get(open_api_id = open_api_id)
 ```
 
 Let’s visualise the data using the `ggplot2` package.
@@ -78,7 +85,7 @@ ggplot(public_toilets) +
   labs(title = "Public toilets in Australia, 2017")
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-example-1.png" width="100%"/>
 
 See [here](https://data.aurin.org.au/group/aurin-api) to find available
 datasets.
