@@ -23,15 +23,14 @@
 aurinapi_get = function(open_api_id, crs = "EPSG:4326", params = NULL) {
 
   checkmate::assert_string(open_api_id)
-  checkmate::assert_string(params)
   checkmate::assert_list(params, types = "character", names = "unique", null.ok = TRUE)
 
-  if (Sys.getenv("AURINAPI_USERPWD") == "") {
-    stop("Sys.getenv('AURINAPI_USERPWD') has not been set. ",
+  if (Sys.getenv("AURIN_API_USERPWD") == "") {
+    stop("Sys.getenv('AURIN_API_USERPWD') has not been set. ",
          "Please use `aurinapi_register()` to save your AURIN API key.")
   }
 
-  wfs <- glue::glue("http://{Sys.getenv('AURINAPI_USERPWD')}@openapi.aurin.org.au/wfs")
+  wfs <- glue::glue("http://{Sys.getenv('AURIN_API_USERPWD')}@openapi.aurin.org.au/wfs")
   url <- httr::parse_url(wfs)
   url$query <- list(service="wfs",
                     version = "1.0.0",
