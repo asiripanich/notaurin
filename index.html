@@ -211,8 +211,8 @@
 </table>
 <p>Get all the datasets in parallel.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ids_of_household_datasets</span> <span class="op">=</span> <span class="va">meta</span><span class="op">$</span><span class="va">aurin_open_api_id</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"toilet"</span>, <span class="va">meta</span><span class="op">$</span><span class="va">title</span>, ignore.case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">]</span>
-<span class="va">data_lst</span> <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu">future_map</span><span class="op">(</span><span class="va">ids_of_household_datasets</span>, <span class="va">aurinapi_get</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">toilet_datasets_ids</span> <span class="op">=</span> <span class="va">meta</span><span class="op">$</span><span class="va">aurin_open_api_id</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"toilet"</span>, <span class="va">meta</span><span class="op">$</span><span class="va">title</span>, ignore.case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">]</span>
+<span class="va">data_lst</span> <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu">future_map</span><span class="op">(</span><span class="va">toilet_datasets_ids</span>, <span class="va">aurinapi_get</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
   </div>
