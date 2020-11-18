@@ -9,8 +9,11 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%", 
+  cache = TRUE
 )
+
+library(aurinapi)
 ```
 
 # aurinapi
@@ -61,7 +64,18 @@ Identify the '**AURIN Open API ID**' field on the 'Additional Info' table of the
 
 > Note that, some datasets on AURIN may not have '**AURIN Open API ID**', meaning that it cannot be downloaded via their API.
 
-``` r
+
+Alternatively, you may use `aurinapi_meta` to search datasets without leaving  your R console.
+
+```{r}
+meta = aurinapi_meta()
+# print out the first five rows
+knitr::kable(head(meta))
+```
+
+Use `aurinapi_get()` to download the dataset.
+
+```{r}
 # download this public toilet dataset.
 open_api_id = "aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"
 public_toilets = aurinapi_get(open_api_id = open_api_id)
@@ -69,7 +83,7 @@ public_toilets = aurinapi_get(open_api_id = open_api_id)
 
 Let's visualise the data using the `ggplot2` package.
 
-``` r
+```{r example-public-toilet-plot, dpi = 300}
 # If you don't have the package you can install it with `install.packages("ggplot2")`.
 library(ggplot2)
 ggplot(public_toilets) +
@@ -77,6 +91,31 @@ ggplot(public_toilets) +
   labs(title = "Public toilets in Australia, 2017")
 ```
 
-<img src="man/figures/README-example-1.png" width="100%"/>
-
 See [here](https://data.aurin.org.au/group/aurin-api) to find available datasets.
+
+## Advanced example
+
+Download multiple datasets in parallel.
+
+Setup the workers.
+
+``` r
+library(furrr)
+library(future)
+future::plan(future::multiprocess, workers = 2)
+```
+
+Get AURIN Open API ids of datasets with 'toilet' in their titles.
+
+```{r}
+knitr::kable(meta[grepl("toilet", meta$title, ignore.case = T), ])
+```
+
+Get all the datasets in parallel.
+
+```r
+ids_of_household_datasets = meta$aurin_open_api_id[grepl("toilet", meta$title, ignore.case = T)]
+data_lst = furrr::future_map(ids_of_household_datasets, aurinapi_get)
+```
+
+
