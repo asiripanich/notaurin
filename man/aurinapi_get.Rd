@@ -2,9 +2,16 @@
 % Please edit documentation in R/get.R
 \name{aurinapi_get}
 \alias{aurinapi_get}
+\alias{aurinapi_build_get_feature_request}
 \title{Fetch AURIN dataset.}
 \usage{
 aurinapi_get(open_api_id, crs = "EPSG:4326", params = NULL)
+
+aurinapi_build_get_feature_request(
+  open_api_id,
+  crs = "EPSG:4326",
+  params = NULL
+)
 }
 \arguments{
 \item{open_api_id}{Character. You can find the layer names for AURIN’s datasets
@@ -20,6 +27,9 @@ an \code{sf::sf} object.
 }
 \description{
 Query data using \href{https://docs.geoserver.org/latest/en/user/services/wfs/reference.html}{WFS getFeature}.
+}
+\note{
+\code{aurinapi_build_request()} returns a URL.
 }
 \examples{
 
