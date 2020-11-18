@@ -30,15 +30,19 @@ aurinapi_get = function(open_api_id, crs = "EPSG:4326", params = NULL) {
          "Please use `aurinapi_register()` to save your AURIN API key.")
   }
 
-  wfs <- glue::glue("http://{Sys.getenv('AURIN_API_USERPWD')}@openapi.aurin.org.au/wfs")
-  url <- httr::parse_url(wfs)
-  url$query <- list(service="wfs",
+  wfs = glue::glue("http://{Sys.getenv('AURIN_API_USERPWD')}@openapi.aurin.org.au/wfs")
+  url = httr::parse_url(wfs)
+  url$query = list(service="wfs",
                     version = "1.0.0",
                     request = "GetFeature",
                     srsName = crs,
                     typename = open_api_id)
 
-  request <- httr::build_url(url)
+  request = httr::build_url(url)
 
-  return(sf::read_sf(request))
+  cli::cli_alert_info("Downloading...")
+  .data = sf::read_sf(request)
+  cli::cli_alert_success("Finished!")
+
+  return(.data)
 }
