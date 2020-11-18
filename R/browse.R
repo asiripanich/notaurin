@@ -12,9 +12,9 @@
 #'
 #' \dontrun{
 #'
-#' browse_aurin_catalogue()
+#' aurinapi_browse()
 #'
 #' }
-browse_aurin_catalogue = function() {
+aurinapi_browse = function() {
   browseURL("https://data.aurin.org.au/dataset")
 }
