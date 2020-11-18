@@ -11,7 +11,8 @@ LazyData: true
 Suggests: 
     testthat,
     covr,
-    ows4R
+    ows4R (>= 0.1.0),
+    R6 (>= 2.5.0)
 Imports: 
     sf (>= 0.9.0),
     checkmate (>= 2.0.0),

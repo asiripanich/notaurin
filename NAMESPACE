@@ -2,4 +2,8 @@
 
 export(aurinapi_browse)
 export(aurinapi_get)
+export(aurinapi_meta)
 export(aurinapi_register)
+export(create_aurinapi_wfs_client)
+export(get_aurinapi_wfs_client)
+export(get_aurinapi_wfs_client_wrapper)

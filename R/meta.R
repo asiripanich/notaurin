@@ -16,15 +16,7 @@
 #'
 #' }
 aurinapi_meta = function(force = FALSE) {
-  wfs = glue::glue("http://{Sys.getenv('AURIN_API_USERPWD')}@openapi.aurin.org.au/wfs")
-  url = parse_url(wfs)
-  url$query = list(service = "WFS",
-                   version = "2.0.0",
-                   request = "GetCapabilities")
-  request = build_url(url)
-  cli::cli_alert_info("Creating WFS Client...")
-  wfs_client = WFSClient$new(wfs,
-                             serviceVersion = "2.0.0")
+  wfs_client = get_aurinapi_wfs_client()
   cli::cli_alert_info("Fetching available datasets...")
   wfs_client$getFeatureTypes(pretty = TRUE)
 }
