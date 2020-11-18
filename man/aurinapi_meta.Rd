@@ -12,8 +12,7 @@ so if it has been loaded before it will not load again unluss \code{force} is se
 to \code{TRUE}.}
 }
 \value{
-a data.frame with two columns -- name and title. The name column is
-'AURIN Open API id' and can be used in \code{aurinapi_get()}.
+a data.frame with two columns -- aurin_open_api_id and title.
 }
 \description{
 Get metadata of all AURIN datasets
