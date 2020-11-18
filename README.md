@@ -99,6 +99,8 @@ Use `aurinapi_get()` to download the dataset.
 # download this public toilet dataset.
 open_api_id = "aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"
 public_toilets = aurinapi_get(open_api_id = open_api_id)
+#> ℹ Downloading 'aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017'...
+#> ✓ Finished!
 ```
 
 Let’s visualise the data using the `ggplot2` package.
@@ -111,7 +113,7 @@ ggplot(public_toilets) +
   labs(title = "Public toilets in Australia, 2017")
 ```
 
-<img src="man/figures/README-example-1.png" width="100%"/>
+<img src="man/figures/README-example-public-toilet-plot-1.png" width="100%" />
 
 See [here](https://data.aurin.org.au/group/aurin-api) to find available
 datasets.
@@ -125,7 +127,7 @@ Setup the workers.
 ``` r
 library(furrr)
 library(future)
-future::plan(future::multiprocess, 3)
+future::plan(future::multiprocess, workers = 2)
 ```
 
 Get AURIN Open API ids of datasets with ‘toilet’ in their titles.
