@@ -19,7 +19,14 @@ knitr::opts_chunk$set(
 [![R build status](https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurinapi/actions)
 <!-- badges: end -->
 
-The goal of aurinapi is to provide an easy way for R users to download [AURIN](https://aurin.org.au/) datasets using their [API](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/).
+<center>
+
+![](https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png)
+
+</center>
+
+
+The goal of `aurinapi` is to provide an easy way for R users to download [AURIN](https://aurin.org.au/) datasets using their [API](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/).
 
 ## Installation
 
@@ -30,29 +37,45 @@ install.packages("remotes")
 remotes::install_github("asiripanich/aurinapi")
 ```
 
+This package requires the [sf](https://github.com/r-spatial/sf) package. Please see the sf package's [GitHub page](https://github.com/r-spatial/sf) to install its non R dependencies. 
+
 ## Example
 
 Let's recreate this [AURIN API AND R](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/) example using `aurinapi`.
 
-```{r example, dpi=300}
+``` r
 library(aurinapi)
 
-if (FALSE) {
-  # add_to_renviron = TRUE, so you won't need to run this step again on current machine.
-  setup_authentication("your-username", password = "your-password", add_to_renviron = T)  
-}
+# add_to_renviron = TRUE, so you won't need to run this step again on current machine.
+setup_authentication("your-username", password = "your-password", add_to_renviron = T)  
+```
 
+`browse_aurin_catalogue()` opens [the data catalogue of AURIN](https://data.aurin.org.au/dataset) on your default browser.
+
+``` r
+browse_aurin_catalogue()
+```
+
+Identify the 'AURIN Open API ID' field on the 'Additional Info' table of the dataset that you want to download on its. For example, for [the public toilet 2017 dataset](https://data.aurin.org.au/dataset/au-govt-dss-national-public-toilets-2017-na) its id is `"aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"`. 
+
+> Note that, some datasets on AURIN may not have 'AURIN Open API ID', meaning that it cannot be downloaded via their API.
+
+``` r
 # download this public toilet dataset.
-public_toilets_open_api_id = "aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"
-public_toilets = aurinapi::fetch_aurin(open_api_id = public_toilets_open_api_id)
+open_api_id = "aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"
+public_toilets = fetch_aurin(open_api_id = open_api_id)
+```
 
-# let's visualise it using the mapview package
-# install it first if you don't have the package.
-# install.packages("mapview")
+Let's visualise the data using the `ggplot2` package. 
+
+``` r
+# If you don't have the package you can install it with `install.packages("ggplot2")`.
 library(ggplot2)
 ggplot(public_toilets) +
   geom_sf() +
-  labs(title = "Public toilets in Australia in 2017")
+  labs(title = "Public toilets in Australia, 2017")
 ```
+
+<img src="man/figures/README-example-1.png" width="100%" />
 
 See [here](https://data.aurin.org.au/group/aurin-api) to find available datasets.
