@@ -1,6 +1,6 @@
 Package: aurinapi
 Title: A Package for Downloading AURIN Datasets Through their API.
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: person('Amarin', 'Siripanich', email = 'amarin.siri@gmail.com', role = c('cre', 'aut'))
 Description: A Package for Downloading AURIN Datasets Through their API.
 License: MIT + file LICENSE
