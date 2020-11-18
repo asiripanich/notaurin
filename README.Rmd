@@ -42,11 +42,13 @@ This package requires the [sf](https://github.com/r-spatial/sf) package. Please 
 
 Let's recreate this [AURIN API AND R](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/) example using `aurinapi`.
 
+First, you must add your [AURIN API username and password](https://aurin.org.au/resources/aurin-apis/sign-up/) as an R environment variable to your `.Renviron` file. `aurinapi` provides `aurinapi_register()` function to help you with this step. If you choose to set `add_to_renviron = TRUE` you won't need to run this step again on current machine after you restart your R session.
+
 ``` r
 library(aurinapi)
 
 # add_to_renviron = TRUE, so you won't need to run this step again on current machine.
-aurinapi_register("your-username", password = "your-password", add_to_renviron = T)  
+aurinapi_register(username = "your-username", password = "your-password", add_to_renviron = T)  
 ```
 
 `aurinapi_browse()` opens [the data catalogue of AURIN](https://data.aurin.org.au/dataset) on your default browser.
