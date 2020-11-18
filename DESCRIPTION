@@ -1,5 +1,5 @@
 Package: aurinapi
-Title: Access AURIN datasets from R
+Title: Access AURIN Datasets from R
 Version: 0.3.1
 Authors@R: person('Amarin', 'Siripanich', email = 'amarin.siri@gmail.com', role = c('cre', 'aut'))
 Description: Access AURIN datasets from R.
@@ -8,6 +8,8 @@ Encoding: UTF-8
 URL: https://github.com/asiripanich/aurinapi
 BugReports: https://github.com/asiripanich/aurinapi/issues
 LazyData: true
+Depends:
+    R (>= 3.5.0)
 Suggests: 
     testthat,
     covr,

@@ -7,3 +7,5 @@
 ^codecov\.yml$
 ^LICENSE\.md$
 ^\.github$
+^README_cache$
+^test-scripts$
