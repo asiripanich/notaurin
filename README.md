@@ -9,8 +9,11 @@
 status](https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurinapi/actions)
 
 <!-- badges: end -->
+
 <p align="center">
+
 <img src="https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png" />
+
 </p>
 
 The goal of `aurinapi` is to provide an easy way for R users to download
@@ -85,7 +88,7 @@ knitr::kable(head(meta))
 ```
 
 | aurin\_open\_api\_id                                                                        | title                                            |
-|:--------------------------------------------------------------------------------------------|:-------------------------------------------------|
+| :------------------------------------------------------------------------------------------ | :----------------------------------------------- |
 | aurin:datasource-NSW\_Govt\_DPE-UoM\_AURIN\_DB\_nsw\_srlup\_additional\_rural\_2014         | Additional Rural Village Land 18/01/2014 for NSW |
 | aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_3\_abs\_building\_approvals\_gccsa\_2011\_12 | ABS - Building Approvals (GCCSA) 2011-2012       |
 | aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_3\_abs\_building\_approvals\_gccsa\_2012\_13 | ABS - Building Approvals (GCCSA) 2012-2013       |
@@ -130,14 +133,14 @@ library(future)
 future::plan(future::multiprocess, workers = 2)
 ```
 
-Get AURIN Open API ids of datasets with ‘toilet’ in their titles.
+Get AURIN Open API ids of the datasets with ‘toilet’ in their titles.
 
 ``` r
 knitr::kable(meta[grepl("toilet", meta$title, ignore.case = T), ])
 ```
 
 |      | aurin\_open\_api\_id                                                           | title                                                  |
-|:-----|:-------------------------------------------------------------------------------|:-------------------------------------------------------|
+| :--- | :----------------------------------------------------------------------------- | :----------------------------------------------------- |
 | 1272 | aurin:datasource-au\_govt\_dss-UoM\_AURIN\_national\_public\_toilets\_2017     | DSS National Public Toilets 2017                       |
 | 1280 | aurin:datasource-AU\_Govt\_Doh-UoM\_AURIN\_DB\_national\_toilet\_map\_2018\_06 | Department of Health - National Toilet Map - June 2018 |
 | 2595 | aurin:datasource-UQ\_ERG-UoM\_AURIN\_DB\_public\_toilets                       | Public Toilets 2004-2014 for Australia                 |

@@ -105,7 +105,7 @@ library(future)
 future::plan(future::multiprocess, workers = 2)
 ```
 
-Get AURIN Open API ids of datasets with 'toilet' in their titles.
+Get AURIN Open API ids of the datasets with 'toilet' in their titles.
 
 ```{r}
 knitr::kable(meta[grepl("toilet", meta$title, ignore.case = T), ])
