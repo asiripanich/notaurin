@@ -12,12 +12,15 @@ aurinapi_register(
 )
 }
 \arguments{
-\item{username}{character. Your username.}
+\item{username}{Character. AURIN API username.}
 
-\item{password}{character. Your password.}
+\item{password}{Character. AURIN API password.}
 
-\item{add_to_renviron}{logical, default as \code{FALSE}. If \code{TRUE} then the file directory
+\item{add_to_renviron}{Logical. Default is \code{FALSE}. If \code{TRUE} then the file directory
 of the authentication file will be added to your \code{.Renviron} file.}
+
+\item{overwrite}{Logical. Default is \code{FALSE}. If \code{TRUE}, the existing \code{AURIN_API_USERPWD}
+R environment variable will be replaced with new \code{username} and \code{password}.}
 }
 \description{
 Create an AURIN authentication file.

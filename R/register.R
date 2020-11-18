@@ -1,9 +1,11 @@
 #' Create an AURIN authentication file.
 #'
-#' @param username character. Your username.
-#' @param password character. Your password.
-#' @param add_to_renviron logical, default as `FALSE`. If `TRUE` then the file directory
+#' @param username Character. AURIN API username.
+#' @param password Character. AURIN API password.
+#' @param add_to_renviron Logical. Default is `FALSE`. If `TRUE` then the file directory
 #'  of the authentication file will be added to your `.Renviron` file.
+#' @param overwrite Logical. Default is `FALSE`. If `TRUE`, the existing `AURIN_API_USERPWD`
+#' R environment variable will be replaced with new `username` and `password`.
 #'
 #' @return NULL
 #' @export
