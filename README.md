@@ -9,11 +9,9 @@
 status](https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurinapi/actions)
 <!-- badges: end -->
 
-<center>
-
-![](https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png)
-
-</center>
+<p align="center">
+<img src="https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png" />
+</p>
 
 The goal of `aurinapi` is to provide an easy way for R users to download
 [AURIN](https://aurin.org.au/) datasets using their
