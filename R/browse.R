@@ -16,5 +16,5 @@
 #'
 #' }
 aurinapi_browse = function() {
-  browseURL("https://data.aurin.org.au/dataset")
+  utils::browseURL("https://data.aurin.org.au/dataset")
 }
