@@ -74,7 +74,10 @@
 <a href="#aurinapi" class="anchor"></a>aurinapi</h1></div>
 <!-- badges: start -->
 
-<p>The goal of aurinapi is to provide an easy way for R users to download <a href="https://aurin.org.au/">AURIN</a> datasets using their <a href="https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/">API</a>.</p>
+<center>
+<p><img src="https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png"></p>
+</center>
+<p>The goal of <code>aurinapi</code> is to provide an easy way for R users to download <a href="https://aurin.org.au/">AURIN</a> datasets using their <a href="https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/">API</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -82,6 +85,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"asiripanich/aurinapi"</span><span class="op">)</span></code></pre></div>
+<p>This package requires the <a href="https://github.com/r-spatial/sf">sf</a> package. Please see the sf package’s <a href="https://github.com/r-spatial/sf">GitHub page</a> to install its non R dependencies.</p>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
@@ -90,28 +94,26 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/asiripanich/aurinapi">aurinapi</a></span><span class="op">)</span>
 
-<span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
-  <span class="co"># add_to_renviron = TRUE, so you won't need to run this step again on current machine.</span>
-  <span class="fu"><a href="reference/setup_authentication.html">setup_authentication</a></span><span class="op">(</span><span class="st">"your-username"</span>, password <span class="op">=</span> <span class="st">"your-password"</span>, add_to_renviron <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>  
-<span class="op">}</span>
-
-<span class="co"># download this public toilet dataset.</span>
-<span class="va">public_toilets_open_api_id</span> <span class="op">=</span> <span class="st">"aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"</span>
-<span class="va">public_toilets</span> <span class="op">=</span> <span class="fu">aurinapi</span><span class="fu">::</span><span class="fu"><a href="reference/fetch_aurin.html">fetch_aurin</a></span><span class="op">(</span>open_api_id <span class="op">=</span> <span class="va">public_toilets_open_api_id</span><span class="op">)</span>
-<span class="co">#&gt; Reading layer `output' from data source `/private/var/folders/0d/9srpj_750lxbkfs2_8nwkcpw0000gn/T/RtmpeF3jRX/output.geojson' using driver `GeoJSON'</span>
-<span class="co">#&gt; Simple feature collection with 18789 features and 46 fields</span>
-<span class="co">#&gt; geometry type:  POINT</span>
-<span class="co">#&gt; dimension:      XY</span>
-<span class="co">#&gt; bbox:           xmin: 113.4102 ymin: -43.582 xmax: 153.6263 ymax: -10.5702</span>
-<span class="co">#&gt; geographic CRS: GDA94</span>
-
-<span class="co"># let's visualise it using the mapview package</span>
-<span class="co"># install it first if you don't have the package.</span>
-<span class="co"># install.packages("mapview")</span>
+<span class="co"># add_to_renviron = TRUE, so you won't need to run this step again on current machine.</span>
+<span class="fu"><a href="reference/setup_authentication.html">setup_authentication</a></span><span class="op">(</span><span class="st">"your-username"</span>, password <span class="op">=</span> <span class="st">"your-password"</span>, add_to_renviron <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>  </code></pre></div>
+<p><code><a href="reference/browse_aurin_catalogue.html">browse_aurin_catalogue()</a></code> opens <a href="https://data.aurin.org.au/dataset">the data catalogue of AURIN</a> on your default browser.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/browse_aurin_catalogue.html">browse_aurin_catalogue</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Identify the ‘AURIN Open API ID’ field on the ‘Additional Info’ table of the dataset that you want to download on its. For example, for <a href="https://data.aurin.org.au/dataset/au-govt-dss-national-public-toilets-2017-na">the public toilet 2017 dataset</a> its id is <code>"aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"</code>.</p>
+<blockquote>
+<p>Note that, some datasets on AURIN may not have ‘AURIN Open API ID’, meaning that it cannot be downloaded via their API.</p>
+</blockquote>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># download this public toilet dataset.</span>
+<span class="va">open_api_id</span> <span class="op">=</span> <span class="st">"aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"</span>
+<span class="va">public_toilets</span> <span class="op">=</span> <span class="fu"><a href="reference/fetch_aurin.html">fetch_aurin</a></span><span class="op">(</span>open_api_id <span class="op">=</span> <span class="va">open_api_id</span><span class="op">)</span></code></pre></div>
+<p>Let’s visualise the data using the <code>ggplot2</code> package.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># If you don't have the package you can install it with `install.packages("ggplot2")`.</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span>
 <span class="fu">ggplot</span><span class="op">(</span><span class="va">public_toilets</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_sf</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Public toilets in Australia in 2017"</span><span class="op">)</span></code></pre></div>
+  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Public toilets in Australia, 2017"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%"></p>
 <p>See <a href="https://data.aurin.org.au/group/aurin-api">here</a> to find available datasets.</p>
 </div>
