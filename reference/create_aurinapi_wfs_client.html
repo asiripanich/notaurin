@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Browse AURIN data catalogue. — aurinapi_browse • aurinapi</title>
+<title>Create a AURIN WFS client object. — create_aurinapi_wfs_client • aurinapi</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,8 @@
 
 
 
-<meta property="og:title" content="Browse AURIN data catalogue. — aurinapi_browse" />
-<meta property="og:description" content="Use the data catalogue to select spatial datasets available on AURIN. Any datasets
-with 'AURIN Open API ID' field can be downloaded into your current r session
-with aurinapi_get()." />
+<meta property="og:title" content="Create a AURIN WFS client object. — create_aurinapi_wfs_client" />
+<meta property="og:description" content="Create a AURIN WFS client object." />
 
 
 
@@ -113,29 +111,26 @@ with aurinapi_get()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Browse AURIN data catalogue.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/asiripanich/aurinapi/blob/master/R/browse.R'><code>R/browse.R</code></a></small>
-    <div class="hidden name"><code>aurinapi_browse.Rd</code></div>
+    <h1>Create a AURIN WFS client object.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/asiripanich/aurinapi/blob/master/R/wfs-client.R'><code>R/wfs-client.R</code></a></small>
+    <div class="hidden name"><code>create_aurinapi_wfs_client.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Use the data catalogue to select spatial datasets available on AURIN. Any datasets
-with 'AURIN Open API ID' field can be downloaded into your current r session
-with <code><a href='aurinapi_get.html'>aurinapi_get()</a></code>.</p>
+    <p>Create a AURIN WFS client object.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>aurinapi_browse</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>create_aurinapi_wfs_client</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'>get_aurinapi_wfs_client</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'>get_aurinapi_wfs_client_wrapper</span><span class='op'>(</span><span class='op'>)</span></pre>
 
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+    <p>a <code><a href='https://rdrr.io/pkg/ows4R/man/WFSClient.html'>ows4R::WFSClient</a></code> R6 object.</p>
 
-<span class='fu'>aurinapi_browse</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='op'>}</span>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
