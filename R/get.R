@@ -40,7 +40,7 @@ aurinapi_get = function(open_api_id, crs = "EPSG:4326", params = NULL) {
 
   request = httr::build_url(url)
 
-  cli::cli_alert_info("Downloading...")
+  cli::cli_alert_info("Downloading '{open_api_id}'...")
   .data = sf::read_sf(request)
   cli::cli_alert_success("Finished!")
 
