@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>aurinapi: Access AURIN datasets from R — aurinapi-package • aurinapi</title>
+<title>Browse AURIN data catalogue. — aurinapi_browse • aurinapi</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="aurinapi: Access AURIN datasets from R — aurinapi-package" />
-<meta property="og:description" content="Access AURIN datasets from R." />
+<meta property="og:title" content="Browse AURIN data catalogue. — aurinapi_browse" />
+<meta property="og:description" content="Use the data catalogue to select spatial datasets available on AURIN. Any datasets
+with 'AURIN Open API ID' field can be downloaded into your current r session
+with aurinapi_get()." />
 
 
 
@@ -111,29 +113,29 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>aurinapi: Access AURIN datasets from R</h1>
-    <small class="dont-index">Source: <a href='https://github.com/asiripanich/aurinapi/blob/master/R/aurinapi-package.R'><code>R/aurinapi-package.R</code></a></small>
-    <div class="hidden name"><code>aurinapi-package.Rd</code></div>
+    <h1>Browse AURIN data catalogue.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/asiripanich/aurinapi/blob/master/R/browse.R'><code>R/browse.R</code></a></small>
+    <div class="hidden name"><code>aurinapi_browse.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Access AURIN datasets from R.</p>
+    <p>Use the data catalogue to select spatial datasets available on AURIN. Any datasets
+with 'AURIN Open API ID' field can be downloaded into your current r session
+with <code><a href='aurinapi_get.html'>aurinapi_get()</a></code>.</p>
     </div>
 
+    <pre class="usage"><span class='fu'>aurinapi_browse</span><span class='op'>(</span><span class='op'>)</span></pre>
 
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Useful links:</p><ul>
-<li><p><a href='https://github.com/asiripanich/aurinapi'>https://github.com/asiripanich/aurinapi</a></p></li>
-<li><p>Report bugs at <a href='https://github.com/asiripanich/aurinapi/issues'>https://github.com/asiripanich/aurinapi/issues</a></p></li>
-</ul>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 
-</div>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+<span class='fu'>aurinapi_browse</span><span class='op'>(</span><span class='op'>)</span>
 
-    <p><strong>Maintainer</strong>: Amarin Siripanich <a href='mailto:amarin.siri@gmail.com'>amarin.siri@gmail.com</a></p>
-
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

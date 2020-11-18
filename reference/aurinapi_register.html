@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>aurinapi: Access AURIN datasets from R — aurinapi-package • aurinapi</title>
+<title>Create an AURIN authentication file. — aurinapi_register • aurinapi</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="aurinapi: Access AURIN datasets from R — aurinapi-package" />
-<meta property="og:description" content="Access AURIN datasets from R." />
+<meta property="og:title" content="Create an AURIN authentication file. — aurinapi_register" />
+<meta property="og:description" content="Create an AURIN authentication file." />
 
 
 
@@ -111,29 +111,53 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>aurinapi: Access AURIN datasets from R</h1>
-    <small class="dont-index">Source: <a href='https://github.com/asiripanich/aurinapi/blob/master/R/aurinapi-package.R'><code>R/aurinapi-package.R</code></a></small>
-    <div class="hidden name"><code>aurinapi-package.Rd</code></div>
+    <h1>Create an AURIN authentication file.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/asiripanich/aurinapi/blob/master/R/register.R'><code>R/register.R</code></a></small>
+    <div class="hidden name"><code>aurinapi_register.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Access AURIN datasets from R.</p>
+    <p>Create an AURIN authentication file.</p>
     </div>
 
+    <pre class="usage"><span class='fu'>aurinapi_register</span><span class='op'>(</span>
+  <span class='va'>username</span>,
+  <span class='va'>password</span>,
+  add_to_renviron <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>username</th>
+      <td><p>Character. AURIN API username.</p></td>
+    </tr>
+    <tr>
+      <th>password</th>
+      <td><p>Character. AURIN API password.</p></td>
+    </tr>
+    <tr>
+      <th>add_to_renviron</th>
+      <td><p>Logical. Default is <code>FALSE</code>. If <code>TRUE</code> then the file directory
+of the authentication file will be added to your <code>.Renviron</code> file.</p></td>
+    </tr>
+    <tr>
+      <th>overwrite</th>
+      <td><p>Logical. Default is <code>FALSE</code>. If <code>TRUE</code>, the existing <code>AURIN_API_USERPWD</code>
+R environment variable will be replaced with new <code>username</code> and <code>password</code>.</p></td>
+    </tr>
+    </table>
 
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 
-    <div class='dont-index'><p>Useful links:</p><ul>
-<li><p><a href='https://github.com/asiripanich/aurinapi'>https://github.com/asiripanich/aurinapi</a></p></li>
-<li><p>Report bugs at <a href='https://github.com/asiripanich/aurinapi/issues'>https://github.com/asiripanich/aurinapi/issues</a></p></li>
-</ul>
+<span class='fu'>aurinapi_register</span><span class='op'>(</span><span class='st'>"username"</span>, <span class='st'>"password"</span><span class='op'>)</span>
 
-</div>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p><strong>Maintainer</strong>: Amarin Siripanich <a href='mailto:amarin.siri@gmail.com'>amarin.siri@gmail.com</a></p>
-
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
