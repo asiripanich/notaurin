@@ -69,6 +69,32 @@ its ‘**AURIN Open API ID**’ field is
 > Note that, some datasets on AURIN may not have ‘**AURIN Open API
 > ID**’, meaning that it cannot be downloaded via their API.
 
+Alternatively, you may use `aurinapi_meta` to search datasets without
+leaving your R console.
+
+``` r
+meta = aurinapi_meta()
+#> ℹ Creating AURIN WFS Client...
+#> Loading ISO 19139 XML schemas...
+#> Loading ISO 19115 codelists...
+#> Warning in CPL_crs_from_input(x): GDAL Message 1: +init=epsg:XXXX syntax is
+#> deprecated. It might return a CRS with a non-EPSG compliant axis order.
+#> ℹ Fetching available datasets...
+# print out the first five rows
+knitr::kable(head(meta))
+```
+
+| aurin\_open\_api\_id                                                                        | title                                            |
+|:--------------------------------------------------------------------------------------------|:-------------------------------------------------|
+| aurin:datasource-NSW\_Govt\_DPE-UoM\_AURIN\_DB\_nsw\_srlup\_additional\_rural\_2014         | Additional Rural Village Land 18/01/2014 for NSW |
+| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_3\_abs\_building\_approvals\_gccsa\_2011\_12 | ABS - Building Approvals (GCCSA) 2011-2012       |
+| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_3\_abs\_building\_approvals\_gccsa\_2012\_13 | ABS - Building Approvals (GCCSA) 2012-2013       |
+| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_3\_abs\_building\_approvals\_gccsa\_2013\_14 | ABS - Building Approvals (GCCSA) 2013-2014       |
+| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_3\_abs\_building\_approvals\_gccsa\_2014\_15 | ABS - Building Approvals (GCCSA) 2014-2015       |
+| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_3\_abs\_building\_approvals\_gccsa\_2015\_16 | ABS - Building Approvals (GCCSA) 2015-2016       |
+
+Use `aurinapi_get()` to download the dataset.
+
 ``` r
 # download this public toilet dataset.
 open_api_id = "aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"
@@ -89,3 +115,34 @@ ggplot(public_toilets) +
 
 See [here](https://data.aurin.org.au/group/aurin-api) to find available
 datasets.
+
+## Advanced example
+
+Download multiple datasets in parallel.
+
+Setup the workers.
+
+``` r
+library(furrr)
+library(future)
+future::plan(future::multiprocess, 3)
+```
+
+Get AURIN Open API ids of datasets with ‘toilet’ in their titles.
+
+``` r
+knitr::kable(meta[grepl("toilet", meta$title, ignore.case = T), ])
+```
+
+|      | aurin\_open\_api\_id                                                           | title                                                  |
+|:-----|:-------------------------------------------------------------------------------|:-------------------------------------------------------|
+| 1272 | aurin:datasource-au\_govt\_dss-UoM\_AURIN\_national\_public\_toilets\_2017     | DSS National Public Toilets 2017                       |
+| 1280 | aurin:datasource-AU\_Govt\_Doh-UoM\_AURIN\_DB\_national\_toilet\_map\_2018\_06 | Department of Health - National Toilet Map - June 2018 |
+| 2595 | aurin:datasource-UQ\_ERG-UoM\_AURIN\_DB\_public\_toilets                       | Public Toilets 2004-2014 for Australia                 |
+
+Get all the datasets in parallel.
+
+``` r
+ids_of_household_datasets = meta$aurin_open_api_id[grepl("toilet", meta$title, ignore.case = T)]
+data_lst = furrr::future_map(ids_of_household_datasets, aurinapi_get)
+```
