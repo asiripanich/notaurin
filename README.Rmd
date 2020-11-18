@@ -114,8 +114,8 @@ knitr::kable(meta[grepl("toilet", meta$title, ignore.case = T), ])
 Get all the datasets in parallel.
 
 ```r
-ids_of_household_datasets = meta$aurin_open_api_id[grepl("toilet", meta$title, ignore.case = T)]
-data_lst = furrr::future_map(ids_of_household_datasets, aurinapi_get)
+toilet_datasets_ids = meta$aurin_open_api_id[grepl("toilet", meta$title, ignore.case = T)]
+data_lst = furrr::future_map(toilet_datasets_ids, aurinapi_get)
 ```
 
 
