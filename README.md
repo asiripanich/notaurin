@@ -53,10 +53,10 @@ browse_aurin_catalogue()
 ```
 
 Identify the ‘AURIN Open API ID’ field on the ‘Additional Info’ table of
-the dataset that you want to download on its. For example, for [the
-public toilet 2017
+the dataset that you want to download. For example, for [the public
+toilet 2017
 dataset](https://data.aurin.org.au/dataset/au-govt-dss-national-public-toilets-2017-na)
-its id is
+its ‘AURIN Open API ID’ field is
 `"aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"`.
 
 > Note that, some datasets on AURIN may not have ‘AURIN Open API ID’,
