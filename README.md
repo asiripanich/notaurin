@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+![GitHub release (latest by date including
+pre-releases)](https://img.shields.io/github/v/release/asiripanich/aurinapi?include_prereleases)
 [![R build
 status](https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurinapi/actions)
 
