@@ -1,3 +1,7 @@
+# aurinapi 0.3.2
+
+* `aurinapi_browse()` now opens the URL to the data catalog of datasets that are accessible via AURIN API.
+
 # aurinapi 0.3.1
 
 * Refactored the WFS's GetFeature request constructor in `aurinapi_get()` as its own function.

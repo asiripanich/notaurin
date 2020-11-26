@@ -1,6 +1,6 @@
 Package: aurinapi
 Title: Access AURIN Datasets from R
-Version: 0.3.1
+Version: 0.3.2
 Authors@R: person('Amarin', 'Siripanich', email = 'amarin.siri@gmail.com', role = c('cre', 'aut'))
 Description: Access AURIN datasets from R.
 License: MIT + file LICENSE

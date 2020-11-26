@@ -4,7 +4,7 @@
 \name{aurinapi-package}
 \alias{aurinapi}
 \alias{aurinapi-package}
-\title{aurinapi: Access AURIN datasets from R}
+\title{aurinapi: Access AURIN Datasets from R}
 \description{
 Access AURIN datasets from R.
 }
