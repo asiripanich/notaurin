@@ -12,3 +12,6 @@ client_wrapper = R6::R6Class(classname = "client_wrapper",
   }
 
 }
+
+#' @export 
+"aurinapi_wfs_client_wrapper"
