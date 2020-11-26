@@ -17,11 +17,7 @@ NULL
 
 .onLoad <- function(...){
 
-  if (Sys.getenv("AURIN_API_USERPWD") != "") {
-    assign("aurinapi_wfs_client_wrapper",
-           client_wrapper$new(),
-           envir = parent.env(environment()))
-  }
+  assign("aurinapi_wfs_client_wrapper", client_wrapper$new(), envir = parent.env(environment()))
 
 }
 
