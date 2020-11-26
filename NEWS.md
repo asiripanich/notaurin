@@ -1,6 +1,7 @@
 # aurinapi 0.3.3
 
 * `aurinapi_wfs_client_wrapper` is now exported, this fixes the error when calling `aurinapi_meta()` in the previous versions.
+* `ows4R` and `R6` packages are now in Imports, where they should have been.
 
 # aurinapi 0.3.2
 
