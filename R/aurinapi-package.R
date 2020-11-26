@@ -6,18 +6,3 @@
 ## usethis namespace: start
 ## usethis namespace: end
 NULL
-
-client_wrapper = R6::R6Class(classname = "client_wrapper",
-                             public = list(
-                               client = NULL
-                             ))
-
-#' @export aurinapi_wfs_client_wrapper
-NULL
-
-.onLoad <- function(...){
-
-  assign("aurinapi_wfs_client_wrapper", client_wrapper$new(), envir = parent.env(environment()))
-
-}
-
