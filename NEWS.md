@@ -1,3 +1,5 @@
+# aurinapi 0.3.4
+* `aurinapi_search()` returns a query result from the AURIN API search.
 # aurinapi 0.3.3
 
 * `aurinapi_wfs_client_wrapper` is now exported, this fixes the error when calling `aurinapi_meta()` in the previous versions.
