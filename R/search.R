@@ -1,6 +1,7 @@
 #' Search AURIN API
 #'
 #' @param query a character.
+#' @importFrom jsonlite read_json
 #'
 #' @return a data.frame with two columns: aurin_open_api_id, brief_description.
 #' @export
