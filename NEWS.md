@@ -1,3 +1,10 @@
+# aurinapi 0.3.4
+
+* `aurinapi_build_get_feature_request()` gains `outputFormat` argument, default as "application/json".
+* `aurinapi_search()` returns a query result from the AURIN API search.
+* Update the example data layer. `aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017` layer no longer exists hence we are replacing it with `aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets`, which is most similar.
+* Add `jsonlite` to Imports.
+
 # aurinapi 0.3.3
 
 * `aurinapi_wfs_client_wrapper` is now exported, this fixes the error when calling `aurinapi_meta()` in the previous versions.

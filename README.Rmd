@@ -60,7 +60,7 @@ aurinapi_register(username = "your-username", password = "your-password", add_to
 aurinapi_browse()
 ```
 
-Identify the '**AURIN Open API ID**' field on the 'Additional Info' table of the dataset that you want to download. For example, for this [public toilet 2017 dataset](https://data.aurin.org.au/dataset/au-govt-dss-national-public-toilets-2017-na) its '**AURIN Open API ID**' field is `"aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"`.
+Identify the '**AURIN Open API ID**' field on the 'Additional Info' table of the dataset that you want to download. For example, for this [public toilet 2017 dataset](https://data.aurin.org.au/dataset/au-govt-dss-national-public-toilets-2017-na) its '**AURIN Open API ID**' field is `"aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"`.
 
 > Note that, some datasets on AURIN may not have '**AURIN Open API ID**', meaning that it cannot be downloaded via their API.
 
@@ -77,7 +77,7 @@ Use `aurinapi_get()` to download the dataset.
 
 ```{r}
 # download this public toilet dataset.
-open_api_id = "aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"
+open_api_id = "aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"
 public_toilets = aurinapi_get(open_api_id = open_api_id)
 ```
 

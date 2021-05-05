@@ -18,7 +18,7 @@
 #' \dontrun{
 #' # follow the example in https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/
 #' aurinapi_register(username = "your-username", password = "your-password")
-#' aurinapi_get("aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017")
+#' aurinapi_get("aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets")
 #' }
 aurinapi_get = function(open_api_id, crs = "EPSG:4326", params = NULL) {
 
@@ -31,11 +31,15 @@ aurinapi_get = function(open_api_id, crs = "EPSG:4326", params = NULL) {
   return(.data)
 }
 
+#' @param outputFormat default as "application/json",
+#'   see https://docs.geoserver.org/latest/en/user/services/wfs/outputformats.html
+#'   for other available options.
+#'
 #' @note
 #' `aurinapi_build_request()` returns a URL.
 #' @export
 #' @rdname aurinapi_get
-aurinapi_build_get_feature_request = function(open_api_id, crs = "EPSG:4326", params = NULL) {
+aurinapi_build_get_feature_request = function(open_api_id, crs = "EPSG:4326", params = NULL, outputFormat = "application/json") {
 
   checkmate::assert_string(open_api_id)
   checkmate::assert_list(params, types = "character", names = "unique", null.ok = TRUE)
@@ -44,10 +48,11 @@ aurinapi_build_get_feature_request = function(open_api_id, crs = "EPSG:4326", pa
 
   wfs = glue::glue("http://{Sys.getenv('AURIN_API_USERPWD')}@openapi.aurin.org.au/wfs")
   url = httr::parse_url(wfs)
-  url$query = list(service="wfs",
+  url$query = list(service = "wfs",
                    version = "1.0.0",
                    request = "GetFeature",
                    srsName = crs,
+                   outputFormat = outputFormat,
                    typename = open_api_id)
 
   request = httr::build_url(url)

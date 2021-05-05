@@ -10,7 +10,8 @@ aurinapi_get(open_api_id, crs = "EPSG:4326", params = NULL)
 aurinapi_build_get_feature_request(
   open_api_id,
   crs = "EPSG:4326",
-  params = NULL
+  params = NULL,
+  outputFormat = "application/json"
 )
 }
 \arguments{
@@ -21,6 +22,10 @@ The layer name is found in the ‘AURIN Open API ID’ field in a dataset’s me
 \item{crs}{default as "EPSG:4326". The Coordinate Reference System you wish to use}
 
 \item{params}{a named list that will be used when constructing the WFS request.}
+
+\item{outputFormat}{default as "application/json",
+see https://docs.geoserver.org/latest/en/user/services/wfs/outputformats.html
+for other available options.}
 }
 \value{
 an \code{sf::sf} object.
@@ -36,6 +41,6 @@ Query data using \href{https://docs.geoserver.org/latest/en/user/services/wfs/re
 \dontrun{
 # follow the example in https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/
 aurinapi_register(username = "your-username", password = "your-password")
-aurinapi_get("aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017")
+aurinapi_get("aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets")
 }
 }
