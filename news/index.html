@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aurinapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.4</span>
       </span>
     </div>
 
@@ -79,7 +79,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -93,7 +93,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/asiripanich/aurinapi/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -114,6 +114,18 @@
       <small>Source: <a href='https://github.com/asiripanich/aurinapi/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="aurinapi-034" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.4">
+<a href="#aurinapi-034" class="anchor"></a>aurinapi 0.3.4</h1>
+<ul>
+<li>
+<code><a href="../reference/aurinapi_get.html">aurinapi_build_get_feature_request()</a></code> gains <code>outputFormat</code> argument, default as “application/json”.</li>
+<li>
+<code><a href="../reference/aurinapi_search.html">aurinapi_search()</a></code> returns a query result from the AURIN API search.</li>
+<li>Update the example data layer. <code>aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017</code> layer no longer exists hence we are replacing it with <code>aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets</code>, which is most similar.</li>
+<li>Add <code>jsonlite</code> to Imports.</li>
+</ul>
+</div>
     <div id="aurinapi-033" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.3">
 <a href="#aurinapi-033" class="anchor"></a>aurinapi 0.3.3</h1>
@@ -150,7 +162,7 @@
 <h1 class="page-header" data-toc-text="0.2.0">
 <a href="#aurinapi-020" class="anchor"></a>aurinapi 0.2.0</h1>
 <ul>
-<li>Switched to using WFS request instead of <code><a href="https://rdrr.io/pkg/gdalUtils/man/ogr2ogr.html">gdalUtils::ogr2ogr</a></code> to download AURIN datasets. This provides a faster and more reliable download than the former approach.</li>
+<li>Switched to using WFS request instead of <code>gdalUtils::ogr2ogr</code> to download AURIN datasets. This provides a faster and more reliable download than the former approach.</li>
 </ul>
 </div>
     <div id="aurinapi-010" class="section level1">

@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aurinapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.4</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -94,7 +94,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/asiripanich/aurinapi/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -125,7 +125,8 @@
 <span class='fu'>aurinapi_build_get_feature_request</span><span class='op'>(</span>
   <span class='va'>open_api_id</span>,
   crs <span class='op'>=</span> <span class='st'>"EPSG:4326"</span>,
-  params <span class='op'>=</span> <span class='cn'>NULL</span>
+  params <span class='op'>=</span> <span class='cn'>NULL</span>,
+  outputFormat <span class='op'>=</span> <span class='st'>"application/json"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -145,6 +146,12 @@ The layer name is found in the ‘AURIN Open API ID’ field in a dataset’s me
       <th>params</th>
       <td><p>a named list that will be used when constructing the WFS request.</p></td>
     </tr>
+    <tr>
+      <th>outputFormat</th>
+      <td><p>default as "application/json",
+see https://docs.geoserver.org/latest/en/user/services/wfs/outputformats.html
+for other available options.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -159,7 +166,7 @@ The layer name is found in the ‘AURIN Open API ID’ field in a dataset’s me
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># follow the example in https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/</span>
 <span class='fu'><a href='aurinapi_register.html'>aurinapi_register</a></span><span class='op'>(</span>username <span class='op'>=</span> <span class='st'>"your-username"</span>, password <span class='op'>=</span> <span class='st'>"your-password"</span><span class='op'>)</span>
-<span class='fu'>aurinapi_get</span><span class='op'>(</span><span class='st'>"aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"</span><span class='op'>)</span>
+<span class='fu'>aurinapi_get</span><span class='op'>(</span><span class='st'>"aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
   </div>

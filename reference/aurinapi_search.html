@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>aurinapi_wfs_client_wrapper — aurinapi_wfs_client_wrapper • aurinapi</title>
+<title>Search AURIN API — aurinapi_search • aurinapi</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="aurinapi_wfs_client_wrapper — aurinapi_wfs_client_wrapper" />
-<meta property="og:description" content="An R6 object for wrapping a WFS Client object. It will be created each
-the aurinapi package is being loaded. See ows4R::WFSClient." />
+<meta property="og:title" content="Search AURIN API — aurinapi_search" />
+<meta property="og:description" content="Search AURIN API" />
 
 
 
@@ -112,18 +111,29 @@ the aurinapi package is being loaded. See ows4R::WFSClient." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>aurinapi_wfs_client_wrapper</h1>
-    <small class="dont-index">Source: <a href='https://github.com/asiripanich/aurinapi/blob/master/R/zzz.R'><code>R/zzz.R</code></a></small>
-    <div class="hidden name"><code>aurinapi_wfs_client_wrapper.Rd</code></div>
+    <h1>Search AURIN API</h1>
+    <small class="dont-index">Source: <a href='https://github.com/asiripanich/aurinapi/blob/master/R/search.R'><code>R/search.R</code></a></small>
+    <div class="hidden name"><code>aurinapi_search.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>An R6 object for wrapping a WFS Client object. It will be created each
-the <code>aurinapi</code> package is being loaded. See <a href='https://rdrr.io/pkg/ows4R/man/WFSClient.html'>ows4R::WFSClient</a>.</p>
+    <p>Search AURIN API</p>
     </div>
 
+    <pre class="usage"><span class='fu'>aurinapi_search</span><span class='op'>(</span><span class='va'>query</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>query</th>
+      <td><p>a character.</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a data.frame with two columns: aurin_open_api_id, brief_description.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
