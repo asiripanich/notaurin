@@ -6,4 +6,3 @@ test_that("aurinapi_get works", {
   checkmate::expect_class(data_sf, classes = "sf")
   checkmate::expect_data_frame(data_sf, min.rows = 1)
 })
-aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets
