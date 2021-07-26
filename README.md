@@ -84,11 +84,7 @@ Alternatively, you may use `aur_meta` to search datasets without leaving
 your R console.
 
 ``` r
-meta = aur_meta()
-#> ℹ Creating AURIN WFS Client...
-#> Loading ISO 19139 XML schemas...
-#> Loading ISO 19115 codelists...
-#> Warning in CPL_crs_from_input(x): GDAL Message 1: +init=epsg:XXXX syntax is deprecated. It might return a CRS with a non-EPSG compliant axis order.
+meta <- aur_meta()
 #> ℹ Fetching available datasets...
 # print out the first five rows
 knitr::kable(head(meta))
@@ -107,10 +103,14 @@ Use `aur_get()` to download the dataset.
 
 ``` r
 # download this public toilet dataset.
-open_api_id = "aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"
-public_toilets = aur_get(open_api_id = open_api_id)
+open_api_id <- "aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"
+public_toilets <- aur_get(open_api_id = open_api_id)
 #> ℹ Downloading 'aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets'...
 #> ✔ Finished!
+state_polygons <- aur_get(open_api_id = "aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust")
+#> ℹ Downloading 'aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust'...
+#> ✔ Finished!
+state_polygons <- state_polygons[state_polygons$state_code_2016 %in% 1:8, ]
 ```
 
 Let’s visualise the data using the `ggplot2` package.
@@ -119,8 +119,13 @@ Let’s visualise the data using the `ggplot2` package.
 # If you don't have the package you can install it with `install.packages("ggplot2")`.
 library(ggplot2)
 ggplot(public_toilets) +
-  geom_sf() +
-  labs(title = "Public toilets in Australia, 2017")
+  geom_sf(data = state_shp, fill = "antiquewhite") +
+  geom_sf(alpha = 0.05, aes(color = isopen, shape = isopen)) +
+  labs(title = "Public toilets in Australia, 2017") +
+  scale_color_brewer(palette = "Dark2") +
+  theme_bw() +
+  guides(colour = guide_legend(override.aes = list(alpha = 1))) +
+  theme(panel.background = element_rect(fill = "aliceblue"))
 ```
 
 <img src="man/figures/README-example-public-toilet-plot-1.png" width="100%" />
@@ -155,6 +160,6 @@ knitr::kable(meta[grepl("toilet", meta$title, ignore.case = T), ])
 Get all the datasets in parallel.
 
 ``` r
-toilet_datasets_ids = meta$aurin_open_api_id[grepl("toilet", meta$title, ignore.case = T)]
-data_lst = furrr::future_map(toilet_datasets_ids, aur_get)
+toilet_datasets_ids <- meta$aurin_open_api_id[grepl("toilet", meta$title, ignore.case = T)]
+data_lst <- furrr::future_map(toilet_datasets_ids, aur_get)
 ```
