@@ -7,9 +7,8 @@ test_that("aur_register works", {
     overwrite = FALSE
   )
   expect_equal(Sys.getenv("AURIN_API_USERPWD"), "username:password")
-  
+
   if (orginal_key != "") {
     Sys.setenv(AURIN_API_USERPWD = orginal_key)
   }
-
 })

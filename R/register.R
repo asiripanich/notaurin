@@ -43,7 +43,7 @@ aur_register <- function(username,
       "Adding your AURIN API Username and Password to {.file ~/.Renviron}.",
       "You won't need to do this again next time. ;)"
     ))
-    
+
     # grab .Renviron file path
     environ_file <- file.path(Sys.getenv("HOME"), ".Renviron")
 

@@ -9,12 +9,10 @@
 #' @export
 #'
 #' @examples
-#'
 #' \dontrun{
 #'
 #' aur_browse()
-#'
 #' }
-aur_browse = function() {
+aur_browse <- function() {
   utils::browseURL("https://data.aurin.org.au/group/aurin-api")
 }

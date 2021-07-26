@@ -7,17 +7,15 @@
 #' @export
 #'
 #' @examples
-#'
 #' \dontrun{
 #'
 #' # this may takes a while to return.
 #' aur_meta()
-#'
 #' }
-aur_meta = function(force = FALSE) {
-  wfs_client = create_aur_wfs_client()
+aur_meta <- function(force = FALSE) {
+  wfs_client <- create_aur_wfs_client()
   cli::cli_alert_info("Fetching available datasets...")
-  meta = wfs_client$getFeatureTypes(pretty = TRUE)
-  names(meta)[names(meta) == "name"] = "aurin_open_api_id"
+  meta <- wfs_client$getFeatureTypes(pretty = TRUE)
+  names(meta)[names(meta) == "name"] <- "aurin_open_api_id"
   return(meta)
 }
