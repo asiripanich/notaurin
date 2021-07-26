@@ -120,7 +120,7 @@ Let’s visualise the data using the `ggplot2` package.
 library(ggplot2)
 ggplot(public_toilets) +
   geom_sf(data = state_shp, fill = "antiquewhite") +
-  geom_sf(alpha = 0.05, aes(color = isopen, shape = isopen)) +
+  geom_sf(alpha = 0.05, aes(color = status)) +
   labs(title = "Public toilets in Australia, 2017") +
   scale_color_brewer(palette = "Dark2") +
   theme_bw() +

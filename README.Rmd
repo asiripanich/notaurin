@@ -89,12 +89,12 @@ state_polygons <- state_polygons[state_polygons$state_code_2016 %in% 1:8, ]
 
 Let's visualise the data using the `ggplot2` package.
 
-```{r example-public-toilet-plot, dpi = 300}
+```{r example-public-toilet-plot, dpi = 300, fig.path = "man/figures/README-"}
 # If you don't have the package you can install it with `install.packages("ggplot2")`.
 library(ggplot2)
 ggplot(public_toilets) +
   geom_sf(data = state_shp, fill = "antiquewhite") +
-  geom_sf(alpha = 0.05, aes(color = isopen, shape = isopen)) +
+  geom_sf(alpha = 0.05, aes(color = status)) +
   labs(title = "Public toilets in Australia, 2017") +
   scale_color_brewer(palette = "Dark2") +
   theme_bw() +
