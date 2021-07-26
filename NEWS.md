@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# aurinapi 0.4.1
+
+- Renamed `aur_build_get_feature_request()` to `aur_build_request()`. Not sure why it was named like that in the first place!
+
+
 # aurinapi 0.4.0
 
 - Fix `aur_register()`, `overwrite` now works as it should.
