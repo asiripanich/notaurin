@@ -23,6 +23,11 @@ You can request a **FREE** API key from:
 
 > <https://aurin.org.au/resources/aurin-apis/sign-up/>
 
+**AURIN** is “*Australia’s 🦘 single largest resource for accessing
+clean, integrated, spatially enabled and research-ready data on issues
+surrounding health and wellbeing, socio-economic metrics,
+transportation, and land-use.*”
+
 ## Installation
 
 You can install the released version of `aurinapi` from
