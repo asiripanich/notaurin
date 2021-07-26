@@ -52,22 +52,22 @@ example using `aurinapi`.
 First, you must add your [AURIN API username and
 password](https://aurin.org.au/resources/aurin-apis/sign-up/) as an R
 environment variable to your `.Renviron` file. `aurinapi` provides
-`aurinapi_register()` function to help you with this step. If you choose
-to set `add_to_renviron = TRUE` you won’t need to run this step again on
+`aur_register()` function to help you with this step. If you choose to
+set `add_to_renviron = TRUE` you won’t need to run this step again on
 current machine after you restart your R session.
 
 ``` r
 library(aurinapi)
 
 # add_to_renviron = TRUE, so you won't need to run this step again on current machine.
-aurinapi_register(username = "your-username", password = "your-password", add_to_renviron = T)  
+aur_register(username = "your-username", password = "your-password", add_to_renviron = T)  
 ```
 
-`aurinapi_browse()` opens [the data catalogue of
+`aur_browse()` opens [the data catalogue of
 AURIN](https://data.aurin.org.au/dataset) on your default browser.
 
 ``` r
-aurinapi_browse()
+aur_browse()
 ```
 
 Identify the ‘**AURIN Open API ID**’ field on the ‘Additional Info’
@@ -80,11 +80,11 @@ its ‘**AURIN Open API ID**’ field is
 > Note that, some datasets on AURIN may not have ‘**AURIN Open API
 > ID**’, meaning that it cannot be downloaded via their API.
 
-Alternatively, you may use `aurinapi_meta` to search datasets without
-leaving your R console.
+Alternatively, you may use `aur_meta` to search datasets without leaving
+your R console.
 
 ``` r
-meta = aurinapi_meta()
+meta = aur_meta()
 #> ℹ Creating AURIN WFS Client...
 #> Loading ISO 19139 XML schemas...
 #> Loading ISO 19115 codelists...
@@ -103,12 +103,12 @@ knitr::kable(head(meta))
 | aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_GeoLevel\_mb\_2016\_aust             | ABS - ASGS - Mesh Block (MB) 2016                               |
 | aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_GeoLevel\_mb\_2011\_act              | ABS - ASGS - Mesh Block (MB) ACT 2011                           |
 
-Use `aurinapi_get()` to download the dataset.
+Use `aur_get()` to download the dataset.
 
 ``` r
 # download this public toilet dataset.
 open_api_id = "aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"
-public_toilets = aurinapi_get(open_api_id = open_api_id)
+public_toilets = aur_get(open_api_id = open_api_id)
 #> ℹ Downloading 'aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets'...
 #> ✔ Finished!
 ```
@@ -156,5 +156,5 @@ Get all the datasets in parallel.
 
 ``` r
 toilet_datasets_ids = meta$aurin_open_api_id[grepl("toilet", meta$title, ignore.case = T)]
-data_lst = furrr::future_map(toilet_datasets_ids, aurinapi_get)
+data_lst = furrr::future_map(toilet_datasets_ids, aur_get)
 ```
