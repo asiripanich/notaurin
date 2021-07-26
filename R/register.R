@@ -1,4 +1,8 @@
 #' Create an AURIN authentication file.
+#' 
+#' This function writes your AURIN API authentication as a R environment
+#' variable of your current session. If `add_to_renviron` is `TRUE`, it
+#' will write the API to your `.Renviron` file as `AURIN_API_USERPWD`.
 #'
 #' @param username Character. AURIN API username.
 #' @param password Character. AURIN API password.
