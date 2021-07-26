@@ -110,11 +110,7 @@
 </blockquote>
 <p>Alternatively, you may use <code>aur_meta</code> to search datasets without leaving your R console.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">meta</span> <span class="op">=</span> <span class="fu"><a href="reference/aur_meta.html">aur_meta</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; ℹ Creating AURIN WFS Client...</span>
-<span class="co">#&gt; Loading ISO 19139 XML schemas...</span>
-<span class="co">#&gt; Loading ISO 19115 codelists...</span>
-<span class="co">#&gt; Warning in CPL_crs_from_input(x): GDAL Message 1: +init=epsg:XXXX syntax is deprecated. It might return a CRS with a non-EPSG compliant axis order.</span>
+<code class="sourceCode R"><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aur_meta.html">aur_meta</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; ℹ Fetching available datasets...</span>
 <span class="co"># print out the first five rows</span>
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -157,17 +153,26 @@
 <p>Use <code><a href="reference/aur_get.html">aur_get()</a></code> to download the dataset.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># download this public toilet dataset.</span>
-<span class="va">open_api_id</span> <span class="op">=</span> <span class="st">"aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"</span>
-<span class="va">public_toilets</span> <span class="op">=</span> <span class="fu"><a href="reference/aur_get.html">aur_get</a></span><span class="op">(</span>open_api_id <span class="op">=</span> <span class="va">open_api_id</span><span class="op">)</span>
+<span class="va">open_api_id</span> <span class="op">&lt;-</span> <span class="st">"aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"</span>
+<span class="va">public_toilets</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aur_get.html">aur_get</a></span><span class="op">(</span>open_api_id <span class="op">=</span> <span class="va">open_api_id</span><span class="op">)</span>
 <span class="co">#&gt; ℹ Downloading 'aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets'...</span>
-<span class="co">#&gt; ✔ Finished!</span></code></pre></div>
+<span class="co">#&gt; ✔ Finished!</span>
+<span class="va">state_polygons</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aur_get.html">aur_get</a></span><span class="op">(</span>open_api_id <span class="op">=</span> <span class="st">"aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust"</span><span class="op">)</span>
+<span class="co">#&gt; ℹ Downloading 'aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust'...</span>
+<span class="co">#&gt; ✔ Finished!</span>
+<span class="va">state_polygons</span> <span class="op">&lt;-</span> <span class="va">state_polygons</span><span class="op">[</span><span class="va">state_polygons</span><span class="op">$</span><span class="va">state_code_2016</span> <span class="op">%in%</span> <span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, <span class="op">]</span></code></pre></div>
 <p>Let’s visualise the data using the <code>ggplot2</code> package.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># If you don't have the package you can install it with `install.packages("ggplot2")`.</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span>
 <span class="fu">ggplot</span><span class="op">(</span><span class="va">public_toilets</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_sf</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Public toilets in Australia, 2017"</span><span class="op">)</span></code></pre></div>
+  <span class="fu">geom_sf</span><span class="op">(</span>data <span class="op">=</span> <span class="va">state_shp</span>, fill <span class="op">=</span> <span class="st">"antiquewhite"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_sf</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.05</span>, <span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">isopen</span>, shape <span class="op">=</span> <span class="va">isopen</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Public toilets in Australia, 2017"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_color_brewer</span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Dark2"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">guides</span><span class="op">(</span>colour <span class="op">=</span> <span class="fu">guide_legend</span><span class="op">(</span>override.aes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme</span><span class="op">(</span>panel.background <span class="op">=</span> <span class="fu">element_rect</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"aliceblue"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-example-public-toilet-plot-1.png" width="100%"></p>
 <p>See <a href="https://data.aurin.org.au/group/aurin-api">here</a> to find available datasets.</p>
 </div>
@@ -214,8 +219,8 @@
 </table>
 <p>Get all the datasets in parallel.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">toilet_datasets_ids</span> <span class="op">=</span> <span class="va">meta</span><span class="op">$</span><span class="va">aurin_open_api_id</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"toilet"</span>, <span class="va">meta</span><span class="op">$</span><span class="va">title</span>, ignore.case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">]</span>
-<span class="va">data_lst</span> <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu">future_map</span><span class="op">(</span><span class="va">toilet_datasets_ids</span>, <span class="va">aur_get</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">toilet_datasets_ids</span> <span class="op">&lt;-</span> <span class="va">meta</span><span class="op">$</span><span class="va">aurin_open_api_id</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"toilet"</span>, <span class="va">meta</span><span class="op">$</span><span class="va">title</span>, ignore.case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">]</span>
+<span class="va">data_lst</span> <span class="op">&lt;-</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu">future_map</span><span class="op">(</span><span class="va">toilet_datasets_ids</span>, <span class="va">aur_get</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
   </div>
