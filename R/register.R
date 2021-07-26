@@ -13,10 +13,10 @@
 #' @examples
 #' \dontrun{
 #'
-#' aurinapi_register("username", "password")
+#' aur_register("username", "password")
 #'
 #' }
-aurinapi_register = function(username,
+aur_register = function(username,
                              password,
                              add_to_renviron = FALSE,
                              overwrite = FALSE) {

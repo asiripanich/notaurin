@@ -5,7 +5,7 @@
 #'
 #' @return a data.frame with two columns: aurin_open_api_id, brief_description.
 #' @export
-aurinapi_search = function(query) {
+aur_search = function(query) {
   checkmate::assert_string(query)
   url = httr::parse_url("https://data.aurin.org.au/api/action/package_search?")
   url$query = list(q = query)
