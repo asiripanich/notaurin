@@ -28,7 +28,9 @@ library(aurinapi)
   <img src="https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png" />
 </p>
 
-The goal of `aurinapi` is to provide an easy way for R users to download [AURIN](https://aurin.org.au/) datasets using their [API](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/).
+The goal of `aurinapi` is to provide an easy way for R users to access **MORE THAN 5000 OPEN DATASETS** on  [AURIN](https://aurin.org.au/) using their [API](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/). You can request a **FREE** API key from:
+
+> https://aurin.org.au/resources/aurin-apis/sign-up/
 
 ## Installation
 

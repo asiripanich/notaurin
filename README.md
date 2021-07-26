@@ -11,16 +11,17 @@ pre-releases)](https://img.shields.io/github/v/release/asiripanich/aurinapi?incl
 status](https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurinapi/actions)
 
 <!-- badges: end -->
-
 <p align="center">
-
 <img src="https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png" />
-
 </p>
 
-The goal of `aurinapi` is to provide an easy way for R users to download
-[AURIN](https://aurin.org.au/) datasets using their
+The goal of `aurinapi` is to provide an easy way for R users to access
+**MORE THAN 5000 OPEN DATASETS** on [AURIN](https://aurin.org.au/) using
+their
 [API](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/).
+You can request a **FREE** API key from:
+
+> <https://aurin.org.au/resources/aurin-apis/sign-up/>
 
 ## Installation
 
@@ -69,7 +70,7 @@ table of the dataset that you want to download. For example, for this
 [public toilet 2017
 dataset](https://data.aurin.org.au/dataset/au-govt-dss-national-public-toilets-2017-na)
 its ‘**AURIN Open API ID**’ field is
-`"aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"`.
+`"aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"`.
 
 > Note that, some datasets on AURIN may not have ‘**AURIN Open API
 > ID**’, meaning that it cannot be downloaded via their API.
@@ -82,30 +83,29 @@ meta = aurinapi_meta()
 #> ℹ Creating AURIN WFS Client...
 #> Loading ISO 19139 XML schemas...
 #> Loading ISO 19115 codelists...
-#> Warning in CPL_crs_from_input(x): GDAL Message 1: +init=epsg:XXXX syntax is
-#> deprecated. It might return a CRS with a non-EPSG compliant axis order.
+#> Warning in CPL_crs_from_input(x): GDAL Message 1: +init=epsg:XXXX syntax is deprecated. It might return a CRS with a non-EPSG compliant axis order.
 #> ℹ Fetching available datasets...
 # print out the first five rows
 knitr::kable(head(meta))
 ```
 
-| aurin\_open\_api\_id                                                                        | title                                            |
-| :------------------------------------------------------------------------------------------ | :----------------------------------------------- |
-| aurin:datasource-NSW\_Govt\_DPE-UoM\_AURIN\_DB\_nsw\_srlup\_additional\_rural\_2014         | Additional Rural Village Land 18/01/2014 for NSW |
-| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_3\_abs\_building\_approvals\_gccsa\_2011\_12 | ABS - Building Approvals (GCCSA) 2011-2012       |
-| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_3\_abs\_building\_approvals\_gccsa\_2012\_13 | ABS - Building Approvals (GCCSA) 2012-2013       |
-| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_3\_abs\_building\_approvals\_gccsa\_2013\_14 | ABS - Building Approvals (GCCSA) 2013-2014       |
-| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_3\_abs\_building\_approvals\_gccsa\_2014\_15 | ABS - Building Approvals (GCCSA) 2014-2015       |
-| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_3\_abs\_building\_approvals\_gccsa\_2015\_16 | ABS - Building Approvals (GCCSA) 2015-2016       |
+| aurin\_open\_api\_id                                                                | title                                                           |
+|:------------------------------------------------------------------------------------|:----------------------------------------------------------------|
+| aurin:datasource-NSW\_Govt\_DPE-UoM\_AURIN\_DB\_nsw\_srlup\_additional\_rural\_2014 | Additional Rural Village Land 18/01/2014 for NSW                |
+| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_GeoLevel\_aus\_2016\_aust            | ABS - ASGS - Country (AUS) 2016                                 |
+| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_GeoLevel\_gccsa\_2011\_aust          | ABS - ASGS - Greater Capital City Statistical Area (GCCSA) 2011 |
+| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_GeoLevel\_gccsa\_2016\_aust          | ABS - ASGS - Greater Capital City Statistical Area (GCCSA) 2016 |
+| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_GeoLevel\_mb\_2016\_aust             | ABS - ASGS - Mesh Block (MB) 2016                               |
+| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_GeoLevel\_mb\_2011\_act              | ABS - ASGS - Mesh Block (MB) ACT 2011                           |
 
 Use `aurinapi_get()` to download the dataset.
 
 ``` r
 # download this public toilet dataset.
-open_api_id = "aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"
+open_api_id = "aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"
 public_toilets = aurinapi_get(open_api_id = open_api_id)
-#> ℹ Downloading 'aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017'...
-#> ✓ Finished!
+#> ℹ Downloading 'aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets'...
+#> ✔ Finished!
 ```
 
 Let’s visualise the data using the `ggplot2` package.
@@ -142,10 +142,10 @@ knitr::kable(meta[grepl("toilet", meta$title, ignore.case = T), ])
 ```
 
 |      | aurin\_open\_api\_id                                                           | title                                                  |
-| :--- | :----------------------------------------------------------------------------- | :----------------------------------------------------- |
-| 1272 | aurin:datasource-au\_govt\_dss-UoM\_AURIN\_national\_public\_toilets\_2017     | DSS National Public Toilets 2017                       |
-| 1280 | aurin:datasource-AU\_Govt\_Doh-UoM\_AURIN\_DB\_national\_toilet\_map\_2018\_06 | Department of Health - National Toilet Map - June 2018 |
-| 2595 | aurin:datasource-UQ\_ERG-UoM\_AURIN\_DB\_public\_toilets                       | Public Toilets 2004-2014 for Australia                 |
+|:-----|:-------------------------------------------------------------------------------|:-------------------------------------------------------|
+| 1405 | aurin:datasource-AU\_Govt\_DSS-UoM\_AURIN\_national\_public\_toilets\_2017     | DSS - National Public Toilets (Point) 2017             |
+| 1465 | aurin:datasource-AU\_Govt\_Doh-UoM\_AURIN\_DB\_national\_toilet\_map\_2018\_06 | Department of Health - National Toilet Map - June 2018 |
+| 2773 | aurin:datasource-UQ\_ERG-UoM\_AURIN\_DB\_public\_toilets                       | Public Toilets 2004-2014 for Australia                 |
 
 Get all the datasets in parallel.
 
