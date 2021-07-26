@@ -1,3 +1,12 @@
+<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+
+# aurinapi 0.4.0
+
+- Fix `aur_register()`, `overwrite` now works as it should.
+- Test `aur_register()`.
+- All main functions now start with the prefix `aur_*`() instead of `aurinapi_*()`.
+
+
 # aurinapi 0.3.4
 
 * `aurinapi_build_get_feature_request()` gains `outputFormat` argument, default as "application/json".
