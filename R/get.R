@@ -20,7 +20,7 @@
 #' aur_get("aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets")
 #' }
 aur_get <- function(open_api_id, crs = "EPSG:4326", params = NULL) {
-  request <- aur_build_get_feature_request(open_api_id, crs = "EPSG:4326", params = NULL)
+  request <- aur_build_request(open_api_id, crs = "EPSG:4326", params = NULL)
 
   cli::cli_alert_info("Downloading '{open_api_id}'...")
   .data <- sf::read_sf(request)
@@ -37,7 +37,7 @@ aur_get <- function(open_api_id, crs = "EPSG:4326", params = NULL) {
 #' `aur_build_request()` returns a URL.
 #' @export
 #' @rdname aur_get
-aur_build_get_feature_request <- function(open_api_id, crs = "EPSG:4326", params = NULL, outputFormat = "application/json") {
+aur_build_request <- function(open_api_id, crs = "EPSG:4326", params = NULL, outputFormat = "application/json") {
   checkmate::assert_string(open_api_id)
   checkmate::assert_list(params, types = "character", names = "unique", null.ok = TRUE)
 

@@ -2,12 +2,12 @@
 % Please edit documentation in R/get.R
 \name{aur_get}
 \alias{aur_get}
-\alias{aur_build_get_feature_request}
+\alias{aur_build_request}
 \title{Fetch AURIN dataset.}
 \usage{
 aur_get(open_api_id, crs = "EPSG:4326", params = NULL)
 
-aur_build_get_feature_request(
+aur_build_request(
   open_api_id,
   crs = "EPSG:4326",
   params = NULL,
