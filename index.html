@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">aurinapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -76,10 +76,12 @@
 
 <!-- badges: end -->
 <p align="center">
-</p>
-<p><img src="https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png"></p>
-
-<p>The goal of <code>aurinapi</code> is to provide an easy way for R users to download <a href="https://aurin.org.au/">AURIN</a> datasets using their <a href="https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/">API</a>.</p>
+<img src="https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png"></p>
+<p>The goal of <code>aurinapi</code> is to provide an easy way for R users to access <strong>MORE THAN 5000 OPEN DATASETS</strong> on <a href="https://aurin.org.au/">AURIN</a> using their <a href="https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/">API</a>. You can request a <strong>FREE</strong> API key from:</p>
+<blockquote>
+<p><a href="https://aurin.org.au/resources/aurin-apis/sign-up/" class="uri">https://aurin.org.au/resources/aurin-apis/sign-up/</a></p>
+</blockquote>
+<p><strong>AURIN</strong> is “<em>Australia’s 🦘 single largest resource for accessing clean, integrated, spatially enabled and research-ready data on issues surrounding health and wellbeing, socio-economic metrics, transportation, and land-use.</em>”</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -93,34 +95,33 @@
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>Let’s recreate this <a href="https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/">AURIN API AND R</a> example using <code>aurinapi</code>.</p>
-<p>First, you must add your <a href="https://aurin.org.au/resources/aurin-apis/sign-up/">AURIN API username and password</a> as an R environment variable to your <code>.Renviron</code> file. <code>aurinapi</code> provides <code><a href="reference/aurinapi_register.html">aurinapi_register()</a></code> function to help you with this step. If you choose to set <code>add_to_renviron = TRUE</code> you won’t need to run this step again on current machine after you restart your R session.</p>
+<p>First, you must add your <a href="https://aurin.org.au/resources/aurin-apis/sign-up/">AURIN API username and password</a> as an R environment variable to your <code>.Renviron</code> file. <code>aurinapi</code> provides <code><a href="reference/aur_register.html">aur_register()</a></code> function to help you with this step. If you choose to set <code>add_to_renviron = TRUE</code> you won’t need to run this step again on current machine after you restart your R session.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/asiripanich/aurinapi">aurinapi</a></span><span class="op">)</span>
 
 <span class="co"># add_to_renviron = TRUE, so you won't need to run this step again on current machine.</span>
-<span class="fu"><a href="reference/aurinapi_register.html">aurinapi_register</a></span><span class="op">(</span>username <span class="op">=</span> <span class="st">"your-username"</span>, password <span class="op">=</span> <span class="st">"your-password"</span>, add_to_renviron <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>  </code></pre></div>
-<p><code><a href="reference/aurinapi_browse.html">aurinapi_browse()</a></code> opens <a href="https://data.aurin.org.au/dataset">the data catalogue of AURIN</a> on your default browser.</p>
+<span class="fu"><a href="reference/aur_register.html">aur_register</a></span><span class="op">(</span>username <span class="op">=</span> <span class="st">"your-username"</span>, password <span class="op">=</span> <span class="st">"your-password"</span>, add_to_renviron <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>  </code></pre></div>
+<p><code><a href="reference/aur_browse.html">aur_browse()</a></code> opens <a href="https://data.aurin.org.au/dataset">the data catalogue of AURIN</a> on your default browser.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/aurinapi_browse.html">aurinapi_browse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>Identify the ‘<strong>AURIN Open API ID</strong>’ field on the ‘Additional Info’ table of the dataset that you want to download. For example, for this <a href="https://data.aurin.org.au/dataset/au-govt-dss-national-public-toilets-2017-na">public toilet 2017 dataset</a> its ‘<strong>AURIN Open API ID</strong>’ field is <code>"aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"</code>.</p>
+<code class="sourceCode R"><span class="fu"><a href="reference/aur_browse.html">aur_browse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Identify the ‘<strong>AURIN Open API ID</strong>’ field on the ‘Additional Info’ table of the dataset that you want to download. For example, for this <a href="https://data.aurin.org.au/dataset/au-govt-dss-national-public-toilets-2017-na">public toilet 2017 dataset</a> its ‘<strong>AURIN Open API ID</strong>’ field is <code>"aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"</code>.</p>
 <blockquote>
 <p>Note that, some datasets on AURIN may not have ‘<strong>AURIN Open API ID</strong>’, meaning that it cannot be downloaded via their API.</p>
 </blockquote>
-<p>Alternatively, you may use <code>aurinapi_meta</code> to search datasets without leaving your R console.</p>
+<p>Alternatively, you may use <code>aur_meta</code> to search datasets without leaving your R console.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">meta</span> <span class="op">=</span> <span class="fu"><a href="reference/aurinapi_meta.html">aurinapi_meta</a></span><span class="op">(</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">meta</span> <span class="op">=</span> <span class="fu"><a href="reference/aur_meta.html">aur_meta</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; ℹ Creating AURIN WFS Client...</span>
 <span class="co">#&gt; Loading ISO 19139 XML schemas...</span>
 <span class="co">#&gt; Loading ISO 19115 codelists...</span>
-<span class="co">#&gt; Warning in CPL_crs_from_input(x): GDAL Message 1: +init=epsg:XXXX syntax is</span>
-<span class="co">#&gt; deprecated. It might return a CRS with a non-EPSG compliant axis order.</span>
+<span class="co">#&gt; Warning in CPL_crs_from_input(x): GDAL Message 1: +init=epsg:XXXX syntax is deprecated. It might return a CRS with a non-EPSG compliant axis order.</span>
 <span class="co">#&gt; ℹ Fetching available datasets...</span>
 <span class="co"># print out the first five rows</span>
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="65%">
-<col width="34%">
+<col width="56%">
+<col width="43%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">aurin_open_api_id</th>
@@ -132,34 +133,34 @@
 <td align="left">Additional Rural Village Land 18/01/2014 for NSW</td>
 </tr>
 <tr class="even">
-<td align="left">aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_3_abs_building_approvals_gccsa_2011_12</td>
-<td align="left">ABS - Building Approvals (GCCSA) 2011-2012</td>
+<td align="left">aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_aus_2016_aust</td>
+<td align="left">ABS - ASGS - Country (AUS) 2016</td>
 </tr>
 <tr class="odd">
-<td align="left">aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_3_abs_building_approvals_gccsa_2012_13</td>
-<td align="left">ABS - Building Approvals (GCCSA) 2012-2013</td>
+<td align="left">aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_gccsa_2011_aust</td>
+<td align="left">ABS - ASGS - Greater Capital City Statistical Area (GCCSA) 2011</td>
 </tr>
 <tr class="even">
-<td align="left">aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_3_abs_building_approvals_gccsa_2013_14</td>
-<td align="left">ABS - Building Approvals (GCCSA) 2013-2014</td>
+<td align="left">aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_gccsa_2016_aust</td>
+<td align="left">ABS - ASGS - Greater Capital City Statistical Area (GCCSA) 2016</td>
 </tr>
 <tr class="odd">
-<td align="left">aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_3_abs_building_approvals_gccsa_2014_15</td>
-<td align="left">ABS - Building Approvals (GCCSA) 2014-2015</td>
+<td align="left">aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_mb_2016_aust</td>
+<td align="left">ABS - ASGS - Mesh Block (MB) 2016</td>
 </tr>
 <tr class="even">
-<td align="left">aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_3_abs_building_approvals_gccsa_2015_16</td>
-<td align="left">ABS - Building Approvals (GCCSA) 2015-2016</td>
+<td align="left">aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_mb_2011_act</td>
+<td align="left">ABS - ASGS - Mesh Block (MB) ACT 2011</td>
 </tr>
 </tbody>
 </table>
-<p>Use <code><a href="reference/aurinapi_get.html">aurinapi_get()</a></code> to download the dataset.</p>
+<p>Use <code><a href="reference/aur_get.html">aur_get()</a></code> to download the dataset.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># download this public toilet dataset.</span>
-<span class="va">open_api_id</span> <span class="op">=</span> <span class="st">"aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017"</span>
-<span class="va">public_toilets</span> <span class="op">=</span> <span class="fu"><a href="reference/aurinapi_get.html">aurinapi_get</a></span><span class="op">(</span>open_api_id <span class="op">=</span> <span class="va">open_api_id</span><span class="op">)</span>
-<span class="co">#&gt; ℹ Downloading 'aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017'...</span>
-<span class="co">#&gt; ✓ Finished!</span></code></pre></div>
+<span class="va">open_api_id</span> <span class="op">=</span> <span class="st">"aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"</span>
+<span class="va">public_toilets</span> <span class="op">=</span> <span class="fu"><a href="reference/aur_get.html">aur_get</a></span><span class="op">(</span>open_api_id <span class="op">=</span> <span class="va">open_api_id</span><span class="op">)</span>
+<span class="co">#&gt; ℹ Downloading 'aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets'...</span>
+<span class="co">#&gt; ✔ Finished!</span></code></pre></div>
 <p>Let’s visualise the data using the <code>ggplot2</code> package.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># If you don't have the package you can install it with `install.packages("ggplot2")`.</span>
@@ -184,8 +185,8 @@
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">meta</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"toilet"</span>, <span class="va">meta</span><span class="op">$</span><span class="va">title</span>, ignore.case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>, <span class="op">]</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="2%">
-<col width="57%">
+<col width="4%">
+<col width="56%">
 <col width="39%">
 </colgroup>
 <thead><tr class="header">
@@ -195,17 +196,17 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">1272</td>
-<td align="left">aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017</td>
-<td align="left">DSS National Public Toilets 2017</td>
+<td align="left">1405</td>
+<td align="left">aurin:datasource-AU_Govt_DSS-UoM_AURIN_national_public_toilets_2017</td>
+<td align="left">DSS - National Public Toilets (Point) 2017</td>
 </tr>
 <tr class="even">
-<td align="left">1280</td>
+<td align="left">1465</td>
 <td align="left">aurin:datasource-AU_Govt_Doh-UoM_AURIN_DB_national_toilet_map_2018_06</td>
 <td align="left">Department of Health - National Toilet Map - June 2018</td>
 </tr>
 <tr class="odd">
-<td align="left">2595</td>
+<td align="left">2773</td>
 <td align="left">aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets</td>
 <td align="left">Public Toilets 2004-2014 for Australia</td>
 </tr>
@@ -214,7 +215,7 @@
 <p>Get all the datasets in parallel.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">toilet_datasets_ids</span> <span class="op">=</span> <span class="va">meta</span><span class="op">$</span><span class="va">aurin_open_api_id</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"toilet"</span>, <span class="va">meta</span><span class="op">$</span><span class="va">title</span>, ignore.case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">]</span>
-<span class="va">data_lst</span> <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu">future_map</span><span class="op">(</span><span class="va">toilet_datasets_ids</span>, <span class="va">aurinapi_get</span><span class="op">)</span></code></pre></div>
+<span class="va">data_lst</span> <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu">future_map</span><span class="op">(</span><span class="va">toilet_datasets_ids</span>, <span class="va">aur_get</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
   </div>

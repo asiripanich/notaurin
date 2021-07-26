@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aurinapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -114,14 +114,23 @@
       <small>Source: <a href='https://github.com/asiripanich/aurinapi/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="aurinapi-040" class="section level1">
+<h1 class="page-header" data-toc-text="0.4.0">
+<a href="#aurinapi-040" class="anchor"></a>aurinapi 0.4.0</h1>
+<ul>
+<li>Fix <code><a href="../reference/aur_register.html">aur_register()</a></code>, <code>overwrite</code> now works as it should.</li>
+<li>Test <code><a href="../reference/aur_register.html">aur_register()</a></code>.</li>
+<li>All main functions now start with the prefix <code>aur_*</code>() instead of <code>aurinapi_*()</code>.</li>
+</ul>
+</div>
     <div id="aurinapi-034" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.4">
 <a href="#aurinapi-034" class="anchor"></a>aurinapi 0.3.4</h1>
 <ul>
 <li>
-<code><a href="../reference/aurinapi_get.html">aurinapi_build_get_feature_request()</a></code> gains <code>outputFormat</code> argument, default as “application/json”.</li>
+<code>aurinapi_build_get_feature_request()</code> gains <code>outputFormat</code> argument, default as “application/json”.</li>
 <li>
-<code><a href="../reference/aurinapi_search.html">aurinapi_search()</a></code> returns a query result from the AURIN API search.</li>
+<code>aurinapi_search()</code> returns a query result from the AURIN API search.</li>
 <li>Update the example data layer. <code>aurin:datasource-au_govt_dss-UoM_AURIN_national_public_toilets_2017</code> layer no longer exists hence we are replacing it with <code>aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets</code>, which is most similar.</li>
 <li>Add <code>jsonlite</code> to Imports.</li>
 </ul>
@@ -131,7 +140,7 @@
 <a href="#aurinapi-033" class="anchor"></a>aurinapi 0.3.3</h1>
 <ul>
 <li>
-<code>aurinapi_wfs_client_wrapper</code> is now exported, this fixes the error when calling <code><a href="../reference/aurinapi_meta.html">aurinapi_meta()</a></code> in the previous versions.</li>
+<code>aurinapi_wfs_client_wrapper</code> is now exported, this fixes the error when calling <code>aurinapi_meta()</code> in the previous versions.</li>
 <li>
 <code>ows4R</code> and <code>R6</code> packages are now in Imports, where they should have been.</li>
 </ul>
@@ -141,21 +150,21 @@
 <a href="#aurinapi-032" class="anchor"></a>aurinapi 0.3.2</h1>
 <ul>
 <li>
-<code><a href="../reference/aurinapi_browse.html">aurinapi_browse()</a></code> now opens the URL to the data catalog of datasets that are accessible via AURIN API.</li>
+<code>aurinapi_browse()</code> now opens the URL to the data catalog of datasets that are accessible via AURIN API.</li>
 </ul>
 </div>
     <div id="aurinapi-031" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.1">
 <a href="#aurinapi-031" class="anchor"></a>aurinapi 0.3.1</h1>
 <ul>
-<li>Refactored the WFS’s GetFeature request constructor in <code><a href="../reference/aurinapi_get.html">aurinapi_get()</a></code> as its own function.</li>
+<li>Refactored the WFS’s GetFeature request constructor in <code>aurinapi_get()</code> as its own function.</li>
 </ul>
 </div>
     <div id="aurinapi-030" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.0">
 <a href="#aurinapi-030" class="anchor"></a>aurinapi 0.3.0</h1>
 <ul>
-<li>Added <code><a href="../reference/aurinapi_meta.html">aurinapi_meta()</a></code>, this function returns a data.frame that contains metadata of all available AURIN datasets through their API.</li>
+<li>Added <code>aurinapi_meta()</code>, this function returns a data.frame that contains metadata of all available AURIN datasets through their API.</li>
 </ul>
 </div>
     <div id="aurinapi-020" class="section level1">
