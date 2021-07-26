@@ -12,10 +12,8 @@ with 'AURIN Open API ID' field can be downloaded into your current r session
 with \code{aur_get()}.
 }
 \examples{
-
 \dontrun{
 
 aur_browse()
-
 }
 }
