@@ -93,7 +93,7 @@ Let's visualise the data using the `ggplot2` package.
 # If you don't have the package you can install it with `install.packages("ggplot2")`.
 library(ggplot2)
 ggplot(public_toilets) +
-  geom_sf(data = state_shp, fill = "antiquewhite") +
+  geom_sf(data = state_polygons, fill = "antiquewhite") +
   geom_sf(alpha = 0.05, aes(color = status)) +
   labs(title = "Public toilets in Australia, 2017") +
   scale_color_brewer(palette = "Dark2") +
