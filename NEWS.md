@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# aurin 0.5.0
+
+- Henceforth, You Shall Be Known As "aurin"! 🦘
+- Removed 'render-rmarkdown' GHA. 
+
+
 # aurinapi 0.4.1.9000
 
 - Run examples that requires an API key.
