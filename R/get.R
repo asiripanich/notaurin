@@ -15,7 +15,9 @@
 #'
 #' @examples
 #' # follow the example in https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/
+#' \dontrun{
 #' aur_get("aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets")
+#' }
 aur_get <- function(open_api_id, crs = "EPSG:4326", params = NULL) {
   request <- aur_build_request(open_api_id, crs = "EPSG:4326", params = NULL)
 

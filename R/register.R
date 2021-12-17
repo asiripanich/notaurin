@@ -1,6 +1,6 @@
 #' Create an AURIN authentication file.
-#' 
-#' @description 
+#'
+#' @description
 #'
 #' This function writes your AURIN API authentication as a R environment
 #' variable of your current session. If `add_to_renviron` is `TRUE`, it
@@ -18,8 +18,7 @@
 #'
 #' @examples
 #' \dontrun{
-#'
-#'  aur_register("username", "password")
+#' aur_register("username", "password")
 #' }
 aur_register <- function(username,
                          password,
