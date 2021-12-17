@@ -1,4 +1,4 @@
 library(testthat)
-library(aurinapi)
+library(aurin)
 
-test_check("aurinapi")
+test_check("aurin")
