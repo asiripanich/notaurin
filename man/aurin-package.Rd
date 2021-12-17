@@ -6,7 +6,7 @@
 \alias{aurin-package}
 \title{aurin: Access AURIN Datasets from R}
 \description{
-Access AURIN datasets from R. To use this package you will need to request for an API key from AURIN (it's free!).
+This package allows you to access AURIN Datasets using an AURIN API key that can be requested from AURIN (it's free!). AURIN is “Australia’s 🦘 single largest resource for accessing clean, integrated, spatially enabled and research-ready data on issues surrounding health and wellbeing, socio-economic metrics, transportation, and land-use.”.
 }
 \seealso{
 Useful links:

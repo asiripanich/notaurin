@@ -2,8 +2,10 @@ Package: aurin
 Title: Access AURIN Datasets from R
 Version: 0.5.0
 Authors@R: person('Amarin', 'Siripanich', email = 'amarin.siri@gmail.com', role = c('cre', 'aut'))
-Description: Access AURIN datasets from R. To use this package you will need to request for an API key 
-    from AURIN (it's free!).
+Description: This package allows you to access AURIN Datasets using an AURIN API key 
+    that can be requested from AURIN (it's free!). AURIN is “Australia’s 🦘 single largest 
+    resource for accessing clean, integrated, spatially enabled and research-ready data on 
+    issues surrounding health and wellbeing, socio-economic metrics, transportation, and land-use.”.
 License: MIT + file LICENSE
 Encoding: UTF-8
 URL: https://github.com/asiripanich/aurin
