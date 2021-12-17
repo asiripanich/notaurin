@@ -15,6 +15,6 @@ into your current R session with \code{aur_get()}.
 \examples{
 \dontrun{
 
- aur_browse()
+aur_browse()
 }
 }

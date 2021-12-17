@@ -19,5 +19,7 @@ Get metadata of all AURIN datasets
 }
 \examples{
 # this may takes a while to return result.
+\dontrun{
 aur_meta()
+}
 }

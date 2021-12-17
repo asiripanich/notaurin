@@ -24,7 +24,6 @@ will write the API to your \code{.Renviron} file as \code{AURIN_API_USERPWD}.
 }
 \examples{
 \dontrun{
-
- aur_register("username", "password")
+aur_register("username", "password")
 }
 }
