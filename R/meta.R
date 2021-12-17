@@ -7,11 +7,8 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#'
-#' # this may takes a while to return.
+#' # this may takes a while to return result.
 #' aur_meta()
-#' }
 aur_meta <- function(force = FALSE) {
   wfs_client <- create_aurinapi_wfs_client()
   cli::cli_alert_info("Fetching available datasets...")
