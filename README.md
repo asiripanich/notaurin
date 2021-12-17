@@ -1,20 +1,20 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# aurinapi
+# aurin
 
 <!-- badges: start -->
 
 ![GitHub release (latest by date including
-pre-releases)](https://img.shields.io/github/v/release/asiripanich/aurinapi?include_prereleases)
-[![R-CMD-check](https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurinapi/actions)
+pre-releases)](https://img.shields.io/github/v/release/asiripanich/aurin?include_prereleases)
+[![R-CMD-check](https://github.com/asiripanich/aurin/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurin/actions)
 <!-- badges: end -->
 
 <p align="center">
 <img src="https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png" />
 </p>
 
-The goal of `aurinapi` is to provide an easy way for R users to access
+The goal of `aurin` is to provide an easy way for R users to access
 **MORE THAN 5000 OPEN DATASETS** on [AURIN](https://aurin.org.au/) using
 their
 [API](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/).
@@ -29,12 +29,12 @@ transportation, and land-use.*”
 
 ## Installation
 
-You can install the released version of `aurinapi` from
-[GitHub](https://github.com/asiripanich/aurinapi) with:
+You can install the released version of `aurin` from
+[GitHub](https://github.com/asiripanich/aurin) with:
 
 ``` r
 install.packages("remotes")
-remotes::install_github("asiripanich/aurinapi")
+remotes::install_github("asiripanich/aurin")
 ```
 
 This package requires the [sf](https://github.com/r-spatial/sf) package.
@@ -46,17 +46,17 @@ dependencies.
 
 Let’s recreate this [AURIN API AND
 R](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/)
-example using `aurinapi`.
+example using `aurin`.
 
 First, you must add your [AURIN API username and
 password](https://aurin.org.au/resources/aurin-apis/sign-up/) as an R
-environment variable to your `.Renviron` file. `aurinapi` provides
+environment variable to your `.Renviron` file. `aurin` provides
 `aur_register()` function to help you with this step. If you choose to
 set `add_to_renviron = TRUE` you won’t need to run this step again on
 current machine after you restart your R session.
 
 ``` r
-library(aurinapi)
+library(aurin)
 
 # add_to_renviron = TRUE, so you won't need to run this step again on current machine.
 aur_register(username = "your-username", password = "your-password", add_to_renviron = T)  
