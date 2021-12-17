@@ -1,6 +1,6 @@
 Package: aurin
 Title: Access AURIN Datasets from R
-Version: 0.5.0
+Version: 0.5.0.9000
 Authors@R: person('Amarin', 'Siripanich', email = 'amarin.siri@gmail.com', role = c('cre', 'aut'))
 Description: This package allows you to access AURIN Datasets using an AURIN API key 
     that can be requested from AURIN (it's free!). AURIN is “Australia’s 🦘 single largest 

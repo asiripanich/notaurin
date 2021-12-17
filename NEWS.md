@@ -1,5 +1,7 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# aurin 0.5.0.9000
+
 # aurin 0.5.0
 
 - Henceforth, You Shall Be Known As "aurin"! 🦘
