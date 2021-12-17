@@ -7,13 +7,14 @@
 aur_browse()
 }
 \description{
-Use the data catalogue to select spatial datasets available on AURIN. Any datasets
-with 'AURIN Open API ID' field can be downloaded into your current r session
-with \code{aur_get()}.
+A convenience function that opens up AURIN data catelogue in your default
+web browser. Use the data catalogue to select spatial datasets available
+on AURIN. Any datasets with 'AURIN Open API ID' field can be downloaded
+into your current R session with \code{aur_get()}.
 }
 \examples{
 \dontrun{
 
-aur_browse()
+ aur_browse()
 }
 }

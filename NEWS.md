@@ -1,5 +1,15 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# aurinapi 0.4.1.9000
+
+- Run examples that requires an API key.
+- Use testthat edition 3.
+- Update GHAs.
+- Add 'render-rmarkdown' GHA.
+- Import magrittr's pipe.
+- Fixed the ggplot example in README (thanks @williamlai2).
+
+
 # aurinapi 0.4.1
 
 - Renamed `aur_build_get_feature_request()` to `aur_build_request()`. Not sure why it was named like that in the first place!

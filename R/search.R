@@ -24,7 +24,7 @@ aur_search <- function(query) {
                            be returned as the result.")
   }
 
-  .data <-
+  df_lst <-
     lapply(res$result$results, function(x) {
       id_idx <- sapply(x$extras, function(x) {
         x$key == "AURIN Open API ID"
@@ -42,8 +42,9 @@ aur_search <- function(query) {
         aurin_open_api_id = id,
         brief_description = sentence[[1]]
       )
-    }) %>%
-    do.call(rbind, .)
+    })
 
-  return(invisible(.data))
+  df <- do.call(rbind, df_lst)
+
+  return(invisible(df))
 }

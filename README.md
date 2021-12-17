@@ -7,10 +7,9 @@
 
 ![GitHub release (latest by date including
 pre-releases)](https://img.shields.io/github/v/release/asiripanich/aurinapi?include_prereleases)
-[![R build
-status](https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurinapi/actions)
-
+[![R-CMD-check](https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurinapi/actions)
 <!-- badges: end -->
+
 <p align="center">
 <img src="https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png" />
 </p>
@@ -85,19 +84,20 @@ your R console.
 
 ``` r
 meta <- aur_meta()
-#> ℹ Fetching available datasets...
+#> i Creating AURIN WFS Client...
+#> i Fetching available datasets...
 # print out the first five rows
 knitr::kable(head(meta))
 ```
 
-| aurin\_open\_api\_id                                                                | title                                                           |
-|:------------------------------------------------------------------------------------|:----------------------------------------------------------------|
-| aurin:datasource-NSW\_Govt\_DPE-UoM\_AURIN\_DB\_nsw\_srlup\_additional\_rural\_2014 | Additional Rural Village Land 18/01/2014 for NSW                |
-| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_GeoLevel\_aus\_2016\_aust            | ABS - ASGS - Country (AUS) 2016                                 |
-| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_GeoLevel\_gccsa\_2011\_aust          | ABS - ASGS - Greater Capital City Statistical Area (GCCSA) 2011 |
-| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_GeoLevel\_gccsa\_2016\_aust          | ABS - ASGS - Greater Capital City Statistical Area (GCCSA) 2016 |
-| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_GeoLevel\_mb\_2016\_aust             | ABS - ASGS - Mesh Block (MB) 2016                               |
-| aurin:datasource-AU\_Govt\_ABS-UoM\_AURIN\_DB\_GeoLevel\_mb\_2011\_act              | ABS - ASGS - Mesh Block (MB) ACT 2011                           |
+| aurin_open_api_id                                                          | title                                                           |
+|:---------------------------------------------------------------------------|:----------------------------------------------------------------|
+| aurin:datasource-NSW_Govt_DPE-UoM_AURIN_DB_nsw_srlup_additional_rural_2014 | Additional Rural Village Land 18/01/2014 for NSW                |
+| aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_aus_2016_aust           | ABS - ASGS - Country (AUS) 2016                                 |
+| aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_gccsa_2011_aust         | ABS - ASGS - Greater Capital City Statistical Area (GCCSA) 2011 |
+| aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_gccsa_2016_aust         | ABS - ASGS - Greater Capital City Statistical Area (GCCSA) 2016 |
+| aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_mb_2016_aust            | ABS - ASGS - Mesh Block (MB) 2016                               |
+| aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_mb_2011_act             | ABS - ASGS - Mesh Block (MB) ACT 2011                           |
 
 Use `aur_get()` to download the dataset.
 
@@ -105,11 +105,11 @@ Use `aur_get()` to download the dataset.
 # download this public toilet dataset.
 open_api_id <- "aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"
 public_toilets <- aur_get(open_api_id = open_api_id)
-#> ℹ Downloading 'aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets'...
-#> ✔ Finished!
+#> i Downloading 'aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets'...
+#> v Finished!
 state_polygons <- aur_get(open_api_id = "aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust")
-#> ℹ Downloading 'aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust'...
-#> ✔ Finished!
+#> i Downloading 'aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust'...
+#> v Finished!
 state_polygons <- state_polygons[state_polygons$state_code_2016 %in% 1:8, ]
 ```
 
@@ -151,11 +151,11 @@ Get AURIN Open API ids of the datasets with ‘toilet’ in their titles.
 knitr::kable(meta[grepl("toilet", meta$title, ignore.case = T), ])
 ```
 
-|      | aurin\_open\_api\_id                                                           | title                                                  |
-|:-----|:-------------------------------------------------------------------------------|:-------------------------------------------------------|
-| 1405 | aurin:datasource-AU\_Govt\_DSS-UoM\_AURIN\_national\_public\_toilets\_2017     | DSS - National Public Toilets (Point) 2017             |
-| 1465 | aurin:datasource-AU\_Govt\_Doh-UoM\_AURIN\_DB\_national\_toilet\_map\_2018\_06 | Department of Health - National Toilet Map - June 2018 |
-| 2773 | aurin:datasource-UQ\_ERG-UoM\_AURIN\_DB\_public\_toilets                       | Public Toilets 2004-2014 for Australia                 |
+|      | aurin_open_api_id                                                     | title                                                  |
+|:-----|:----------------------------------------------------------------------|:-------------------------------------------------------|
+| 1404 | aurin:datasource-AU_Govt_DSS-UoM_AURIN_national_public_toilets_2017   | DSS - National Public Toilets (Point) 2017             |
+| 1464 | aurin:datasource-AU_Govt_Doh-UoM_AURIN_DB_national_toilet_map_2018_06 | Department of Health - National Toilet Map - June 2018 |
+| 2945 | aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets                   | Public Toilets 2004-2014 for Australia                 |
 
 Get all the datasets in parallel.
 

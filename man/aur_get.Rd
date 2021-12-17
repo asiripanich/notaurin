@@ -37,9 +37,6 @@ Query data using \href{https://docs.geoserver.org/latest/en/user/services/wfs/re
 \code{aur_build_request()} returns a URL.
 }
 \examples{
-\dontrun{
 # follow the example in https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/
-aur_register(username = "your-username", password = "your-password")
 aur_get("aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets")
-}
 }
