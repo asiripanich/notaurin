@@ -9,3 +9,5 @@
 ^\.github$
 ^README_cache$
 ^test-scripts$
+README.html
+^cran-comments\.md$
