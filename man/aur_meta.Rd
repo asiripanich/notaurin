@@ -18,9 +18,6 @@ a data.frame with two columns -- aurin_open_api_id and title.
 Get metadata of all AURIN datasets
 }
 \examples{
-\dontrun{
-
-# this may takes a while to return.
+# this may takes a while to return result.
 aur_meta()
-}
 }

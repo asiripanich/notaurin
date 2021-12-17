@@ -16,5 +16,5 @@ get_aurinapi_wfs_client_wrapper()
 a \code{ows4R::WFSClient} R6 object.
 }
 \description{
-Create a AURIN WFS client object.
+This function creates a WFS client.
 }
