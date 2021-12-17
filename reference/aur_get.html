@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aurinapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.1.9000</span>
       </span>
     </div>
 
@@ -89,11 +89,35 @@ for other available options.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># follow the example in https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/</span></span>
-<span class="r-in"><span class="fu"><a href="aur_register.html">aur_register</a></span><span class="op">(</span>username <span class="op">=</span> <span class="st">"your-username"</span>, password <span class="op">=</span> <span class="st">"your-password"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># follow the example in https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/</span></span>
 <span class="r-in"><span class="fu">aur_get</span><span class="op">(</span><span class="st">"aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Downloading 'aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets'...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Finished!</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 16737 features and 39 fields</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POINT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: 113.4102 ymin: -43.582 xmax: 153.6222 ymax: -10.5712</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16,737 × 40</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    id         ogc_fid status lastupdate name   address1   town   state  postcode</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> datasourc…      28 Verif… 2008-02-13 Flyin… Esplanade  Flyin… Queen… 4860    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> datasourc…     301 Verif… 2009-03-25 Touri… Leslie Pa… Stant… Queen… 4380    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> datasourc…     381 Verif… 2010-03-24 Pinna… Day Street Pinna… South… 5304    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> datasourc…     500 Verif… 2008-01-30 River… <span style="color: #BB0000;">NA</span>         Waike… South… 5330    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> datasourc…     612 Verif… 2008-02-18 Kende… <span style="color: #BB0000;">NA</span>         Kende… Weste… 6323    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> datasourc…     620 Verif… 2006-02-10 Shent… 124 Shent… Menzi… Weste… 6436    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> datasourc…     673 Verif… 2008-02-18 Rotar… 1836 Nort… South… Weste… 6701    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> datasourc…     708 Verif… 2009-02-24 Sands… Oroya Str… Sands… Weste… 6639    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> datasourc…     734 Verif… 2009-02-18 McInd… Bent Stre… Leong… Victo… 3953    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> datasourc…     847 Verif… 2008-02-18 Libra… Civic Road Auburn New S… 2144    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 16,727 more rows, and 31 more variables: addressnote &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   male &lt;int&gt;, female &lt;int&gt;, unisex &lt;chr&gt;, facilitytype &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   toilettype &lt;chr&gt;, accesslimited &lt;int&gt;, paymentrequired &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   keyrequired &lt;int&gt;, accessnote &lt;chr&gt;, parking &lt;int&gt;, parkingnote &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   yearinstalled &lt;chr&gt;, accessiblemale &lt;int&gt;, accessiblefemale &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   accessibleunisex &lt;int&gt;, accessiblenote &lt;chr&gt;, mlak &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   parkingaccessible &lt;int&gt;, accessibleparkingnote &lt;chr&gt;, isopen &lt;chr&gt;, …</span></span>
 </code></pre></div>
     </div>
   </div>

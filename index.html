@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">aurinapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.1.9000</span>
       </span>
     </div>
 
@@ -70,7 +70,6 @@
 </h1></div>
 <!-- badges: start -->
 
-<!-- badges: end -->
 <p align="center">
 <img src="https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png"></p>
 <p>The goal of <code>aurinapi</code> is to provide an easy way for R users to access <strong>MORE THAN 5000 OPEN DATASETS</strong> on <a href="https://aurin.org.au/" class="external-link">AURIN</a> using their <a href="https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/" class="external-link">API</a>. You can request a <strong>FREE</strong> API key from:</p>
@@ -84,7 +83,7 @@
 <p>You can install the released version of <code>aurinapi</code> from <a href="https://github.com/asiripanich/aurinapi" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"asiripanich/aurinapi"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"asiripanich/aurinapi"</span><span class="op">)</span></code></pre></div>
 <p>This package requires the <a href="https://github.com/r-spatial/sf" class="external-link">sf</a> package. Please see the sf package’s <a href="https://github.com/r-spatial/sf" class="external-link">GitHub page</a> to install its non R dependencies.</p>
 </div>
 <div class="section level2">
@@ -107,13 +106,14 @@
 <p>Alternatively, you may use <code>aur_meta</code> to search datasets without leaving your R console.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aur_meta.html">aur_meta</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; ℹ Fetching available datasets...</span>
+<span class="co">#&gt; i Creating AURIN WFS Client...</span>
+<span class="co">#&gt; i Fetching available datasets...</span>
 <span class="co"># print out the first five rows</span>
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="56%">
-<col width="43%">
+<col width="53%">
+<col width="46%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">aurin_open_api_id</th>
@@ -151,11 +151,11 @@
 <code class="sourceCode R"><span class="co"># download this public toilet dataset.</span>
 <span class="va">open_api_id</span> <span class="op">&lt;-</span> <span class="st">"aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"</span>
 <span class="va">public_toilets</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aur_get.html">aur_get</a></span><span class="op">(</span>open_api_id <span class="op">=</span> <span class="va">open_api_id</span><span class="op">)</span>
-<span class="co">#&gt; ℹ Downloading 'aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets'...</span>
-<span class="co">#&gt; ✔ Finished!</span>
+<span class="co">#&gt; i Downloading 'aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets'...</span>
+<span class="co">#&gt; v Finished!</span>
 <span class="va">state_polygons</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aur_get.html">aur_get</a></span><span class="op">(</span>open_api_id <span class="op">=</span> <span class="st">"aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust"</span><span class="op">)</span>
-<span class="co">#&gt; ℹ Downloading 'aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust'...</span>
-<span class="co">#&gt; ✔ Finished!</span>
+<span class="co">#&gt; i Downloading 'aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust'...</span>
+<span class="co">#&gt; v Finished!</span>
 <span class="va">state_polygons</span> <span class="op">&lt;-</span> <span class="va">state_polygons</span><span class="op">[</span><span class="va">state_polygons</span><span class="op">$</span><span class="va">state_code_2016</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, <span class="op">]</span></code></pre></div>
 <p>Let’s visualise the data using the <code>ggplot2</code> package.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -187,8 +187,8 @@
 <table class="table">
 <colgroup>
 <col width="4%">
-<col width="56%">
-<col width="39%">
+<col width="53%">
+<col width="42%">
 </colgroup>
 <thead><tr class="header">
 <th align="left"></th>
@@ -197,17 +197,17 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">1405</td>
+<td align="left">1404</td>
 <td align="left">aurin:datasource-AU_Govt_DSS-UoM_AURIN_national_public_toilets_2017</td>
 <td align="left">DSS - National Public Toilets (Point) 2017</td>
 </tr>
 <tr class="even">
-<td align="left">1465</td>
+<td align="left">1464</td>
 <td align="left">aurin:datasource-AU_Govt_Doh-UoM_AURIN_DB_national_toilet_map_2018_06</td>
 <td align="left">Department of Health - National Toilet Map - June 2018</td>
 </tr>
 <tr class="odd">
-<td align="left">2773</td>
+<td align="left">2945</td>
 <td align="left">aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets</td>
 <td align="left">Public Toilets 2004-2014 for Australia</td>
 </tr>
@@ -256,7 +256,7 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/asiripanich/aurinapi/actions" class="external-link"><img src="https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://github.com/asiripanich/aurinapi/actions" class="external-link"><img src="https://github.com/asiripanich/aurinapi/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 
