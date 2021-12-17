@@ -18,7 +18,9 @@ Imports:
     glue (>= 1.4.0),
     httr (>= 1.4.0),
     R6 (>= 2.5.0),
-    ows4R (>= 0.1.0)
+    ows4R (>= 0.1.0),
+    jsonlite,
+    tibble
 Suggests: 
     testthat,
     covr

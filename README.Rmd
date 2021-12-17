@@ -118,4 +118,38 @@ toilet_datasets_ids = meta$aurin_open_api_id[grepl("toilet", meta$title, ignore.
 data_lst = furrr::future_map(toilet_datasets_ids, aurinapi_get)
 ```
 
+## Generate a keyword map from AURIN metadata
+
+```{r}
+library(akc)
+library(dplyr)
+
+meta %>%
+  keyword_clean(id = "aurin_open_api_id", keyword = "keywords") %>%
+  pull(keyword) %>%
+  make_dict -> my_dict
+
+merged_data <- 
+  meta %>%
+  keyword_extract(id = "aurin_open_api_id", text = "abstract", dict = my_dict) %>%
+  keyword_merge(keyword = "keyword")
+
+top_keywords <- 
+  merged_data %>%
+  count(keyword) %>%
+  arrange(-n) %>% 
+  head(n = 30) %>%
+  pull(keyword)
+
+grouped_data <- 
+  merged_data %>%
+  filter(!keyword %in% top_keywords) %>%
+  keyword_group(com_detect_fun = group_label_prop)
+
+grouped_data %>% 
+  keyword_table(top = 10)
+
+grouped_data %>% 
+  keyword_vis()
+```
 

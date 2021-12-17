@@ -1,7 +1,9 @@
-client_wrapper = R6::R6Class(classname = "client_wrapper",
-                             public = list(
-                               client = NULL
-                             ))
+client_wrapper <- R6::R6Class(
+  classname = "client_wrapper",
+  public = list(
+    client = NULL
+  )
+)
 
 #' aurinapi_wfs_client_wrapper
 #'
@@ -13,9 +15,6 @@ client_wrapper = R6::R6Class(classname = "client_wrapper",
 #' @export aurinapi_wfs_client_wrapper
 NULL
 
-.onLoad <- function(...){
-
+.onLoad <- function(...) {
   assign("aurinapi_wfs_client_wrapper", client_wrapper$new(), envir = parent.env(environment()))
-
 }
-

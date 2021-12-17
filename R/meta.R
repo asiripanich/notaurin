@@ -7,17 +7,25 @@
 #' @export
 #'
 #' @examples
-#'
 #' \dontrun{
 #'
 #' # this may takes a while to return.
 #' aurinapi_meta()
-#'
 #' }
-aurinapi_meta = function(force = FALSE) {
-  wfs_client = create_aurinapi_wfs_client()
+aurinapi_meta <- function(force = FALSE) {
+  wfs_client <- create_aurinapi_wfs_client()
   cli::cli_alert_info("Fetching available datasets...")
-  meta = wfs_client$getFeatureTypes(pretty = TRUE)
-  names(meta)[names(meta) == "name"] = "aurin_open_api_id"
+  fts <- wfs_client$getFeatureTypes(pretty = FALSE)
+
+  meta <- do.call("rbind", lapply(fts, function(x) {
+    tibble::tibble(
+      aurin_open_api_id = x$getName(),
+      title = x$getTitle(),
+      keywords = paste(x$getKeywords(), collapse = "; "),
+      abstract = x$getAbstract(),
+      stringsAsFactors = FALSE
+    )
+  }))
+
   return(meta)
 }
