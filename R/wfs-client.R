@@ -1,7 +1,7 @@
 #' Create a AURIN WFS client object.
-#' 
-#' @description 
-#' 
+#'
+#' @description
+#'
 #' This function creates a WFS client.
 #'
 #' @return a `ows4R::WFSClient` R6 object.
