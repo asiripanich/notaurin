@@ -5,8 +5,7 @@
 
 <!-- badges: start -->
 
-![GitHub release (latest by date including
-pre-releases)](https://img.shields.io/github/v/release/asiripanich/aurin?include_prereleases)
+![](https://www.r-pkg.org/badges/version-ago/aurin)
 [![R-CMD-check](https://github.com/asiripanich/aurin/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurin/actions)
 <!-- badges: end -->
 
@@ -29,10 +28,12 @@ transportation, and land-use.*”
 
 ## Installation
 
-You can install the released version of `aurin` from
-[GitHub](https://github.com/asiripanich/aurin) with:
+Here are ways you can install `aurin`:
 
 ``` r
+# from CRAN for the latest version
+install.packages("aurin")
+# from GitHub for the latest development version
 install.packages("remotes")
 remotes::install_github("asiripanich/aurin")
 ```
