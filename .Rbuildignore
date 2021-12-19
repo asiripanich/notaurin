@@ -11,3 +11,4 @@
 ^test-scripts$
 README.html
 ^cran-comments\.md$
+^CRAN-SUBMISSION$

@@ -4,9 +4,9 @@
 \name{aurin-package}
 \alias{aurin}
 \alias{aurin-package}
-\title{aurin: Access AURIN Datasets from R}
+\title{aurin: Access Datasets from the 'AURIN' API}
 \description{
-This package allows you to access AURIN Datasets using an AURIN API key that can be requested from AURIN (it's free!). AURIN is “Australia’s 🦘 single largest resource for accessing clean, integrated, spatially enabled and research-ready data on issues surrounding health and wellbeing, socio-economic metrics, transportation, and land-use.”.
+'AURIN' <https://aurin.org.au/resources/aurin-apis/> is "Australia's single largest resource for accessing clean, integrated, spatially enabled and research-ready data on issues surrounding health and wellbeing, socio-economic metrics, transportation, and land-use.". This package provides functions to download and search datasets from the AURIN API (it's free to use!).
 }
 \seealso{
 Useful links:

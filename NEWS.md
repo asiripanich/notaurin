@@ -1,6 +1,8 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
-# aurin 0.5.0.9000
+# aurin 0.5.1
+
+- Released the package on CRAN.
 
 # aurin 0.5.0
 
