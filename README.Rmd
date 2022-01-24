@@ -1,5 +1,9 @@
 ---
 output: github_document
+editor_options:
+  markdown:
+    wrap: sentence
+    canonical: true
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -10,7 +14,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%",
-  cache = TRUE
+  cache = FALSE
 )
 
 library(aurin)
@@ -106,29 +110,32 @@ ggplot(public_toilets) +
 
 See [here](https://data.aurin.org.au/group/aurin-api) to find available datasets.
 
-## Advanced example
+## Download multiple datasets in parallel
 
-Download multiple datasets in parallel.
+When there are many datasets that you need to download, you may want to put all of your CPUs to work.
+The code chucks below show how you can download multiple datasets in parallel using the {furrr} and {future} packages.
 
-Setup the workers.
+First, setup the workers - this affects how many datasets you can download in parallel at the same time.
+The maximum number of workers of your machine can be determined using `future::availableCores()`.
 
-``` r
+```{r}
 library(furrr)
 library(future)
 future::plan(future::multiprocess, workers = 2)
 ```
 
-Get AURIN Open API ids of the datasets with 'toilet' in their titles.
+Let's assume you want all datasets on AURIN with the word "toilet" in their title.
 
 ```{r}
 knitr::kable(meta[grepl("toilet", meta$title, ignore.case = T), ])
 ```
 
-Get all the datasets in parallel.
+Extract their AURIN open API ids and download all of them in parallel.
 
-```r
+```{r, warning=FALSE}
 toilet_datasets_ids <- meta$aurin_open_api_id[grepl("toilet", meta$title, ignore.case = T)]
-data_lst <- furrr::future_map(toilet_datasets_ids, aur_get)
+data_lst <- furrr::future_map(toilet_datasets_ids, ~ aur_get(.x))
+data_lst
 ```
 
 
