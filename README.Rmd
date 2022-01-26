@@ -124,7 +124,7 @@ library(future)
 future::plan(future::multiprocess, workers = 2)
 ```
 
-Let's assume you want all datasets on AURIN with the word "toilet" in their title.
+Let's assume you want the *first 10 rows* of all datasets on AURIN with the word "toilet" in their title.
 
 ```{r}
 knitr::kable(meta[grepl("toilet", meta$title, ignore.case = T), ])
@@ -134,8 +134,6 @@ Extract their AURIN open API ids and download all of them in parallel.
 
 ```{r, warning=FALSE}
 toilet_datasets_ids <- meta$aurin_open_api_id[grepl("toilet", meta$title, ignore.case = T)]
-data_lst <- furrr::future_map(toilet_datasets_ids, ~ aur_get(.x))
+data_lst <- furrr::future_map(toilet_datasets_ids, ~ aur_get(.x, params = list(maxFeatures = 10)))
 data_lst
 ```
-
-
