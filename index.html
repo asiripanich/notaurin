@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="index.html">aurin</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.1.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -112,7 +112,6 @@
 <p>Alternatively, you may use <code>aur_meta</code> to search datasets without leaving your R console.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aur_meta.html">aur_meta</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; i Creating AURIN WFS Client...</span>
 <span class="co">#&gt; i Fetching available datasets...</span>
 <span class="co"># print out the first five rows</span>
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -187,7 +186,7 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/DavisVaughan/furrr" class="external-link">furrr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://future.futureverse.org" class="external-link">future</a></span><span class="op">)</span>
 <span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="fu">future</span><span class="fu">::</span><span class="va"><a href="https://future.futureverse.org/reference/multiprocess.html" class="external-link">multiprocess</a></span>, workers <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
-<p>Let’s assume you want all datasets on AURIN with the word “toilet” in their title.</p>
+<p>Let’s assume you want the <em>first 10 rows</em> of all datasets on AURIN with the word “toilet” in their title.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">meta</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"toilet"</span>, <span class="va">meta</span><span class="op">$</span><span class="va">title</span>, ignore.case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>, <span class="op">]</span><span class="op">)</span></code></pre></div>
 <table class="table">
@@ -222,7 +221,7 @@
 <p>Extract their AURIN open API ids and download all of them in parallel.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">toilet_datasets_ids</span> <span class="op">&lt;-</span> <span class="va">meta</span><span class="op">$</span><span class="va">aurin_open_api_id</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"toilet"</span>, <span class="va">meta</span><span class="op">$</span><span class="va">title</span>, ignore.case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">]</span>
-<span class="va">data_lst</span> <span class="op">&lt;-</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/furrr/man/future_map.html" class="external-link">future_map</a></span><span class="op">(</span><span class="va">toilet_datasets_ids</span>, <span class="op">~</span> <span class="fu"><a href="reference/aur_get.html">aur_get</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span>
+<span class="va">data_lst</span> <span class="op">&lt;-</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/furrr/man/future_map.html" class="external-link">future_map</a></span><span class="op">(</span><span class="va">toilet_datasets_ids</span>, <span class="op">~</span> <span class="fu"><a href="reference/aur_get.html">aur_get</a></span><span class="op">(</span><span class="va">.x</span>, params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>maxFeatures <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; i Downloading 'aurin:datasource-AU_Govt_DSS-UoM_AURIN_national_public_toilets_2017'...</span>
 <span class="co">#&gt; v Finished!</span>
 <span class="co">#&gt; i Downloading 'aurin:datasource-AU_Govt_Doh-UoM_AURIN_DB_national_toilet_map_2018_06'...</span>
@@ -231,75 +230,85 @@
 <span class="co">#&gt; v Finished!</span>
 <span class="va">data_lst</span>
 <span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt; Simple feature collection with 18789 features and 46 fields</span>
+<span class="co">#&gt; Simple feature collection with 10 features and 46 fields</span>
 <span class="co">#&gt; Geometry type: POINT</span>
 <span class="co">#&gt; Dimension:     XY</span>
-<span class="co">#&gt; Bounding box:  xmin: 113.4102 ymin: -43.582 xmax: 153.6263 ymax: -10.5702</span>
+<span class="co">#&gt; Bounding box:  xmin: 115.811 ymin: -38.1744 xmax: 153.1177 ymax: -27.9314</span>
 <span class="co">#&gt; Geodetic CRS:  WGS 84</span>
-<span class="co">#&gt; # A tibble: 18,789 x 47</span>
-<span class="co">#&gt;    id        toilet_id url     name  address1 town  state postcode address_note  male  female unisex dump_point facility_type toilet_type access_limited payment_required key_required</span>
-<span class="co">#&gt;    &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;         &lt;lgl&gt; &lt;lgl&gt;  &lt;lgl&gt;  &lt;lgl&gt;      &lt;chr&gt;         &lt;chr&gt;       &lt;lgl&gt;          &lt;lgl&gt;            &lt;lgl&gt;       </span>
-<span class="co">#&gt;  1 datasour~       341 https:~ Elsi~ Alden S~ Clif~ Quee~     4361 &lt;NA&gt;          TRUE  TRUE   FALSE  FALSE      Park or rese~ &lt;NA&gt;        FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  2 datasour~       418 https:~ Luck~ Lucky B~ Luck~ Sout~     5602 &lt;NA&gt;          TRUE  TRUE   FALSE  FALSE      &lt;NA&gt;          &lt;NA&gt;        FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  3 datasour~       634 https:~ Olds~ Holley ~ Mort~ New ~     2223 &lt;NA&gt;          TRUE  TRUE   FALSE  FALSE      Park or rese~ &lt;NA&gt;        FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  4 datasour~      1150 https:~ Jaeg~ Hill St~ Oran~ New ~     2800 &lt;NA&gt;          TRUE  TRUE   FALSE  FALSE      Park or rese~ &lt;NA&gt;        FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  5 datasour~      1207 https:~ Lake~ Evans S~ Shen~ West~     6008 &lt;NA&gt;          FALSE FALSE  TRUE   FALSE      Park or rese~ Automatic   FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  6 datasour~      1535 https:~ Earl~ Earl St~ Coff~ New ~     2450 &lt;NA&gt;          TRUE  TRUE   FALSE  FALSE      Sporting fac~ Sewerage    FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  7 datasour~      1590 https:~ Truc~ Davidso~ Deni~ New ~     2710 &lt;NA&gt;          TRUE  TRUE   FALSE  FALSE      Car park      Sewerage    FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  8 datasour~      1913 https:~ Hemi~ High St~ Belm~ Vict~     3216 &lt;NA&gt;          TRUE  TRUE   FALSE  FALSE      &lt;NA&gt;          &lt;NA&gt;        FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  9 datasour~      2081 https:~ Eden~ Eden Va~ Keyn~ Sout~     5353 The toilet i~ TRUE  TRUE   FALSE  FALSE      Park or rese~ Septic      FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt; 10 datasour~      2377 https:~ Wils~ Wilson ~ Watt~ Vict~     3096 &lt;NA&gt;          TRUE  TRUE   FALSE  FALSE      &lt;NA&gt;          &lt;NA&gt;        FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt; # ... with 18,779 more rows, and 29 more variables: access_note &lt;chr&gt;, parking &lt;lgl&gt;, parking_note &lt;chr&gt;, accessible_male &lt;lgl&gt;, accessible_female &lt;lgl&gt;, accessible_unisex &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   accessible_note &lt;chr&gt;, mlak &lt;lgl&gt;, parking_accessible &lt;lgl&gt;, access_parking_note &lt;chr&gt;, ambulant &lt;lgl&gt;, lh_transfer &lt;lgl&gt;, rh_transfer &lt;lgl&gt;, adult_change &lt;lgl&gt;, is_open &lt;chr&gt;,</span>
-<span class="co">#&gt; #   opening_hours &lt;chr&gt;, openinghours_note &lt;chr&gt;, baby_change &lt;lgl&gt;, showers &lt;lgl&gt;, drinking_water &lt;lgl&gt;, sharps_disposal &lt;lgl&gt;, sanitary_disposal &lt;lgl&gt;, icon_url &lt;chr&gt;,</span>
-<span class="co">#&gt; #   icon_alt_text &lt;chr&gt;, notes &lt;chr&gt;, status &lt;chr&gt;, latitude &lt;dbl&gt;, longitude &lt;dbl&gt;, geometry &lt;POINT [°]&gt;</span>
+<span class="co">#&gt; # A tibble: 10 x 47</span>
+<span class="co">#&gt;    id          toilet_id url      name   address1  town  state  postcode</span>
+<span class="co">#&gt;    &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;</span>
+<span class="co">#&gt;  1 datasource~       341 https:/~ Elsie~ Alden St~ Clif~ Queen~     4361</span>
+<span class="co">#&gt;  2 datasource~       418 https:/~ Lucky~ Lucky Ba~ Luck~ South~     5602</span>
+<span class="co">#&gt;  3 datasource~       634 https:/~ Olds ~ Holley R~ Mort~ New S~     2223</span>
+<span class="co">#&gt;  4 datasource~      1150 https:/~ Jaege~ Hill Str~ Oran~ New S~     2800</span>
+<span class="co">#&gt;  5 datasource~      1207 https:/~ Lake ~ Evans St~ Shen~ Weste~     6008</span>
+<span class="co">#&gt;  6 datasource~      1535 https:/~ Earl ~ Earl Str~ Coff~ New S~     2450</span>
+<span class="co">#&gt;  7 datasource~      1590 https:/~ Truck~ Davidson~ Deni~ New S~     2710</span>
+<span class="co">#&gt;  8 datasource~      1913 https:/~ Hemis~ High Str~ Belm~ Victo~     3216</span>
+<span class="co">#&gt;  9 datasource~      2081 https:/~ Eden ~ Eden Val~ Keyn~ South~     5353</span>
+<span class="co">#&gt; 10 datasource~      2377 https:/~ Wilso~ Wilson R~ Watt~ Victo~     3096</span>
+<span class="co">#&gt; # ... with 39 more variables: address_note &lt;chr&gt;, male &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   female &lt;lgl&gt;, unisex &lt;lgl&gt;, dump_point &lt;lgl&gt;, facility_type &lt;chr&gt;,</span>
+<span class="co">#&gt; #   toilet_type &lt;chr&gt;, access_limited &lt;lgl&gt;, payment_required &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   key_required &lt;lgl&gt;, access_note &lt;chr&gt;, parking &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   parking_note &lt;chr&gt;, accessible_male &lt;lgl&gt;, accessible_female &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   accessible_unisex &lt;lgl&gt;, accessible_note &lt;chr&gt;, mlak &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   parking_accessible &lt;lgl&gt;, access_parking_note &lt;chr&gt;, ...</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[2]]</span>
-<span class="co">#&gt; Simple feature collection with 19034 features and 47 fields</span>
+<span class="co">#&gt; Simple feature collection with 10 features and 47 fields</span>
 <span class="co">#&gt; Geometry type: POINT</span>
 <span class="co">#&gt; Dimension:     XY</span>
-<span class="co">#&gt; Bounding box:  xmin: 113.4102 ymin: -43.5828 xmax: 153.6263 ymax: -10.5702</span>
+<span class="co">#&gt; Bounding box:  xmin: 115.8314 ymin: -36.7422 xmax: 153.2881 ymax: -26.6443</span>
 <span class="co">#&gt; Geodetic CRS:  WGS 84</span>
-<span class="co">#&gt; # A tibble: 19,034 x 48</span>
-<span class="co">#&gt;    id        toilet_id url     name   address1 town  state postcode address_note male  female unisex dump_point facility_type toilet_type access_limited payment_required key_required</span>
-<span class="co">#&gt;    &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;        &lt;lgl&gt; &lt;lgl&gt;  &lt;lgl&gt;  &lt;lgl&gt;      &lt;chr&gt;         &lt;chr&gt;       &lt;lgl&gt;          &lt;lgl&gt;            &lt;lgl&gt;       </span>
-<span class="co">#&gt;  1 datasour~       272 https:~ Brisb~ Brisban~ Merr~ New ~     2329 &lt;NA&gt;         TRUE  TRUE   FALSE  FALSE      &lt;NA&gt;          &lt;NA&gt;        FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  2 datasour~       578 https:~ Natim~ Wimmera~ Nati~ Vict~     3409 &lt;NA&gt;         TRUE  TRUE   FALSE  FALSE      &lt;NA&gt;          &lt;NA&gt;        FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  3 datasour~       628 https:~ Bridg~ Bridge ~ Pens~ New ~     2222 &lt;NA&gt;         TRUE  TRUE   FALSE  FALSE      &lt;NA&gt;          &lt;NA&gt;        FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  4 datasour~       868 https:~ Sands~ Oroya S~ Sand~ West~     6639 &lt;NA&gt;         TRUE  TRUE   FALSE  FALSE      &lt;NA&gt;          &lt;NA&gt;        FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  5 datasour~      1300 https:~ Murra~ Ravensw~ Rave~ West~     6208 &lt;NA&gt;         TRUE  TRUE   FALSE  FALSE      &lt;NA&gt;          &lt;NA&gt;        FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  6 datasour~      1461 https:~ Menzi~ Purslow~ Moun~ West~     6016 &lt;NA&gt;         TRUE  TRUE   FALSE  FALSE      Park or rese~ Sewerage    FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  7 datasour~      1638 https:~ Roy H~ Warrego~ Dula~ Quee~     4425 &lt;NA&gt;         TRUE  TRUE   FALSE  FALSE      Park or rese~ Sewerage    FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  8 datasour~      1750 https:~ Merin~ Taggert~ Meri~ Vict~     3496 &lt;NA&gt;         TRUE  TRUE   FALSE  FALSE      &lt;NA&gt;          &lt;NA&gt;        FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt;  9 datasour~      2520 https:~ Show ~ Evans S~ Wang~ Vict~     3677 &lt;NA&gt;         TRUE  TRUE   FALSE  FALSE      Sporting fac~ &lt;NA&gt;        FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt; 10 datasour~      2725 https:~ Harol~ Paxton ~ Clev~ Quee~     4163 &lt;NA&gt;         TRUE  TRUE   FALSE  FALSE      Park or rese~ Sewerage    FALSE          FALSE            FALSE       </span>
-<span class="co">#&gt; # ... with 19,024 more rows, and 30 more variables: access_note &lt;chr&gt;, parking &lt;lgl&gt;, parking_note &lt;chr&gt;, accessible_male &lt;lgl&gt;, accessible_female &lt;lgl&gt;, accessible_unisex &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   accessible_note &lt;chr&gt;, mlak &lt;lgl&gt;, parking_accessible &lt;lgl&gt;, access_parking_note &lt;chr&gt;, ambulant &lt;lgl&gt;, lh_transfer &lt;lgl&gt;, rh_transfer &lt;lgl&gt;, adult_change &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   changing_places &lt;lgl&gt;, is_open &lt;chr&gt;, opening_hours &lt;chr&gt;, openinghours_note &lt;chr&gt;, baby_change &lt;lgl&gt;, showers &lt;lgl&gt;, drinking_water &lt;lgl&gt;, sharps_disposal &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   sanitary_disposal &lt;lgl&gt;, icon_url &lt;chr&gt;, icon_alt_text &lt;chr&gt;, notes &lt;chr&gt;, status &lt;chr&gt;, latitude &lt;dbl&gt;, longitude &lt;dbl&gt;, geometry &lt;POINT [°]&gt;</span>
+<span class="co">#&gt; # A tibble: 10 x 48</span>
+<span class="co">#&gt;    id          toilet_id url      name     address1 town  state postcode</span>
+<span class="co">#&gt;    &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;int&gt;</span>
+<span class="co">#&gt;  1 datasource~       272 https:/~ Brisban~ Brisban~ Merr~ New ~     2329</span>
+<span class="co">#&gt;  2 datasource~       578 https:/~ Natimuk  Wimmera~ Nati~ Vict~     3409</span>
+<span class="co">#&gt;  3 datasource~       628 https:/~ Bridge ~ Bridge ~ Pens~ New ~     2222</span>
+<span class="co">#&gt;  4 datasource~       868 https:/~ Sandsto~ Oroya S~ Sand~ West~     6639</span>
+<span class="co">#&gt;  5 datasource~      1300 https:/~ Murray ~ Ravensw~ Rave~ West~     6208</span>
+<span class="co">#&gt;  6 datasource~      1461 https:/~ Menzies~ Purslow~ Moun~ West~     6016</span>
+<span class="co">#&gt;  7 datasource~      1638 https:/~ Roy Hen~ Warrego~ Dula~ Quee~     4425</span>
+<span class="co">#&gt;  8 datasource~      1750 https:/~ Meringu~ Taggert~ Meri~ Vict~     3496</span>
+<span class="co">#&gt;  9 datasource~      2520 https:/~ Show Gr~ Evans S~ Wang~ Vict~     3677</span>
+<span class="co">#&gt; 10 datasource~      2725 https:/~ Harold ~ Paxton ~ Clev~ Quee~     4163</span>
+<span class="co">#&gt; # ... with 40 more variables: address_note &lt;chr&gt;, male &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   female &lt;lgl&gt;, unisex &lt;lgl&gt;, dump_point &lt;lgl&gt;, facility_type &lt;chr&gt;,</span>
+<span class="co">#&gt; #   toilet_type &lt;chr&gt;, access_limited &lt;lgl&gt;, payment_required &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   key_required &lt;lgl&gt;, access_note &lt;chr&gt;, parking &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   parking_note &lt;chr&gt;, accessible_male &lt;lgl&gt;, accessible_female &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   accessible_unisex &lt;lgl&gt;, accessible_note &lt;chr&gt;, mlak &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   parking_accessible &lt;lgl&gt;, access_parking_note &lt;chr&gt;, ...</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[3]]</span>
-<span class="co">#&gt; Simple feature collection with 16737 features and 39 fields</span>
+<span class="co">#&gt; Simple feature collection with 10 features and 39 fields</span>
 <span class="co">#&gt; Geometry type: POINT</span>
 <span class="co">#&gt; Dimension:     XY</span>
-<span class="co">#&gt; Bounding box:  xmin: 113.4102 ymin: -43.582 xmax: 153.6222 ymax: -10.5712</span>
+<span class="co">#&gt; Bounding box:  xmin: 113.7736 ymin: -38.4731 xmax: 151.9332 ymax: -17.5021</span>
 <span class="co">#&gt; Geodetic CRS:  WGS 84</span>
-<span class="co">#&gt; # A tibble: 16,737 x 40</span>
-<span class="co">#&gt;    id     ogc_fid status  lastupdate name  address1 town  state postcode addressnote   male female unisex facilitytype toilettype accesslimited paymentrequired keyrequired accessnote</span>
-<span class="co">#&gt;    &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;        &lt;int&gt;  &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;              &lt;int&gt;           &lt;int&gt;       &lt;int&gt; &lt;chr&gt;     </span>
-<span class="co">#&gt;  1 datas~      28 Verifi~ 2008-02-13 Flyi~ Esplana~ Flyi~ Quee~ 4860     &lt;NA&gt;             1      1 &lt;NA&gt;   &lt;NA&gt;         &lt;NA&gt;                   0               0           0 &lt;NA&gt;      </span>
-<span class="co">#&gt;  2 datas~     301 Verifi~ 2009-03-25 Tour~ Leslie ~ Stan~ Quee~ 4380     &lt;NA&gt;             1      1 &lt;NA&gt;   &lt;NA&gt;         &lt;NA&gt;                   0               0           0 &lt;NA&gt;      </span>
-<span class="co">#&gt;  3 datas~     381 Verifi~ 2010-03-24 Pinn~ Day Str~ Pinn~ Sout~ 5304     &lt;NA&gt;             1      1 &lt;NA&gt;   &lt;NA&gt;         &lt;NA&gt;                   0               0           0 &lt;NA&gt;      </span>
-<span class="co">#&gt;  4 datas~     500 Verifi~ 2008-01-30 Rive~ &lt;NA&gt;     Waik~ Sout~ 5330     &lt;NA&gt;             1      1 &lt;NA&gt;   Park or res~ &lt;NA&gt;                   0               0           0 &lt;NA&gt;      </span>
-<span class="co">#&gt;  5 datas~     612 Verifi~ 2008-02-18 Kend~ &lt;NA&gt;     Kend~ West~ 6323     &lt;NA&gt;             1      1 &lt;NA&gt;   &lt;NA&gt;         &lt;NA&gt;                   0               0           0 &lt;NA&gt;      </span>
-<span class="co">#&gt;  6 datas~     620 Verifi~ 2006-02-10 Shen~ 124 She~ Menz~ West~ 6436     Toilets are~     1      1 &lt;NA&gt;   Other        Sewerage               0               0           0 &lt;NA&gt;      </span>
-<span class="co">#&gt;  7 datas~     673 Verifi~ 2008-02-18 Rota~ 1836 No~ Sout~ West~ 6701     Near 10 mil~     1      1 &lt;NA&gt;   Park or res~ Septic                 0               0           0 &lt;NA&gt;      </span>
-<span class="co">#&gt;  8 datas~     708 Verifi~ 2009-02-24 Sand~ Oroya S~ Sand~ West~ 6639     &lt;NA&gt;             1      1 &lt;NA&gt;   &lt;NA&gt;         &lt;NA&gt;                   0               0           0 &lt;NA&gt;      </span>
-<span class="co">#&gt;  9 datas~     734 Verifi~ 2009-02-18 McIn~ Bent St~ Leon~ Vict~ 3953     &lt;NA&gt;             1      1 &lt;NA&gt;   Park or res~ &lt;NA&gt;                   0               0           0 &lt;NA&gt;      </span>
-<span class="co">#&gt; 10 datas~     847 Verifi~ 2008-02-18 Libr~ Civic R~ Aubu~ New ~ 2144     &lt;NA&gt;             1      1 &lt;NA&gt;   Other        Sewerage               0               0           0 &lt;NA&gt;      </span>
-<span class="co">#&gt; # ... with 16,727 more rows, and 21 more variables: parking &lt;int&gt;, parkingnote &lt;chr&gt;, yearinstalled &lt;chr&gt;, accessiblemale &lt;int&gt;, accessiblefemale &lt;int&gt;, accessibleunisex &lt;int&gt;,</span>
-<span class="co">#&gt; #   accessiblenote &lt;chr&gt;, mlak &lt;int&gt;, parkingaccessible &lt;int&gt;, accessibleparkingnote &lt;chr&gt;, isopen &lt;chr&gt;, openinghoursschedule &lt;chr&gt;, openinghoursnote &lt;chr&gt;, babychange &lt;int&gt;,</span>
-<span class="co">#&gt; #   showers &lt;int&gt;, drinkingwater &lt;int&gt;, sharpsdisposal &lt;int&gt;, sanitarydisposal &lt;int&gt;, iconalttext &lt;chr&gt;, notes &lt;chr&gt;, geometry &lt;POINT [°]&gt;</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 10 x 40</span>
+<span class="co">#&gt;    id     ogc_fid status  lastupdate name  address1 town  state postcode</span>
+<span class="co">#&gt;    &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   </span>
+<span class="co">#&gt;  1 datas~      28 Verifi~ 2008-02-13 Flyi~ Esplana~ Flyi~ Quee~ 4860    </span>
+<span class="co">#&gt;  2 datas~     301 Verifi~ 2009-03-25 Tour~ Leslie ~ Stan~ Quee~ 4380    </span>
+<span class="co">#&gt;  3 datas~     381 Verifi~ 2010-03-24 Pinn~ Day Str~ Pinn~ Sout~ 5304    </span>
+<span class="co">#&gt;  4 datas~     500 Verifi~ 2008-01-30 Rive~ &lt;NA&gt;     Waik~ Sout~ 5330    </span>
+<span class="co">#&gt;  5 datas~     612 Verifi~ 2008-02-18 Kend~ &lt;NA&gt;     Kend~ West~ 6323    </span>
+<span class="co">#&gt;  6 datas~     620 Verifi~ 2006-02-10 Shen~ 124 She~ Menz~ West~ 6436    </span>
+<span class="co">#&gt;  7 datas~     673 Verifi~ 2008-02-18 Rota~ 1836 No~ Sout~ West~ 6701    </span>
+<span class="co">#&gt;  8 datas~     708 Verifi~ 2009-02-24 Sand~ Oroya S~ Sand~ West~ 6639    </span>
+<span class="co">#&gt;  9 datas~     734 Verifi~ 2009-02-18 McIn~ Bent St~ Leon~ Vict~ 3953    </span>
+<span class="co">#&gt; 10 datas~     847 Verifi~ 2008-02-18 Libr~ Civic R~ Aubu~ New ~ 2144    </span>
+<span class="co">#&gt; # ... with 31 more variables: addressnote &lt;chr&gt;, male &lt;int&gt;,</span>
+<span class="co">#&gt; #   female &lt;int&gt;, unisex &lt;chr&gt;, facilitytype &lt;chr&gt;, toilettype &lt;chr&gt;,</span>
+<span class="co">#&gt; #   accesslimited &lt;int&gt;, paymentrequired &lt;int&gt;, keyrequired &lt;int&gt;,</span>
+<span class="co">#&gt; #   accessnote &lt;chr&gt;, parking &lt;int&gt;, parkingnote &lt;chr&gt;,</span>
+<span class="co">#&gt; #   yearinstalled &lt;chr&gt;, accessiblemale &lt;int&gt;, accessiblefemale &lt;int&gt;,</span>
+<span class="co">#&gt; #   accessibleunisex &lt;int&gt;, accessiblenote &lt;chr&gt;, mlak &lt;int&gt;,</span>
+<span class="co">#&gt; #   parkingaccessible &lt;int&gt;, accessibleparkingnote &lt;chr&gt;, ...</span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

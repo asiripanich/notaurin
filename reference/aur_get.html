@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">aurin</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.1.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,7 +70,10 @@ The layer name is found in the ‘AURIN Open API ID’ field in a dataset’s me
 <dt>crs</dt>
 <dd><p>default as "EPSG:4326". The Coordinate Reference System you wish to use</p></dd>
 <dt>params</dt>
-<dd><p>a named list that will be used when constructing the WFS request.</p></dd>
+<dd><p>a named list that contains additional parameters to be used when
+constructing a WFS GetFeature request. This is useful when you know the ID of
+a specific feature or the maximum number of features you want to query.
+See examples <a href="https://docs.geoserver.org/latest/en/user/services/wfs/reference.html#getfeature" class="external-link">here</a>.</p></dd>
 <dt>outputFormat</dt>
 <dd><p>default as "application/json",
 see https://docs.geoserver.org/latest/en/user/services/wfs/outputformats.html
@@ -90,6 +93,12 @@ for other available options.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># follow the example in https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/</span></span>
 <span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in"><span class="fu">aur_get</span><span class="op">(</span><span class="st">"aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"</span><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Get the first 10 features.</span></span>
+<span class="r-in"><span class="fu">aur_get</span><span class="op">(</span></span>
+<span class="r-in">   <span class="va">open_api_id</span>,</span>
+<span class="r-in">   params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>maxFeatures <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span class="r-in"> <span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
