@@ -5,14 +5,13 @@ test_that("aur_get works", {
   
   data_sf <- aur_get(open_api_id)
   checkmate::expect_class(data_sf, classes = "sf")
-  expect_snapshot(data_sf)
-
+  checkmate::expect_data_frame(data_sf, nrows = 16737, ncols = 40)
 
   data_first_10_sf <- aur_get(
     open_api_id,
     params = list(maxFeatures = 10)
   )
-  checkmate::assert_data_frame(data_first_10_sf, nrow = 10)
+  checkmate::expect_data_frame(data_first_10_sf, nrow = 10)
 
   data_feature_28_sf <- aur_get(
     open_api_id,
