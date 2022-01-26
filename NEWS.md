@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# aurin 0.5.1.9001
+
+- `aur_get()` now accepts additional parameters. You can now query a specific feature if you know its ID using `params = list(featureID=ID)`. See https://docs.geoserver.org/latest/en/user/services/wfs/reference.html#getfeature for other available options.
+
+
 # aurin 0.5.1.9000
 
 - Improved a README example.
