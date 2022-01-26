@@ -25,6 +25,8 @@ library(aurin)
 <!-- badges: start -->
 ![](https://www.r-pkg.org/badges/version-ago/aurin)
 [![R-CMD-check](https://github.com/asiripanich/aurin/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurin/actions)
+[![](https://cranlogs.r-pkg.org/badges/aurin)](https://cran.r-project.org/package=aurin)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/aurin)](https://CRAN.R-project.org/package=aurin)
 <!-- badges: end -->
 
 <p align="center">
