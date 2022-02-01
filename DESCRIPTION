@@ -1,6 +1,6 @@
 Package: aurin
 Title: Access Datasets from the 'AURIN' API
-Version: 0.6.0
+Version: 0.6.0.9000
 Authors@R: person('Amarin', 'Siripanich', email = 'amarin.siri@gmail.com', role = c('cre', 'aut'))
 Description: 'AURIN' <https://aurin.org.au/resources/aurin-apis/> is "Australia's single
     largest resource for accessing clean, integrated, spatially enabled and research-ready
