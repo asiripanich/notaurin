@@ -17,7 +17,7 @@
 #' @export
 #'
 #' @examples
-#' # follow the example in https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/
+#' # follow the example in <https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/>
 #' \dontrun{
 #' aur_get("aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets")
 #' 
@@ -38,7 +38,7 @@ aur_get <- function(open_api_id, crs = "EPSG:4326", params = NULL) {
 }
 
 #' @param outputFormat default as "application/json",
-#'   see https://docs.geoserver.org/latest/en/user/services/wfs/outputformats.html
+#'   see <https://docs.geoserver.org/latest/en/user/services/wfs/outputformats.html>
 #'   for other available options.
 #'
 #' @note

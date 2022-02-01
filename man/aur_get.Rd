@@ -27,7 +27,7 @@ a specific feature or the maximum number of features you want to query.
 See examples \href{https://docs.geoserver.org/latest/en/user/services/wfs/reference.html#getfeature}{here}.}
 
 \item{outputFormat}{default as "application/json",
-see https://docs.geoserver.org/latest/en/user/services/wfs/outputformats.html
+see \url{https://docs.geoserver.org/latest/en/user/services/wfs/outputformats.html}
 for other available options.}
 }
 \value{
@@ -40,7 +40,7 @@ Query data using \href{https://docs.geoserver.org/latest/en/user/services/wfs/re
 \code{aur_build_request()} returns a URL.
 }
 \examples{
-# follow the example in https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/
+# follow the example in <https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/>
 \dontrun{
 aur_get("aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets")
 

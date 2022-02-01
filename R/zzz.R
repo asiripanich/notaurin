@@ -1,3 +1,4 @@
+#' @importFrom R6 R6Class
 client_wrapper <- R6::R6Class(
   classname = "client_wrapper",
   public = list(
