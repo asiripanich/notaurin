@@ -6,11 +6,16 @@
 \alias{get_aurinapi_wfs_client_wrapper}
 \title{Create a AURIN WFS client object.}
 \usage{
-create_aurinapi_wfs_client()
+create_aurinapi_wfs_client(n_try = 5, sec_wait = 2)
 
 get_aurinapi_wfs_client()
 
 get_aurinapi_wfs_client_wrapper()
+}
+\arguments{
+\item{n_try}{maximum number of tries creating a WFS client.}
+
+\item{sec_wait}{seconds wait before trying again.}
 }
 \value{
 a \code{ows4R::WFSClient} R6 object.

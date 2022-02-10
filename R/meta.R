@@ -18,3 +18,18 @@ aur_meta <- function(force = FALSE) {
   names(meta)[names(meta) == "name"] <- "aurin_open_api_id"
   return(meta)
 }
+
+create_meta_table <- function() {
+  wfs_client <- create_aurinapi_wfs_client()
+  fts <- wfs_client$getFeatureTypes(pretty = FALSE)
+  do.call("rbind", lapply(fts, function(x) {
+        tibble::tibble(
+            aurin_open_api_id = x$getName(),
+            title = x$getTitle() %>% trimws(),
+            keywords = list(x$getKeywords() %>% trimws()),
+            abstract = x$getAbstract(),
+            bbox = list(x$getBoundingBox()),
+            features = list(x$getDescription() %>% purrr::map_chr(~ .x$getName()))
+        )
+    }))
+}
