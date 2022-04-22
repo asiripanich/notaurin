@@ -15,6 +15,10 @@
 <img src="https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png" />
 </p>
 
+<p align="center">
+  🚧 <b>This package is not affiliated with AURIN.</b> 🚧
+</p>
+
 The goal of `aurin` is to provide an easy way for R users to access
 **MORE THAN 5000 OPEN DATASETS** on [AURIN](https://aurin.org.au/) using
 their
