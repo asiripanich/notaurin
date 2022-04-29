@@ -61,13 +61,13 @@ example using `aurin`.
 
 First, you must add your [AURIN API username and
 password](https://aurin.org.au/resources/aurin-apis/sign-up/) as an R
-environment variable to your `.Renviron` file. `aurin` provides
+environment variable to your `.Renviron` file. `notaurin` provides
 `aur_register()` function to help you with this step. If you choose to
 set `add_to_renviron = TRUE` you won’t need to run this step again on
 current machine after you restart your R session.
 
 ``` r
-library(aurin)
+library(notaurin)
 
 # add_to_renviron = TRUE, so you won't need to run this step again on current machine.
 aur_register(username = "your-username", password = "your-password", add_to_renviron = T)  
@@ -94,8 +94,6 @@ Alternatively, you may use `aur_meta` to search datasets without leaving
 your R console.
 
 ``` r
-library(notaurin)
-#> ! The `aurin` package is not affiliated with AURIN. Any issues or feedback related to the `aurin` package should be reported to https://github.com/asiripanich/aurin. If you would like to see the official AURIN API Guide please visit https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/
 meta <- aur_meta()
 #> ℹ Creating AURIN WFS Client...
 #> Loading ISO 19139 XML schemas...
