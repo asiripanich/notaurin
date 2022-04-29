@@ -38,7 +38,7 @@ transportation, and land-use.*”
 
 ## Installation
 
-Here are ways you can install `aurin`:
+Here are ways you can install `notaurin`:
 
 ``` r
 # from CRAN for the latest version
@@ -57,7 +57,7 @@ dependencies.
 
 Let’s recreate this [AURIN API AND
 R](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/)
-example using `aurin`.
+example using `notaurin`.
 
 First, you must add your [AURIN API username and
 password](https://aurin.org.au/resources/aurin-apis/sign-up/) as an R

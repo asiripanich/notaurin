@@ -46,7 +46,7 @@ You can request a **FREE** API key from:
 
 ## Installation
 
-Here are ways you can install `aurin`:
+Here are ways you can install `notaurin`:
 
 ``` r
 # from CRAN for the latest version
@@ -61,7 +61,7 @@ Please see the sf package's [GitHub page](https://github.com/r-spatial/sf) to in
 
 ## Example
 
-Let's recreate this [AURIN API AND R](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/) example using `aurin`.
+Let's recreate this [AURIN API AND R](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/) example using `notaurin`.
 
 First, you must add your [AURIN API username and password](https://aurin.org.au/resources/aurin-apis/sign-up/) as an R environment variable to your `.Renviron` file.
 `notaurin` provides `aur_register()` function to help you with this step.
