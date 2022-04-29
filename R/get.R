@@ -20,12 +20,12 @@
 #' # follow the example in <https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/>
 #' \dontrun{
 #' aur_get("aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets")
-#' 
+#'
 #' # Get the first 10 features.
 #' aur_get(
-#'    open_api_id,
-#'    params = list(maxFeatures = 10)
-#'  )
+#'   open_api_id,
+#'   params = list(maxFeatures = 10)
+#' )
 #' }
 aur_get <- function(open_api_id, crs = "EPSG:4326", params = NULL) {
   request <- aur_build_request(open_api_id, crs = "EPSG:4326", params = params)
@@ -67,6 +67,6 @@ aur_build_request <- function(open_api_id, crs = "EPSG:4326", params = NULL, out
   )
 
   request <- httr::build_url(url)
-  
+
   return(request)
 }
