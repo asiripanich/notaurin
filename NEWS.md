@@ -1,6 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
-# notaurin 0.6.0.9000
+# notaurin 0.6.0.9001
+
+- Warn users that the package is not affiliated with AURIN on load.
+- Change the package name as per AURIN's request.
+
 
 # aurin 0.6.0
 
