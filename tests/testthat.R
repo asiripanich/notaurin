@@ -1,4 +1,4 @@
 library(testthat)
-library(aurin)
+library(notaurin)
 
-test_check("aurin")
+test_check("notaurin")
