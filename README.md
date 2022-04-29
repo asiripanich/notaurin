@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# aurin
+# notaurin
 
 <!-- badges: start -->
 
@@ -9,17 +9,21 @@
 [![R-CMD-check](https://github.com/asiripanich/aurin/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurin/actions)
 [![](https://cranlogs.r-pkg.org/badges/aurin)](https://cran.r-project.org/package=aurin)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/aurin)](https://CRAN.R-project.org/package=aurin)
-<!-- badges: end -->
 
+<!-- badges: end -->
 <p align="center">
 <img src="https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png" />
 </p>
-
 <p align="center">
-  🚧 <b>This package is not affiliated with AURIN.</b> 🚧
+🚧 <b> First warning! The `notaurin` package is not affiliated with
+AURIN.</b> 🚧 <br> 🚧 <b> Second warning! The old `aurin` package which
+is also not affiliated with AURIN will be retiring from CRAN by 26th of
+May 2022 as per AURIN’s request. However, the new `notaurin` package
+will make its way to CRAN before that to make sure this transition is as
+unintrusive as possible</b> 🚧
 </p>
 
-The goal of `aurin` is to provide an easy way for R users to access
+The goal of `notaurin` is to provide an easy way for R users to access
 **MORE THAN 5000 OPEN DATASETS** on [AURIN](https://aurin.org.au/) using
 their
 [API](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/).
@@ -27,9 +31,9 @@ You can request a **FREE** API key from:
 
 > <https://aurin.org.au/resources/aurin-apis/sign-up/>
 
-**AURIN** is “*Australia’s 🦘 single largest resource for accessing
-clean, integrated, spatially enabled and research-ready data on issues
-surrounding health and wellbeing, socio-economic metrics,
+**AURIN** is “*Australia’s :kangaroo: single largest resource for
+accessing clean, integrated, spatially enabled and research-ready data
+on issues surrounding health and wellbeing, socio-economic metrics,
 transportation, and land-use.*”
 
 ## Installation
@@ -38,10 +42,10 @@ Here are ways you can install `aurin`:
 
 ``` r
 # from CRAN for the latest version
-install.packages("aurin")
+install.packages("notaurin")
 # from GitHub for the latest development version
 install.packages("remotes")
-remotes::install_github("asiripanich/aurin")
+remotes::install_github("asiripanich/notaurin")
 ```
 
 This package requires the [sf](https://github.com/r-spatial/sf) package.
@@ -90,8 +94,15 @@ Alternatively, you may use `aur_meta` to search datasets without leaving
 your R console.
 
 ``` r
+library(notaurin)
+#> ! The `aurin` package is not affiliated with AURIN. Any issues or feedback related to the `aurin` package should be reported to https://github.com/asiripanich/aurin. If you would like to see the official AURIN API Guide please visit https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/
 meta <- aur_meta()
-#> i Fetching available datasets...
+#> ℹ Creating AURIN WFS Client...
+#> Loading ISO 19139 XML schemas...
+#> Loading ISO 19115 codelists...
+#> Loading IANA mime types...
+#> No encoding supplied: defaulting to UTF-8.
+#> ℹ Fetching available datasets...
 # print out the first five rows
 knitr::kable(head(meta))
 ```
@@ -111,11 +122,11 @@ Use `aur_get()` to download the dataset.
 # download this public toilet dataset.
 open_api_id <- "aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"
 public_toilets <- aur_get(open_api_id = open_api_id)
-#> i Downloading 'aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets'...
-#> v Finished!
+#> ℹ Downloading 'aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets'...
+#> ✔ Finished!
 state_polygons <- aur_get(open_api_id = "aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust")
-#> i Downloading 'aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust'...
-#> v Finished!
+#> ℹ Downloading 'aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust'...
+#> ✔ Finished!
 state_polygons <- state_polygons[state_polygons$state_code_2016 %in% 1:8, ]
 ```
 
@@ -152,8 +163,12 @@ your machine can be determined using `future::availableCores()`.
 
 ``` r
 library(furrr)
+#> Loading required package: future
 library(future)
 future::plan(future::multiprocess, workers = 2)
+#> Warning: Strategy 'multiprocess' is deprecated in future (>= 1.20.0). Instead,
+#> explicitly specify either 'multisession' or 'multicore'. In the current R
+#> session, 'multiprocess' equals 'multicore'.
 ```
 
 Let’s assume you want the *first 10 rows* of all datasets on AURIN with
@@ -165,21 +180,21 @@ knitr::kable(meta[grepl("toilet", meta$title, ignore.case = T), ])
 
 |      | aurin_open_api_id                                                     | title                                                  |
 |:-----|:----------------------------------------------------------------------|:-------------------------------------------------------|
-| 1406 | aurin:datasource-AU_Govt_DSS-UoM_AURIN_national_public_toilets_2017   | DSS - National Public Toilets (Point) 2017             |
-| 1466 | aurin:datasource-AU_Govt_Doh-UoM_AURIN_DB_national_toilet_map_2018_06 | Department of Health - National Toilet Map - June 2018 |
-| 2946 | aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets                   | Public Toilets 2004-2014 for Australia                 |
+| 1463 | aurin:datasource-AU_Govt_DSS-UoM_AURIN_national_public_toilets_2017   | DSS - National Public Toilets (Point) 2017             |
+| 1523 | aurin:datasource-AU_Govt_Doh-UoM_AURIN_DB_national_toilet_map_2018_06 | Department of Health - National Toilet Map - June 2018 |
+| 3013 | aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets                   | Public Toilets 2004-2014 for Australia                 |
 
 Extract their AURIN open API ids and download all of them in parallel.
 
 ``` r
 toilet_datasets_ids <- meta$aurin_open_api_id[grepl("toilet", meta$title, ignore.case = T)]
 data_lst <- furrr::future_map(toilet_datasets_ids, ~ aur_get(.x, params = list(maxFeatures = 10)))
-#> i Downloading 'aurin:datasource-AU_Govt_DSS-UoM_AURIN_national_public_toilets_2017'...
-#> v Finished!
-#> i Downloading 'aurin:datasource-AU_Govt_Doh-UoM_AURIN_DB_national_toilet_map_2018_06'...
-#> v Finished!
-#> i Downloading 'aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets'...
-#> v Finished!
+#> ℹ Downloading 'aurin:datasource-AU_Govt_DSS-UoM_AURIN_national_public_toilets_2017'...
+#> ✔ Finished!
+#> ℹ Downloading 'aurin:datasource-AU_Govt_Doh-UoM_AURIN_DB_national_toilet_map_2018_06'...
+#> ✔ Finished!
+#> ℹ Downloading 'aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets'...
+#> ✔ Finished!
 data_lst
 #> [[1]]
 #> Simple feature collection with 10 features and 46 fields
@@ -187,22 +202,26 @@ data_lst
 #> Dimension:     XY
 #> Bounding box:  xmin: 115.811 ymin: -38.1744 xmax: 153.1177 ymax: -27.9314
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 10 x 47
-#>    id        toilet_id url     name   address1  town  state postcode address_note  male  female unisex dump_point facility_type toilet_type access_limited payment_required key_required access_note parking parking_note
-#>    <chr>         <int> <chr>   <chr>  <chr>     <chr> <chr>    <int> <chr>         <lgl> <lgl>  <lgl>  <lgl>      <chr>         <chr>       <lgl>          <lgl>            <lgl>        <chr>       <lgl>   <chr>       
-#>  1 datasour~       341 https:~ Elsie~ Alden St~ Clif~ Quee~     4361 <NA>          TRUE  TRUE   FALSE  FALSE      Park or rese~ <NA>        FALSE          FALSE            FALSE        <NA>        FALSE   <NA>        
-#>  2 datasour~       418 https:~ Lucky~ Lucky Ba~ Luck~ Sout~     5602 <NA>          TRUE  TRUE   FALSE  FALSE      <NA>          <NA>        FALSE          FALSE            FALSE        <NA>        TRUE    <NA>        
-#>  3 datasour~       634 https:~ Olds ~ Holley R~ Mort~ New ~     2223 <NA>          TRUE  TRUE   FALSE  FALSE      Park or rese~ <NA>        FALSE          FALSE            FALSE        <NA>        FALSE   <NA>        
-#>  4 datasour~      1150 https:~ Jaege~ Hill Str~ Oran~ New ~     2800 <NA>          TRUE  TRUE   FALSE  FALSE      Park or rese~ <NA>        FALSE          FALSE            FALSE        <NA>        FALSE   <NA>        
-#>  5 datasour~      1207 https:~ Lake ~ Evans St~ Shen~ West~     6008 <NA>          FALSE FALSE  TRUE   FALSE      Park or rese~ Automatic   FALSE          FALSE            FALSE        <NA>        FALSE   <NA>        
-#>  6 datasour~      1535 https:~ Earl ~ Earl Str~ Coff~ New ~     2450 <NA>          TRUE  TRUE   FALSE  FALSE      Sporting fac~ Sewerage    FALSE          FALSE            FALSE        <NA>        TRUE    <NA>        
-#>  7 datasour~      1590 https:~ Truck~ Davidson~ Deni~ New ~     2710 <NA>          TRUE  TRUE   FALSE  FALSE      Car park      Sewerage    FALSE          FALSE            FALSE        <NA>        TRUE    <NA>        
-#>  8 datasour~      1913 https:~ Hemis~ High Str~ Belm~ Vict~     3216 <NA>          TRUE  TRUE   FALSE  FALSE      <NA>          <NA>        FALSE          FALSE            FALSE        <NA>        FALSE   <NA>        
-#>  9 datasour~      2081 https:~ Eden ~ Eden Val~ Keyn~ Sout~     5353 The toilet i~ TRUE  TRUE   FALSE  FALSE      Park or rese~ Septic      FALSE          FALSE            FALSE        <NA>        FALSE   <NA>        
-#> 10 datasour~      2377 https:~ Wilso~ Wilson R~ Watt~ Vict~     3096 <NA>          TRUE  TRUE   FALSE  FALSE      <NA>          <NA>        FALSE          FALSE            FALSE        <NA>        FALSE   <NA>        
-#> # ... with 26 more variables: accessible_male <lgl>, accessible_female <lgl>, accessible_unisex <lgl>, accessible_note <chr>, mlak <lgl>, parking_accessible <lgl>, access_parking_note <chr>, ambulant <lgl>,
-#> #   lh_transfer <lgl>, rh_transfer <lgl>, adult_change <lgl>, is_open <chr>, opening_hours <chr>, openinghours_note <chr>, baby_change <lgl>, showers <lgl>, drinking_water <lgl>, sharps_disposal <lgl>,
-#> #   sanitary_disposal <lgl>, icon_url <chr>, icon_alt_text <chr>, notes <chr>, status <chr>, latitude <dbl>, longitude <dbl>, geometry <POINT [°]>
+#> # A tibble: 10 × 47
+#>    id     toilet_id url   name  address1 town  state postcode address_note male 
+#>    <chr>      <int> <chr> <chr> <chr>    <chr> <chr>    <int> <chr>        <lgl>
+#>  1 datas…       341 http… Elsi… Alden S… Clif… Quee…     4361 <NA>         TRUE 
+#>  2 datas…       418 http… Luck… Lucky B… Luck… Sout…     5602 <NA>         TRUE 
+#>  3 datas…       634 http… Olds… Holley … Mort… New …     2223 <NA>         TRUE 
+#>  4 datas…      1150 http… Jaeg… Hill St… Oran… New …     2800 <NA>         TRUE 
+#>  5 datas…      1207 http… Lake… Evans S… Shen… West…     6008 <NA>         FALSE
+#>  6 datas…      1535 http… Earl… Earl St… Coff… New …     2450 <NA>         TRUE 
+#>  7 datas…      1590 http… Truc… Davidso… Deni… New …     2710 <NA>         TRUE 
+#>  8 datas…      1913 http… Hemi… High St… Belm… Vict…     3216 <NA>         TRUE 
+#>  9 datas…      2081 http… Eden… Eden Va… Keyn… Sout…     5353 The toilet … TRUE 
+#> 10 datas…      2377 http… Wils… Wilson … Watt… Vict…     3096 <NA>         TRUE 
+#> # … with 37 more variables: female <lgl>, unisex <lgl>, dump_point <lgl>,
+#> #   facility_type <chr>, toilet_type <chr>, access_limited <lgl>,
+#> #   payment_required <lgl>, key_required <lgl>, access_note <chr>,
+#> #   parking <lgl>, parking_note <chr>, accessible_male <lgl>,
+#> #   accessible_female <lgl>, accessible_unisex <lgl>, accessible_note <chr>,
+#> #   mlak <lgl>, parking_accessible <lgl>, access_parking_note <chr>,
+#> #   ambulant <lgl>, lh_transfer <lgl>, rh_transfer <lgl>, adult_change <lgl>, …
 #> 
 #> [[2]]
 #> Simple feature collection with 10 features and 47 fields
@@ -210,22 +229,26 @@ data_lst
 #> Dimension:     XY
 #> Bounding box:  xmin: 115.8314 ymin: -36.7422 xmax: 153.2881 ymax: -26.6443
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 10 x 48
-#>    id         toilet_id url     name    address1 town  state postcode address_note male  female unisex dump_point facility_type toilet_type access_limited payment_required key_required access_note parking parking_note
-#>    <chr>          <int> <chr>   <chr>   <chr>    <chr> <chr>    <int> <chr>        <lgl> <lgl>  <lgl>  <lgl>      <chr>         <chr>       <lgl>          <lgl>            <lgl>        <chr>       <lgl>   <chr>       
-#>  1 datasourc~       272 https:~ Brisba~ Brisban~ Merr~ New ~     2329 <NA>         TRUE  TRUE   FALSE  FALSE      <NA>          <NA>        FALSE          FALSE            FALSE        <NA>        FALSE   <NA>        
-#>  2 datasourc~       578 https:~ Natimuk Wimmera~ Nati~ Vict~     3409 <NA>         TRUE  TRUE   FALSE  FALSE      <NA>          <NA>        FALSE          FALSE            FALSE        <NA>        FALSE   <NA>        
-#>  3 datasourc~       628 https:~ Bridge~ Bridge ~ Pens~ New ~     2222 <NA>         TRUE  TRUE   FALSE  FALSE      <NA>          <NA>        FALSE          FALSE            FALSE        <NA>        FALSE   <NA>        
-#>  4 datasourc~       868 https:~ Sandst~ Oroya S~ Sand~ West~     6639 <NA>         TRUE  TRUE   FALSE  FALSE      <NA>          <NA>        FALSE          FALSE            FALSE        <NA>        TRUE    <NA>        
-#>  5 datasourc~      1300 https:~ Murray~ Ravensw~ Rave~ West~     6208 <NA>         TRUE  TRUE   FALSE  FALSE      <NA>          <NA>        FALSE          FALSE            FALSE        <NA>        TRUE    <NA>        
-#>  6 datasourc~      1461 https:~ Menzie~ Purslow~ Moun~ West~     6016 <NA>         TRUE  TRUE   FALSE  FALSE      Park or rese~ Sewerage    FALSE          FALSE            FALSE        <NA>        FALSE   <NA>        
-#>  7 datasourc~      1638 https:~ Roy He~ Warrego~ Dula~ Quee~     4425 <NA>         TRUE  TRUE   FALSE  FALSE      Park or rese~ Sewerage    FALSE          FALSE            FALSE        <NA>        FALSE   <NA>        
-#>  8 datasourc~      1750 https:~ Mering~ Taggert~ Meri~ Vict~     3496 <NA>         TRUE  TRUE   FALSE  FALSE      <NA>          <NA>        FALSE          FALSE            FALSE        <NA>        FALSE   <NA>        
-#>  9 datasourc~      2520 https:~ Show G~ Evans S~ Wang~ Vict~     3677 <NA>         TRUE  TRUE   FALSE  FALSE      Sporting fac~ <NA>        FALSE          FALSE            FALSE        <NA>        FALSE   <NA>        
-#> 10 datasourc~      2725 https:~ Harold~ Paxton ~ Clev~ Quee~     4163 <NA>         TRUE  TRUE   FALSE  FALSE      Park or rese~ Sewerage    FALSE          FALSE            FALSE        <NA>        TRUE    <NA>        
-#> # ... with 27 more variables: accessible_male <lgl>, accessible_female <lgl>, accessible_unisex <lgl>, accessible_note <chr>, mlak <lgl>, parking_accessible <lgl>, access_parking_note <chr>, ambulant <lgl>,
-#> #   lh_transfer <lgl>, rh_transfer <lgl>, adult_change <lgl>, changing_places <lgl>, is_open <chr>, opening_hours <chr>, openinghours_note <chr>, baby_change <lgl>, showers <lgl>, drinking_water <lgl>,
-#> #   sharps_disposal <lgl>, sanitary_disposal <lgl>, icon_url <chr>, icon_alt_text <chr>, notes <chr>, status <chr>, latitude <dbl>, longitude <dbl>, geometry <POINT [°]>
+#> # A tibble: 10 × 48
+#>    id     toilet_id url   name  address1 town  state postcode address_note male 
+#>    <chr>      <int> <chr> <chr> <chr>    <chr> <chr>    <int> <chr>        <lgl>
+#>  1 datas…       272 http… Bris… Brisban… Merr… New …     2329 <NA>         TRUE 
+#>  2 datas…       578 http… Nati… Wimmera… Nati… Vict…     3409 <NA>         TRUE 
+#>  3 datas…       628 http… Brid… Bridge … Pens… New …     2222 <NA>         TRUE 
+#>  4 datas…       868 http… Sand… Oroya S… Sand… West…     6639 <NA>         TRUE 
+#>  5 datas…      1300 http… Murr… Ravensw… Rave… West…     6208 <NA>         TRUE 
+#>  6 datas…      1461 http… Menz… Purslow… Moun… West…     6016 <NA>         TRUE 
+#>  7 datas…      1638 http… Roy … Warrego… Dula… Quee…     4425 <NA>         TRUE 
+#>  8 datas…      1750 http… Meri… Taggert… Meri… Vict…     3496 <NA>         TRUE 
+#>  9 datas…      2520 http… Show… Evans S… Wang… Vict…     3677 <NA>         TRUE 
+#> 10 datas…      2725 http… Haro… Paxton … Clev… Quee…     4163 <NA>         TRUE 
+#> # … with 38 more variables: female <lgl>, unisex <lgl>, dump_point <lgl>,
+#> #   facility_type <chr>, toilet_type <chr>, access_limited <lgl>,
+#> #   payment_required <lgl>, key_required <lgl>, access_note <chr>,
+#> #   parking <lgl>, parking_note <chr>, accessible_male <lgl>,
+#> #   accessible_female <lgl>, accessible_unisex <lgl>, accessible_note <chr>,
+#> #   mlak <lgl>, parking_accessible <lgl>, access_parking_note <chr>,
+#> #   ambulant <lgl>, lh_transfer <lgl>, rh_transfer <lgl>, adult_change <lgl>, …
 #> 
 #> [[3]]
 #> Simple feature collection with 10 features and 39 fields
@@ -233,19 +256,24 @@ data_lst
 #> Dimension:     XY
 #> Bounding box:  xmin: 113.7736 ymin: -38.4731 xmax: 151.9332 ymax: -17.5021
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 10 x 40
-#>    id      ogc_fid status  lastupdate name  address1 town  state postcode addressnote   male female unisex facilitytype toilettype accesslimited paymentrequired keyrequired accessnote parking parkingnote yearinstalled
-#>    <chr>     <int> <chr>   <date>     <chr> <chr>    <chr> <chr> <chr>    <chr>        <int>  <int> <chr>  <chr>        <chr>              <int>           <int>       <int> <chr>        <int> <chr>       <chr>        
-#>  1 dataso~      28 Verifi~ 2008-02-13 Flyi~ Esplana~ Flyi~ Quee~ 4860     <NA>             1      1 <NA>   <NA>         <NA>                   0               0           0 <NA>             0 <NA>        <NA>         
-#>  2 dataso~     301 Verifi~ 2009-03-25 Tour~ Leslie ~ Stan~ Quee~ 4380     <NA>             1      1 <NA>   <NA>         <NA>                   0               0           0 <NA>             0 <NA>        <NA>         
-#>  3 dataso~     381 Verifi~ 2010-03-24 Pinn~ Day Str~ Pinn~ Sout~ 5304     <NA>             1      1 <NA>   <NA>         <NA>                   0               0           0 <NA>             1 <NA>        <NA>         
-#>  4 dataso~     500 Verifi~ 2008-01-30 Rive~ <NA>     Waik~ Sout~ 5330     <NA>             1      1 <NA>   Park or res~ <NA>                   0               0           0 <NA>             0 <NA>        <NA>         
-#>  5 dataso~     612 Verifi~ 2008-02-18 Kend~ <NA>     Kend~ West~ 6323     <NA>             1      1 <NA>   <NA>         <NA>                   0               0           0 <NA>             0 <NA>        <NA>         
-#>  6 dataso~     620 Verifi~ 2006-02-10 Shen~ 124 She~ Menz~ West~ 6436     Toilets are~     1      1 <NA>   Other        Sewerage               0               0           0 <NA>             0 <NA>        <NA>         
-#>  7 dataso~     673 Verifi~ 2008-02-18 Rota~ 1836 No~ Sout~ West~ 6701     Near 10 mil~     1      1 <NA>   Park or res~ Septic                 0               0           0 <NA>             0 <NA>        <NA>         
-#>  8 dataso~     708 Verifi~ 2009-02-24 Sand~ Oroya S~ Sand~ West~ 6639     <NA>             1      1 <NA>   <NA>         <NA>                   0               0           0 <NA>             1 <NA>        <NA>         
-#>  9 dataso~     734 Verifi~ 2009-02-18 McIn~ Bent St~ Leon~ Vict~ 3953     <NA>             1      1 <NA>   Park or res~ <NA>                   0               0           0 <NA>             1 <NA>        <NA>         
-#> 10 dataso~     847 Verifi~ 2008-02-18 Libr~ Civic R~ Aubu~ New ~ 2144     <NA>             1      1 <NA>   Other        Sewerage               0               0           0 <NA>             0 <NA>        <NA>         
-#> # ... with 18 more variables: accessiblemale <int>, accessiblefemale <int>, accessibleunisex <int>, accessiblenote <chr>, mlak <int>, parkingaccessible <int>, accessibleparkingnote <chr>, isopen <chr>,
-#> #   openinghoursschedule <chr>, openinghoursnote <chr>, babychange <int>, showers <int>, drinkingwater <int>, sharpsdisposal <int>, sanitarydisposal <int>, iconalttext <chr>, notes <chr>, geometry <POINT [°]>
+#> # A tibble: 10 × 40
+#>    id              ogc_fid status lastupdate name  address1 town  state postcode
+#>    <chr>             <int> <chr>  <date>     <chr> <chr>    <chr> <chr> <chr>   
+#>  1 datasource-UQ_…      28 Verif… 2008-02-13 Flyi… Esplana… Flyi… Quee… 4860    
+#>  2 datasource-UQ_…     301 Verif… 2009-03-25 Tour… Leslie … Stan… Quee… 4380    
+#>  3 datasource-UQ_…     381 Verif… 2010-03-24 Pinn… Day Str… Pinn… Sout… 5304    
+#>  4 datasource-UQ_…     500 Verif… 2008-01-30 Rive… <NA>     Waik… Sout… 5330    
+#>  5 datasource-UQ_…     612 Verif… 2008-02-18 Kend… <NA>     Kend… West… 6323    
+#>  6 datasource-UQ_…     620 Verif… 2006-02-10 Shen… 124 She… Menz… West… 6436    
+#>  7 datasource-UQ_…     673 Verif… 2008-02-18 Rota… 1836 No… Sout… West… 6701    
+#>  8 datasource-UQ_…     708 Verif… 2009-02-24 Sand… Oroya S… Sand… West… 6639    
+#>  9 datasource-UQ_…     734 Verif… 2009-02-18 McIn… Bent St… Leon… Vict… 3953    
+#> 10 datasource-UQ_…     847 Verif… 2008-02-18 Libr… Civic R… Aubu… New … 2144    
+#> # … with 31 more variables: addressnote <chr>, male <int>, female <int>,
+#> #   unisex <chr>, facilitytype <chr>, toilettype <chr>, accesslimited <int>,
+#> #   paymentrequired <int>, keyrequired <int>, accessnote <chr>, parking <int>,
+#> #   parkingnote <chr>, yearinstalled <chr>, accessiblemale <int>,
+#> #   accessiblefemale <int>, accessibleunisex <int>, accessiblenote <chr>,
+#> #   mlak <int>, parkingaccessible <int>, accessibleparkingnote <chr>,
+#> #   isopen <chr>, openinghoursschedule <chr>, openinghoursnote <chr>, …
 ```

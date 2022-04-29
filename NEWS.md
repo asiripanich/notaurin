@@ -1,6 +1,6 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
-# aurin 0.6.0.9000
+# notaurin 0.6.0.9000
 
 # aurin 0.6.0
 

@@ -1,4 +1,4 @@
-Package: aurin
+Package: notaurin
 Title: Access Datasets from the 'AURIN' API
 Version: 0.6.0.9000
 Authors@R: person('Amarin', 'Siripanich', email = 'amarin.siri@gmail.com', role = c('cre', 'aut'))
@@ -9,8 +9,8 @@ Description: 'AURIN' <https://aurin.org.au/resources/aurin-apis/> is "Australia'
     the AURIN API (it's free to use!).
 License: MIT + file LICENSE
 Encoding: UTF-8
-URL: https://github.com/asiripanich/aurin
-BugReports: https://github.com/asiripanich/aurin/issues
+URL: https://github.com/asiripanich/notaurin
+BugReports: https://github.com/asiripanich/notaurin/issues
 LazyData: true
 Depends:
     R (>= 3.5.0)
