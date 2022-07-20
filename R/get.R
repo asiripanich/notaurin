@@ -29,11 +29,8 @@
 #' }
 aur_get <- function(open_api_id, crs = "EPSG:4326", params = NULL) {
   request <- aur_build_request(open_api_id, crs = "EPSG:4326", params = params)
-
-  cli::cli_alert_info("Downloading '{open_api_id}'...")
+  cli::cli_progress_step("Downloading '{open_api_id}'...")
   .data <- sf::read_sf(request)
-  cli::cli_alert_success("Finished!")
-
   return(.data)
 }
 
