@@ -21,7 +21,7 @@ test_that("aur_get works", {
 
   data_feature_28_sf <- aur_get(
     open_api_id,
-    params = list(featureID = 28)
+    params = list(featureID = "VMFEAT_CFA_FIRE_STATION.62926123")
   )
-  expect_equal(data_feature_28_sf$ogc_fid, 28)
+  expect_equal(data_feature_28_sf$id, "VMFEAT_CFA_FIRE_STATION.62926123")
 })
