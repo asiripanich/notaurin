@@ -19,12 +19,12 @@
 #' @examples
 #' # follow the example in <https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/>
 #' \dontrun{
-#' aur_get("aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets")
+#' aur_get("datasource-VIC_Govt_DELWP-VIC_Govt_DELWP:datavic_VMFEAT_CFA_FIRE_STATION")
 #'
 #' # Get the first 10 features.
 #' aur_get(
 #'   open_api_id,
-#'   params = list(maxFeatures = 10)
+#'   params = list(count = 10)
 #' )
 #' }
 aur_get <- function(open_api_id, crs = "EPSG:4326", params = NULL) {
