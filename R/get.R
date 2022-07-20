@@ -51,7 +51,7 @@ aur_build_request <- function(open_api_id, crs = "EPSG:4326", params = NULL, out
 
   stop_if_no_aurin_api_userpwd()
 
-  wfs <- glue::glue("http://{Sys.getenv('AURIN_API_USERPWD')}@openapi.aurin.org.au/wfs")
+  wfs <- glue::glue("https://{Sys.getenv('AURIN_API_USERPWD')}@{...aurin_hostname}")
   url <- httr::parse_url(wfs)
 
   url$query <- append(
