@@ -54,11 +54,10 @@ aur_build_request <- function(open_api_id, crs = "EPSG:4326", params = NULL, out
   url$query <- append(
     list(
       service = "wfs",
-      version = "1.0.0",
       request = "GetFeature",
       srsName = crs,
       outputFormat = outputFormat,
-      typename = open_api_id
+      typeName = open_api_id
     ),
     params
   )
