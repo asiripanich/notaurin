@@ -11,17 +11,17 @@ create_aurinapi_wfs_client <- function() {
   if (checkmate::test_r6(get_aurinapi_wfs_client(), classes = "WFSClient")) {
     return(get_aurinapi_wfs_client())
   }
-  wfs <- glue::glue("http://{Sys.getenv('AURIN_API_USERPWD')}@openapi.aurin.org.au/wfs")
-  url <- httr::parse_url(wfs)
-  url$query <- list(
-    service = "WFS",
-    version = "2.0.0",
-    request = "GetCapabilities"
-  )
-  request <- httr::build_url(url)
   cli::cli_alert_info("Creating AURIN WFS Client...")
   client_wrapper <- get_aurinapi_wfs_client_wrapper()
-  client_wrapper$client <- ows4R::WFSClient$new(wfs, serviceVersion = "2.0.0")
+  cred <- Sys.getenv('AURIN_API_USERPWD') %>%
+    strsplit(split = ":") %>%
+    unlist()
+  client_wrapper$client <- ows4R::WFSClient$new(
+    ...aurin_hostname,
+    user = cred[[1]],
+    pwd = cred[[2]],
+    serviceVersion = "2.0.0"
+  )
   return(get_aurinapi_wfs_client())
 }
 

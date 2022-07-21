@@ -17,6 +17,6 @@
 #' aur_browse()
 #' }
 aur_browse <- function() {
-  utils::browseURL("https://data.aurin.org.au/group/aurin-api")
+  utils::browseURL("https://data.aurin.org.au/")
   invisible()
 }

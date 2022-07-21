@@ -19,21 +19,18 @@
 #' @examples
 #' # follow the example in <https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/>
 #' \dontrun{
-#' aur_get("aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets")
+#' aur_get("datasource-VIC_Govt_DELWP-VIC_Govt_DELWP:datavic_VMFEAT_CFA_FIRE_STATION")
 #'
 #' # Get the first 10 features.
 #' aur_get(
 #'   open_api_id,
-#'   params = list(maxFeatures = 10)
+#'   params = list(count = 10)
 #' )
 #' }
 aur_get <- function(open_api_id, crs = "EPSG:4326", params = NULL) {
   request <- aur_build_request(open_api_id, crs = "EPSG:4326", params = params)
-
-  cli::cli_alert_info("Downloading '{open_api_id}'...")
+  cli::cli_progress_step("Downloading '{open_api_id}'...")
   .data <- sf::read_sf(request)
-  cli::cli_alert_success("Finished!")
-
   return(.data)
 }
 
@@ -51,17 +48,16 @@ aur_build_request <- function(open_api_id, crs = "EPSG:4326", params = NULL, out
 
   stop_if_no_aurin_api_userpwd()
 
-  wfs <- glue::glue("http://{Sys.getenv('AURIN_API_USERPWD')}@openapi.aurin.org.au/wfs")
+  wfs <- glue::glue("https://{Sys.getenv('AURIN_API_USERPWD')}@{...aurin_hostname}")
   url <- httr::parse_url(wfs)
 
   url$query <- append(
     list(
       service = "wfs",
-      version = "1.0.0",
       request = "GetFeature",
       srsName = crs,
       outputFormat = outputFormat,
-      typename = open_api_id
+      typeName = open_api_id
     ),
     params
   )

@@ -1,3 +1,4 @@
+#' @importFrom cli cli_progress_step
 #' @keywords internal
 "_PACKAGE"
 

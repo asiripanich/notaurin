@@ -1,3 +1,5 @@
+...aurin_hostname <- "adp.aurin.org.au/geoserver/wfs"
+
 #' @importFrom R6 R6Class
 client_wrapper <- R6::R6Class(
   classname = "client_wrapper",
