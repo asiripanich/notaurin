@@ -23,8 +23,8 @@ library(notaurin)
 
 <!-- badges: start -->
 
-![](https://www.r-pkg.org/badges/version-ago/aurin) [![R-CMD-check](https://github.com/asiripanich/aurin/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/aurin/actions) [![](https://cranlogs.r-pkg.org/badges/aurin)](https://cran.r-project.org/package=aurin) [![](https://cranlogs.r-pkg.org/badges/grand-total/aurin)](https://CRAN.R-project.org/package=aurin)
-
+![](https://www.r-pkg.org/badges/version-ago/notaurin) [![R-CMD-check](https://github.com/asiripanich/notaurin/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/notaurin/actions) [![](https://cranlogs.r-pkg.org/badges/notaurin)](https://cran.r-project.org/package=notaurin) [![](https://cranlogs.r-pkg.org/badges/grand-total/notaurin)](https://CRAN.R-project.org/package=notaurin)
+[![R-CMD-check](https://github.com/asiripanich/notaurin/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/asiripanich/notaurin/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 <p align="center">
@@ -34,7 +34,6 @@ library(notaurin)
 <p align="center">
   🚧  <b> First warning! The `notaurin` package is not affiliated with AURIN.</b> 🚧
   <br>
-  🚧  <b> Second warning! The old `aurin` package which is also not affiliated with AURIN will be retiring from CRAN by 26th of May 2022 as per AURIN's request. However, the new `notaurin` package will make its way to CRAN before that to make sure this transition is as unintrusive as possible</b> 🚧
 </p>
 
 The goal of `notaurin` is to provide an easy way for R users to access **MORE THAN 5000 OPEN DATASETS** on [AURIN](https://aurin.org.au/) using their [API](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/).
@@ -97,9 +96,9 @@ Use `aur_get()` to download the dataset.
 
 ```{r}
 # download this public toilet dataset.
-open_api_id <- "aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets"
+open_api_id <- "datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017"
 public_toilets <- aur_get(open_api_id = open_api_id)
-state_polygons <- aur_get(open_api_id = "aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust")
+state_polygons <- aur_get(open_api_id = "datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel:ste_2016_aust")
 state_polygons <- state_polygons[state_polygons$state_code_2016 %in% 1:8, ]
 ```
 
