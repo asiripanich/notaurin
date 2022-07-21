@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# notaurin 0.7.0
+
+- The package now works with the new AURIN API. (thanks @Hi-Vis, #15)
+
+
 # notaurin 0.6.0.9001
 
 - Warn users that the package is not affiliated with AURIN on load.
