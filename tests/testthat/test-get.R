@@ -5,7 +5,7 @@ test_that("aur_get works", {
 
   data_sf <- aur_get(open_api_id)
   checkmate::expect_class(data_sf, classes = "sf")
-  checkmate::expect_data_frame(data_sf, nrows = 1193, ncols = 25)
+  checkmate::expect_data_frame(data_sf, min.rows = 1, min.cols = 1)
 
   data_first_10_sf <- aur_get(
     open_api_id,
@@ -19,9 +19,11 @@ test_that("aur_get works", {
   )
   checkmate::expect_data_frame(data_first_10_sf, nrow = 10)
 
+  one_feature_id <- sample(data_first_10_sf$id, 1)
+
   data_feature_28_sf <- aur_get(
     open_api_id,
-    params = list(featureID = "VMFEAT_CFA_FIRE_STATION.62926123")
+    params = list(featureID = one_feature_id)
   )
-  expect_equal(data_feature_28_sf$id, "VMFEAT_CFA_FIRE_STATION.62926123")
+  expect_equal(data_feature_28_sf$id, one_feature_id)
 })
