@@ -73,9 +73,10 @@
 </h1></div>
 <!-- badges: start -->
 <p align="center"><img src="https://aurin.org.au/wp-content/uploads/2018/07/aurin-logo-400.png"></p>
-<p align="center">🚧 <b> First warning! The <code>notaurin</code> package is not affiliated with AURIN.</b> 🚧 <br></p>
-<p>The goal of <code>notaurin</code> is to provide an easy way for R users to access <strong>MORE THAN 5000 OPEN DATASETS</strong> on <a href="https://aurin.org.au/" class="external-link">AURIN</a> using their <a href="https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/" class="external-link">API</a>. You can request a <strong>FREE</strong> API key from:</p>
-<blockquote><p><a href="https://aurin.org.au/resources/aurin-apis/sign-up/" class="external-link uri">https://aurin.org.au/resources/aurin-apis/sign-up/</a></p></blockquote>
+<p align="center">🚧 <b>Warning! The <code>notaurin</code> package is not affiliated with AURIN in any way.</b> 🚧 <br></p>
+<p>The official AURIN R tutorial can be found <a href="https://aurin.org.au/resources/training/explore-r/" class="external-link">here</a>. Want to know a more convenient way to access the AURIN data portal from R which AURIN simply doesn’t seem to offer? Maybe give {notaurin} a try. 😬</p>
+<p>The goal of {notaurin} is to provide an easy way for R users to access <strong>MORE THAN 5000 OPEN DATASETS</strong> on <a href="https://aurin.org.au/" class="external-link">AURIN</a> using their <a href="https://data.aurin.org.au/" class="external-link">Data Portal</a>. You can request an API key from:</p>
+<blockquote><p><a href="https://aurin.org.au/resources/einfrastructure/" class="external-link uri">https://aurin.org.au/resources/einfrastructure/</a></p></blockquote>
 <p><strong>AURIN</strong> is “<em>Australia’s :kangaroo: single largest resource for accessing clean, integrated, spatially enabled and research-ready data on issues surrounding health and wellbeing, socio-economic metrics, transportation, and land-use.</em>”</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -92,7 +93,6 @@
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>Let’s recreate this <a href="https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/" class="external-link">AURIN API AND R</a> example using <code>notaurin</code>.</p>
 <p>First, you must add your <a href="https://aurin.org.au/resources/aurin-apis/sign-up/" class="external-link">AURIN API username and password</a> as an R environment variable to your <code>.Renviron</code> file. <code>notaurin</code> provides <code><a href="reference/aur_register.html">aur_register()</a></code> function to help you with this step. If you choose to set <code>add_to_renviron = TRUE</code> you won’t need to run this step again on current machine after you restart your R session.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/asiripanich/notaurin" class="external-link">notaurin</a></span><span class="op">)</span></span>
@@ -107,6 +107,7 @@
 <p>Alternatively, you may use <code>aur_meta</code> to search datasets without leaving your R console.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aur_meta.html">aur_meta</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ℹ Creating AURIN WFS Client...</span></span>
 <span><span class="co">#&gt; ℹ Fetching available datasets...</span></span>
 <span><span class="co"># print out the first five rows</span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -151,9 +152,9 @@
 <code class="sourceCode R"><span><span class="co"># download this public toilet dataset.</span></span>
 <span><span class="va">open_api_id</span> <span class="op">&lt;-</span> <span class="st">"datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017"</span></span>
 <span><span class="va">public_toilets</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aur_get.html">aur_get</a></span><span class="op">(</span>open_api_id <span class="op">=</span> <span class="va">open_api_id</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ Downloading 'datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017'...[K✔ Downloading 'datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017'... [2.9s][K</span></span>
+<span><span class="co">#&gt; ℹ Downloading 'datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017'...[K✔ Downloading 'datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017'... [2.6s][K</span></span>
 <span><span class="va">state_polygons</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aur_get.html">aur_get</a></span><span class="op">(</span>open_api_id <span class="op">=</span> <span class="st">"datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel:ste_2016_aust"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ Downloading 'datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel:ste_2016_aust'...[K✔ Downloading 'datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel:ste_2016_aust'... [5.9s][K</span></span>
+<span><span class="co">#&gt; ℹ Downloading 'datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel:ste_2016_aust'...[K✔ Downloading 'datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel:ste_2016_aust'... [6.6s][K</span></span>
 <span><span class="va">state_polygons</span> <span class="op">&lt;-</span> <span class="va">state_polygons</span><span class="op">[</span><span class="va">state_polygons</span><span class="op">$</span><span class="va">state_code_2016</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, <span class="op">]</span></span></code></pre></div>
 <p>Let’s visualise the data using the <code>ggplot2</code> package.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -179,8 +180,8 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/DavisVaughan/furrr" class="external-link">furrr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://future.futureverse.org" class="external-link">future</a></span><span class="op">)</span></span>
 <span><span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="fu">future</span><span class="fu">::</span><span class="va"><a href="https://future.futureverse.org/reference/multiprocess.html" class="external-link">multiprocess</a></span>, workers <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Strategy 'multiprocess' is deprecated in future (&gt;= 1.20.0) [2020-10-30]. Instead, explicitly specify either 'multisession' (recommended) or 'multicore'. In the current</span></span>
-<span><span class="co">#&gt; R session, 'multiprocess' equals 'multicore'.</span></span></code></pre></div>
+<span><span class="co">#&gt; Warning: Strategy 'multiprocess' is deprecated in future (&gt;= 1.20.0) [2020-10-30]. Instead, explicitly specify either 'multisession' (recommended) or 'multicore'. In the current R session,</span></span>
+<span><span class="co">#&gt; 'multiprocess' equals 'multicore'.</span></span></code></pre></div>
 <p>Let’s assume you want the <em>first 10 rows</em> of all datasets on AURIN with the word “toilet” in their title.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">meta</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"toilet"</span>, <span class="va">meta</span><span class="op">$</span><span class="va">title</span>, ignore.case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>, <span class="op">]</span><span class="op">)</span></span></code></pre></div>
@@ -197,17 +198,17 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">1470</td>
+<td align="left">1519</td>
 <td align="left">datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017</td>
 <td align="left">DSS - National Public Toilets (Point) 2017</td>
 </tr>
 <tr class="even">
-<td align="left">1530</td>
+<td align="left">1579</td>
 <td align="left">datasource-AU_Govt_Doh-UoM_AURIN_DB_1:national_toilet_map_2018_06</td>
 <td align="left">Department of Health - National Toilet Map - June 2018</td>
 </tr>
 <tr class="odd">
-<td align="left">3044</td>
+<td align="left">3117</td>
 <td align="left">datasource-UQ_ERG-UoM_AURIN_DB:public_toilets</td>
 <td align="left">Public Toilets 2004-2014 for Australia</td>
 </tr>
@@ -217,86 +218,81 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">toilet_datasets_ids</span> <span class="op">&lt;-</span> <span class="va">meta</span><span class="op">$</span><span class="va">aurin_open_api_id</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"toilet"</span>, <span class="va">meta</span><span class="op">$</span><span class="va">title</span>, ignore.case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="va">data_lst</span> <span class="op">&lt;-</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://furrr.futureverse.org/reference/future_map.html" class="external-link">future_map</a></span><span class="op">(</span><span class="va">toilet_datasets_ids</span>, <span class="op">~</span> <span class="fu"><a href="reference/aur_get.html">aur_get</a></span><span class="op">(</span><span class="va">.x</span>, params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>maxFeatures <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ Downloading 'datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017'...[K✔ Downloading 'datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017'... [3.2s][K</span></span>
-<span><span class="co">#&gt; ℹ Downloading 'datasource-AU_Govt_Doh-UoM_AURIN_DB_1:national_toilet_map_2018_06'...[K✔ Downloading 'datasource-AU_Govt_Doh-UoM_AURIN_DB_1:national_toilet_map_2018_06'... [3.2s][K</span></span>
-<span><span class="co">#&gt; ℹ Downloading 'datasource-UQ_ERG-UoM_AURIN_DB:public_toilets'...[K✔ Downloading 'datasource-UQ_ERG-UoM_AURIN_DB:public_toilets'... [2.5s][K</span></span>
+<span><span class="co">#&gt; ℹ Downloading 'datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017'...[K✔ Downloading 'datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017'... [2.7s][K</span></span>
+<span><span class="co">#&gt; ℹ Downloading 'datasource-AU_Govt_Doh-UoM_AURIN_DB_1:national_toilet_map_2018_06'...[K✔ Downloading 'datasource-AU_Govt_Doh-UoM_AURIN_DB_1:national_toilet_map_2018_06'... [2.7s][K</span></span>
+<span><span class="co">#&gt; ℹ Downloading 'datasource-UQ_ERG-UoM_AURIN_DB:public_toilets'...[K✔ Downloading 'datasource-UQ_ERG-UoM_AURIN_DB:public_toilets'... [2s][K</span></span>
 <span><span class="va">data_lst</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
 <span><span class="co">#&gt; Simple feature collection with 18789 features and 46 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: 113.4102 ymin: -43.582 xmax: 153.6263 ymax: -10.5702</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 113.4102 ymin: -43.582 xmax: 153.6263 ymax: -10.57019</span></span>
 <span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
 <span><span class="co">#&gt; # A tibble: 18,789 × 47</span></span>
-<span><span class="co">#&gt;    id          toile…¹ url   name  addre…² town  state postc…³ addre…⁴ male  female unisex dump_…⁵ facil…⁶ toile…⁷ acces…⁸ payme…⁹ key_r…˟ acces…˟ parking parki…˟ acces…˟ acces…˟</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;         &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;   &lt;lgl&gt; &lt;lgl&gt;  &lt;lgl&gt;  &lt;lgl&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;chr&gt;   &lt;lgl&gt;   &lt;chr&gt;   &lt;lgl&gt;   &lt;lgl&gt;  </span></span>
-<span><span class="co">#&gt;  1 national_p…     341 http… Elsi… Alden … Clif… Quee…    4361 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Park o… &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    TRUE    TRUE   </span></span>
-<span><span class="co">#&gt;  2 national_p…     418 http… Luck… Lucky … Luck… Sout…    5602 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    TRUE    &lt;NA&gt;    FALSE   FALSE  </span></span>
-<span><span class="co">#&gt;  3 national_p…     634 http… Olds… Holley… Mort… New …    2223 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Park o… &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    TRUE    TRUE   </span></span>
-<span><span class="co">#&gt;  4 national_p…    1150 http… Jaeg… Hill S… Oran… New …    2800 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Park o… &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE  </span></span>
-<span><span class="co">#&gt;  5 national_p…    1207 http… Lake… Evans … Shen… West…    6008 &lt;NA&gt;    FALSE FALSE  TRUE   FALSE   Park o… Automa… FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE  </span></span>
-<span><span class="co">#&gt;  6 national_p…    1535 http… Earl… Earl S… Coff… New …    2450 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Sporti… Sewera… FALSE   FALSE   FALSE   &lt;NA&gt;    TRUE    &lt;NA&gt;    FALSE   FALSE  </span></span>
-<span><span class="co">#&gt;  7 national_p…    1590 http… Truc… Davids… Deni… New …    2710 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Car pa… Sewera… FALSE   FALSE   FALSE   &lt;NA&gt;    TRUE    &lt;NA&gt;    FALSE   FALSE  </span></span>
-<span><span class="co">#&gt;  8 national_p…    1913 http… Hemi… High S… Belm… Vict…    3216 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    TRUE    TRUE   </span></span>
-<span><span class="co">#&gt;  9 national_p…    2081 http… Eden… Eden V… Keyn… Sout…    5353 The to… TRUE  TRUE   FALSE  FALSE   Park o… Septic  FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    TRUE    TRUE   </span></span>
-<span><span class="co">#&gt; 10 national_p…    2377 http… Wils… Wilson… Watt… Vict…    3096 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE  </span></span>
-<span><span class="co">#&gt; # … with 18,779 more rows, 24 more variables: accessible_unisex &lt;lgl&gt;, accessible_note &lt;chr&gt;, mlak &lt;lgl&gt;, parking_accessible &lt;lgl&gt;, access_parking_note &lt;chr&gt;, ambulant &lt;lgl&gt;,</span></span>
-<span><span class="co">#&gt; #   lh_transfer &lt;lgl&gt;, rh_transfer &lt;lgl&gt;, adult_change &lt;lgl&gt;, is_open &lt;chr&gt;, opening_hours &lt;chr&gt;, openinghours_note &lt;chr&gt;, baby_change &lt;lgl&gt;, showers &lt;lgl&gt;,</span></span>
-<span><span class="co">#&gt; #   drinking_water &lt;lgl&gt;, sharps_disposal &lt;lgl&gt;, sanitary_disposal &lt;lgl&gt;, icon_url &lt;chr&gt;, icon_alt_text &lt;chr&gt;, notes &lt;chr&gt;, status &lt;chr&gt;, latitude &lt;dbl&gt;, longitude &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   geometry &lt;POINT [°]&gt;, and abbreviated variable names ¹​toilet_id, ²​address1, ³​postcode, ⁴​address_note, ⁵​dump_point, ⁶​facility_type, ⁷​toilet_type, ⁸​access_limited,</span></span>
-<span><span class="co">#&gt; #   ⁹​payment_required, ˟​key_required, ˟​access_note, ˟​parking_note, ˟​accessible_male, ˟​accessible_female</span></span>
-<span><span class="co">#&gt; # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</span></span>
+<span><span class="co">#&gt;    id          toile…¹ url   name  addre…² town  state postc…³ addre…⁴ male  female unisex dump_…⁵ facil…⁶ toile…⁷ acces…⁸ payme…⁹ key_r…˟ acces…˟ parking parki…˟ acces…˟ acces…˟ acces…˟ acces…˟ mlak </span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;         &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;   &lt;lgl&gt; &lt;lgl&gt;  &lt;lgl&gt;  &lt;lgl&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;chr&gt;   &lt;lgl&gt;   &lt;chr&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;chr&gt;   &lt;lgl&gt;</span></span>
+<span><span class="co">#&gt;  1 national_p…     341 http… Elsi… Alden … Clif… Quee…    4361 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Park o… &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    TRUE    TRUE    FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  2 national_p…     418 http… Luck… Lucky … Luck… Sout…    5602 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    TRUE    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  3 national_p…     634 http… Olds… Holley… Mort… New …    2223 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Park o… &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    TRUE    TRUE    FALSE   &lt;NA&gt;    TRUE </span></span>
+<span><span class="co">#&gt;  4 national_p…    1150 http… Jaeg… Hill S… Oran… New …    2800 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Park o… &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  5 national_p…    1207 http… Lake… Evans … Shen… West…    6008 &lt;NA&gt;    FALSE FALSE  TRUE   FALSE   Park o… Automa… FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE   TRUE    &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  6 national_p…    1535 http… Earl… Earl S… Coff… New …    2450 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Sporti… Sewera… FALSE   FALSE   FALSE   &lt;NA&gt;    TRUE    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  7 national_p…    1590 http… Truc… Davids… Deni… New …    2710 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Car pa… Sewera… FALSE   FALSE   FALSE   &lt;NA&gt;    TRUE    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  8 national_p…    1913 http… Hemi… High S… Belm… Vict…    3216 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    TRUE    TRUE    FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  9 national_p…    2081 http… Eden… Eden V… Keyn… Sout…    5353 The to… TRUE  TRUE   FALSE  FALSE   Park o… Septic  FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    TRUE    TRUE    FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt; 10 national_p…    2377 http… Wils… Wilson… Watt… Vict…    3096 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt; # … with 18,779 more rows, 21 more variables: parking_accessible &lt;lgl&gt;, access_parking_note &lt;chr&gt;, ambulant &lt;lgl&gt;, lh_transfer &lt;lgl&gt;, rh_transfer &lt;lgl&gt;, adult_change &lt;lgl&gt;, is_open &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   opening_hours &lt;chr&gt;, openinghours_note &lt;chr&gt;, baby_change &lt;lgl&gt;, showers &lt;lgl&gt;, drinking_water &lt;lgl&gt;, sharps_disposal &lt;lgl&gt;, sanitary_disposal &lt;lgl&gt;, icon_url &lt;chr&gt;, icon_alt_text &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   notes &lt;chr&gt;, status &lt;chr&gt;, latitude &lt;dbl&gt;, longitude &lt;dbl&gt;, geometry &lt;POINT [°]&gt;, and abbreviated variable names ¹​toilet_id, ²​address1, ³​postcode, ⁴​address_note, ⁵​dump_point, ⁶​facility_type,</span></span>
+<span><span class="co">#&gt; #   ⁷​toilet_type, ⁸​access_limited, ⁹​payment_required, ˟​key_required, ˟​access_note, ˟​parking_note, ˟​accessible_male, ˟​accessible_female, ˟​accessible_unisex, ˟​accessible_note</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
 <span><span class="co">#&gt; Simple feature collection with 19034 features and 47 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: 113.4102 ymin: -43.5828 xmax: 153.6263 ymax: -10.5702</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 113.4102 ymin: -43.58278 xmax: 153.6263 ymax: -10.57019</span></span>
 <span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
 <span><span class="co">#&gt; # A tibble: 19,034 × 48</span></span>
-<span><span class="co">#&gt;    id          toile…¹ url   name  addre…² town  state postc…³ addre…⁴ male  female unisex dump_…⁵ facil…⁶ toile…⁷ acces…⁸ payme…⁹ key_r…˟ acces…˟ parking parki…˟ acces…˟ acces…˟</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;         &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;   &lt;lgl&gt; &lt;lgl&gt;  &lt;lgl&gt;  &lt;lgl&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;chr&gt;   &lt;lgl&gt;   &lt;chr&gt;   &lt;lgl&gt;   &lt;lgl&gt;  </span></span>
-<span><span class="co">#&gt;  1 national_t…     272 http… Bris… Brisba… Merr… New …    2329 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE  </span></span>
-<span><span class="co">#&gt;  2 national_t…     578 http… Nati… Wimmer… Nati… Vict…    3409 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    TRUE    TRUE   </span></span>
-<span><span class="co">#&gt;  3 national_t…     628 http… Brid… Bridge… Pens… New …    2222 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE  </span></span>
-<span><span class="co">#&gt;  4 national_t…     868 http… Sand… Oroya … Sand… West…    6639 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    TRUE    &lt;NA&gt;    TRUE    TRUE   </span></span>
-<span><span class="co">#&gt;  5 national_t…    1300 http… Murr… Ravens… Rave… West…    6208 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    TRUE    &lt;NA&gt;    FALSE   FALSE  </span></span>
-<span><span class="co">#&gt;  6 national_t…    1461 http… Menz… Purslo… Moun… West…    6016 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Park o… Sewera… FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    TRUE    TRUE   </span></span>
-<span><span class="co">#&gt;  7 national_t…    1638 http… Roy … Warreg… Dula… Quee…    4425 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Park o… Sewera… FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE  </span></span>
-<span><span class="co">#&gt;  8 national_t…    1750 http… Meri… Tagger… Meri… Vict…    3496 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE  </span></span>
-<span><span class="co">#&gt;  9 national_t…    2520 http… Show… Evans … Wang… Vict…    3677 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Sporti… &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE  </span></span>
-<span><span class="co">#&gt; 10 national_t…    2725 http… Haro… Paxton… Clev… Quee…    4163 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Park o… Sewera… FALSE   FALSE   FALSE   &lt;NA&gt;    TRUE    &lt;NA&gt;    FALSE   FALSE  </span></span>
-<span><span class="co">#&gt; # … with 19,024 more rows, 25 more variables: accessible_unisex &lt;lgl&gt;, accessible_note &lt;chr&gt;, mlak &lt;lgl&gt;, parking_accessible &lt;lgl&gt;, access_parking_note &lt;chr&gt;, ambulant &lt;lgl&gt;,</span></span>
-<span><span class="co">#&gt; #   lh_transfer &lt;lgl&gt;, rh_transfer &lt;lgl&gt;, adult_change &lt;lgl&gt;, changing_places &lt;lgl&gt;, is_open &lt;chr&gt;, opening_hours &lt;chr&gt;, openinghours_note &lt;chr&gt;, baby_change &lt;lgl&gt;,</span></span>
-<span><span class="co">#&gt; #   showers &lt;lgl&gt;, drinking_water &lt;lgl&gt;, sharps_disposal &lt;lgl&gt;, sanitary_disposal &lt;lgl&gt;, icon_url &lt;chr&gt;, icon_alt_text &lt;chr&gt;, notes &lt;chr&gt;, status &lt;chr&gt;, latitude &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   longitude &lt;dbl&gt;, geometry &lt;POINT [°]&gt;, and abbreviated variable names ¹​toilet_id, ²​address1, ³​postcode, ⁴​address_note, ⁵​dump_point, ⁶​facility_type, ⁷​toilet_type,</span></span>
-<span><span class="co">#&gt; #   ⁸​access_limited, ⁹​payment_required, ˟​key_required, ˟​access_note, ˟​parking_note, ˟​accessible_male, ˟​accessible_female</span></span>
-<span><span class="co">#&gt; # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</span></span>
+<span><span class="co">#&gt;    id          toile…¹ url   name  addre…² town  state postc…³ addre…⁴ male  female unisex dump_…⁵ facil…⁶ toile…⁷ acces…⁸ payme…⁹ key_r…˟ acces…˟ parking parki…˟ acces…˟ acces…˟ acces…˟ acces…˟ mlak </span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;         &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;   &lt;lgl&gt; &lt;lgl&gt;  &lt;lgl&gt;  &lt;lgl&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;chr&gt;   &lt;lgl&gt;   &lt;chr&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;chr&gt;   &lt;lgl&gt;</span></span>
+<span><span class="co">#&gt;  1 national_t…     272 http… Bris… Brisba… Merr… New …    2329 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  2 national_t…     578 http… Nati… Wimmer… Nati… Vict…    3409 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    TRUE    TRUE    FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  3 national_t…     628 http… Brid… Bridge… Pens… New …    2222 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  4 national_t…     868 http… Sand… Oroya … Sand… West…    6639 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    TRUE    &lt;NA&gt;    TRUE    TRUE    FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  5 national_t…    1300 http… Murr… Ravens… Rave… West…    6208 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    TRUE    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  6 national_t…    1461 http… Menz… Purslo… Moun… West…    6016 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Park o… Sewera… FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    TRUE    TRUE    FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  7 national_t…    1638 http… Roy … Warreg… Dula… Quee…    4425 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Park o… Sewera… FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE   TRUE    &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  8 national_t…    1750 http… Meri… Tagger… Meri… Vict…    3496 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   &lt;NA&gt;    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt;  9 national_t…    2520 http… Show… Evans … Wang… Vict…    3677 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Sporti… &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE   &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt; 10 national_t…    2725 http… Haro… Paxton… Clev… Quee…    4163 &lt;NA&gt;    TRUE  TRUE   FALSE  FALSE   Park o… Sewera… FALSE   FALSE   FALSE   &lt;NA&gt;    TRUE    &lt;NA&gt;    FALSE   FALSE   FALSE   &lt;NA&gt;    FALSE</span></span>
+<span><span class="co">#&gt; # … with 19,024 more rows, 22 more variables: parking_accessible &lt;lgl&gt;, access_parking_note &lt;chr&gt;, ambulant &lt;lgl&gt;, lh_transfer &lt;lgl&gt;, rh_transfer &lt;lgl&gt;, adult_change &lt;lgl&gt;, changing_places &lt;lgl&gt;,</span></span>
+<span><span class="co">#&gt; #   is_open &lt;chr&gt;, opening_hours &lt;chr&gt;, openinghours_note &lt;chr&gt;, baby_change &lt;lgl&gt;, showers &lt;lgl&gt;, drinking_water &lt;lgl&gt;, sharps_disposal &lt;lgl&gt;, sanitary_disposal &lt;lgl&gt;, icon_url &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   icon_alt_text &lt;chr&gt;, notes &lt;chr&gt;, status &lt;chr&gt;, latitude &lt;dbl&gt;, longitude &lt;dbl&gt;, geometry &lt;POINT [°]&gt;, and abbreviated variable names ¹​toilet_id, ²​address1, ³​postcode, ⁴​address_note, ⁵​dump_point,</span></span>
+<span><span class="co">#&gt; #   ⁶​facility_type, ⁷​toilet_type, ⁸​access_limited, ⁹​payment_required, ˟​key_required, ˟​access_note, ˟​parking_note, ˟​accessible_male, ˟​accessible_female, ˟​accessible_unisex, ˟​accessible_note</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
 <span><span class="co">#&gt; Simple feature collection with 16737 features and 39 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: 113.4102 ymin: -43.582 xmax: 153.6222 ymax: -10.5712</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 113.4102 ymin: -43.582 xmax: 153.6222 ymax: -10.57119</span></span>
 <span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
 <span><span class="co">#&gt; # A tibble: 16,737 × 40</span></span>
-<span><span class="co">#&gt;    id      ogc_fid status lastupdate name  addre…¹ town  state postc…² addre…³  male female unisex facil…⁴ toile…⁵ acces…⁶ payme…⁷ keyre…⁸ acces…⁹ parking parki…˟ yeari…˟ acces…˟</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt;  &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;   &lt;int&gt;   &lt;int&gt; &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;</span></span>
-<span><span class="co">#&gt;  1 public…      28 Verif… 2008-02-13 Flyi… Esplan… Flyi… Quee… 4860    &lt;NA&gt;        1      1 &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;          0 &lt;NA&gt;    &lt;NA&gt;          0</span></span>
-<span><span class="co">#&gt;  2 public…     301 Verif… 2009-03-25 Tour… Leslie… Stan… Quee… 4380    &lt;NA&gt;        1      1 &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;          0 &lt;NA&gt;    &lt;NA&gt;          1</span></span>
-<span><span class="co">#&gt;  3 public…     381 Verif… 2010-03-24 Pinn… Day St… Pinn… Sout… 5304    &lt;NA&gt;        1      1 &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;          1 &lt;NA&gt;    &lt;NA&gt;          0</span></span>
-<span><span class="co">#&gt;  4 public…     500 Verif… 2008-01-30 Rive… &lt;NA&gt;    Waik… Sout… 5330    &lt;NA&gt;        1      1 &lt;NA&gt;   Park o… &lt;NA&gt;          0       0       0 &lt;NA&gt;          0 &lt;NA&gt;    &lt;NA&gt;          0</span></span>
-<span><span class="co">#&gt;  5 public…     612 Verif… 2008-02-18 Kend… &lt;NA&gt;    Kend… West… 6323    &lt;NA&gt;        1      1 &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;          0 &lt;NA&gt;    &lt;NA&gt;          0</span></span>
-<span><span class="co">#&gt;  6 public…     620 Verif… 2006-02-10 Shen… 124 Sh… Menz… West… 6436    Toilet…     1      1 &lt;NA&gt;   Other   Sewera…       0       0       0 &lt;NA&gt;          0 &lt;NA&gt;    &lt;NA&gt;          0</span></span>
-<span><span class="co">#&gt;  7 public…     673 Verif… 2008-02-18 Rota… 1836 N… Sout… West… 6701    Near 1…     1      1 &lt;NA&gt;   Park o… Septic        0       0       0 &lt;NA&gt;          0 &lt;NA&gt;    &lt;NA&gt;          0</span></span>
-<span><span class="co">#&gt;  8 public…     708 Verif… 2009-02-24 Sand… Oroya … Sand… West… 6639    &lt;NA&gt;        1      1 &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;          1 &lt;NA&gt;    &lt;NA&gt;          1</span></span>
-<span><span class="co">#&gt;  9 public…     734 Verif… 2009-02-18 McIn… Bent S… Leon… Vict… 3953    &lt;NA&gt;        1      1 &lt;NA&gt;   Park o… &lt;NA&gt;          0       0       0 &lt;NA&gt;          1 &lt;NA&gt;    &lt;NA&gt;          1</span></span>
-<span><span class="co">#&gt; 10 public…     847 Verif… 2008-02-18 Libr… Civic … Aubu… New … 2144    &lt;NA&gt;        1      1 &lt;NA&gt;   Other   Sewera…       0       0       0 &lt;NA&gt;          0 &lt;NA&gt;    &lt;NA&gt;          0</span></span>
-<span><span class="co">#&gt; # … with 16,727 more rows, 17 more variables: accessiblefemale &lt;int&gt;, accessibleunisex &lt;int&gt;, accessiblenote &lt;chr&gt;, mlak &lt;int&gt;, parkingaccessible &lt;int&gt;,</span></span>
-<span><span class="co">#&gt; #   accessibleparkingnote &lt;chr&gt;, isopen &lt;chr&gt;, openinghoursschedule &lt;chr&gt;, openinghoursnote &lt;chr&gt;, babychange &lt;int&gt;, showers &lt;int&gt;, drinkingwater &lt;int&gt;, sharpsdisposal &lt;int&gt;,</span></span>
-<span><span class="co">#&gt; #   sanitarydisposal &lt;int&gt;, iconalttext &lt;chr&gt;, notes &lt;chr&gt;, geometry &lt;POINT [°]&gt;, and abbreviated variable names ¹​address1, ²​postcode, ³​addressnote, ⁴​facilitytype, ⁵​toilettype,</span></span>
-<span><span class="co">#&gt; #   ⁶​accesslimited, ⁷​paymentrequired, ⁸​keyrequired, ⁹​accessnote, ˟​parkingnote, ˟​yearinstalled, ˟​accessiblemale</span></span>
-<span><span class="co">#&gt; # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</span></span></code></pre></div>
+<span><span class="co">#&gt;    id    ogc_fid status lastupdate name  addre…¹ town  state postc…² addre…³  male female unisex facil…⁴ toile…⁵ acces…⁶ payme…⁷ keyre…⁸ acces…⁹ parking parki…˟ yeari…˟ acces…˟ acces…˟ acces…˟ acces…˟</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt;  &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;   &lt;int&gt;   &lt;int&gt; &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;   &lt;int&gt;   &lt;int&gt; &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt;  1 publ…      28 Verif… 2008-02-13 Flyi… Esplan… Flyi… Quee… 4860    &lt;NA&gt;        1      1 &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;          0 &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;   </span></span>
+<span><span class="co">#&gt;  2 publ…     301 Verif… 2009-03-25 Tour… Leslie… Stan… Quee… 4380    &lt;NA&gt;        1      1 &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;          0 &lt;NA&gt;    &lt;NA&gt;          1       1       0 &lt;NA&gt;   </span></span>
+<span><span class="co">#&gt;  3 publ…     381 Verif… 2010-03-24 Pinn… Day St… Pinn… Sout… 5304    &lt;NA&gt;        1      1 &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;          1 &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;   </span></span>
+<span><span class="co">#&gt;  4 publ…     500 Verif… 2008-01-30 Rive… &lt;NA&gt;    Waik… Sout… 5330    &lt;NA&gt;        1      1 &lt;NA&gt;   Park o… &lt;NA&gt;          0       0       0 &lt;NA&gt;          0 &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;   </span></span>
+<span><span class="co">#&gt;  5 publ…     612 Verif… 2008-02-18 Kend… &lt;NA&gt;    Kend… West… 6323    &lt;NA&gt;        1      1 &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;          0 &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;   </span></span>
+<span><span class="co">#&gt;  6 publ…     620 Verif… 2006-02-10 Shen… 124 Sh… Menz… West… 6436    Toilet…     1      1 &lt;NA&gt;   Other   Sewera…       0       0       0 &lt;NA&gt;          0 &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;   </span></span>
+<span><span class="co">#&gt;  7 publ…     673 Verif… 2008-02-18 Rota… 1836 N… Sout… West… 6701    Near 1…     1      1 &lt;NA&gt;   Park o… Septic        0       0       0 &lt;NA&gt;          0 &lt;NA&gt;    &lt;NA&gt;          0       0       0 Access…</span></span>
+<span><span class="co">#&gt;  8 publ…     708 Verif… 2009-02-24 Sand… Oroya … Sand… West… 6639    &lt;NA&gt;        1      1 &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;          1 &lt;NA&gt;    &lt;NA&gt;          1       1       0 &lt;NA&gt;   </span></span>
+<span><span class="co">#&gt;  9 publ…     734 Verif… 2009-02-18 McIn… Bent S… Leon… Vict… 3953    &lt;NA&gt;        1      1 &lt;NA&gt;   Park o… &lt;NA&gt;          0       0       0 &lt;NA&gt;          1 &lt;NA&gt;    &lt;NA&gt;          1       1       0 &lt;NA&gt;   </span></span>
+<span><span class="co">#&gt; 10 publ…     847 Verif… 2008-02-18 Libr… Civic … Aubu… New … 2144    &lt;NA&gt;        1      1 &lt;NA&gt;   Other   Sewera…       0       0       0 &lt;NA&gt;          0 &lt;NA&gt;    &lt;NA&gt;          0       0       0 &lt;NA&gt;   </span></span>
+<span><span class="co">#&gt; # … with 16,727 more rows, 14 more variables: mlak &lt;int&gt;, parkingaccessible &lt;int&gt;, accessibleparkingnote &lt;chr&gt;, isopen &lt;chr&gt;, openinghoursschedule &lt;chr&gt;, openinghoursnote &lt;chr&gt;, babychange &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   showers &lt;int&gt;, drinkingwater &lt;int&gt;, sharpsdisposal &lt;int&gt;, sanitarydisposal &lt;int&gt;, iconalttext &lt;chr&gt;, notes &lt;chr&gt;, geometry &lt;POINT [°]&gt;, and abbreviated variable names ¹​address1, ²​postcode,</span></span>
+<span><span class="co">#&gt; #   ³​addressnote, ⁴​facilitytype, ⁵​toilettype, ⁶​accesslimited, ⁷​paymentrequired, ⁸​keyrequired, ⁹​accessnote, ˟​parkingnote, ˟​yearinstalled, ˟​accessiblemale, ˟​accessiblefemale, ˟​accessibleunisex,</span></span>
+<span><span class="co">#&gt; #   ˟​accessiblenote</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -333,10 +329,9 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/asiripanich/notaurin/actions" class="external-link"><img src="https://github.com/asiripanich/notaurin/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/asiripanich/aurin/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/asiripanich/aurin/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://cran.r-project.org/package=notaurin" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/notaurin"></a></li>
 <li><a href="https://CRAN.R-project.org/package=notaurin" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/notaurin"></a></li>
-<li><a href="https://github.com/asiripanich/notaurin/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/asiripanich/notaurin/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 
