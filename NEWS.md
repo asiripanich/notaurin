@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# notaurin 0.7.1
+
+- Updated the R-CMD-Check GitHub workflow.
+- Updated README.
+
+
 # notaurin 0.7.0
 
 - The package now works with the new AURIN API. (thanks @Hi-Vis, #15)
