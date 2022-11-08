@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%",
-  cache = FALSE
+  cache = TRUE
 )
 library(notaurin)
 ```
@@ -22,9 +22,7 @@ library(notaurin)
 # notaurin
 
 <!-- badges: start -->
-
-![](https://www.r-pkg.org/badges/version-ago/notaurin) [![R-CMD-check](https://github.com/asiripanich/notaurin/workflows/R-CMD-check/badge.svg)](https://github.com/asiripanich/notaurin/actions) [![](https://cranlogs.r-pkg.org/badges/notaurin)](https://cran.r-project.org/package=notaurin) [![](https://cranlogs.r-pkg.org/badges/grand-total/notaurin)](https://CRAN.R-project.org/package=notaurin)
-[![R-CMD-check](https://github.com/asiripanich/notaurin/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/asiripanich/notaurin/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/asiripanich/aurin/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/asiripanich/aurin/actions/workflows/R-CMD-check.yaml) ![](https://www.r-pkg.org/badges/version-ago/notaurin) [![](https://cranlogs.r-pkg.org/badges/notaurin)](https://cran.r-project.org/package=notaurin) [![](https://cranlogs.r-pkg.org/badges/grand-total/notaurin)](https://CRAN.R-project.org/package=notaurin)
 <!-- badges: end -->
 
 <p align="center">
@@ -32,14 +30,17 @@ library(notaurin)
 </p>
 
 <p align="center">
-  🚧  <b> First warning! The `notaurin` package is not affiliated with AURIN.</b> 🚧
+  🚧  <b>Warning! The `notaurin` package is not affiliated with AURIN in any way.</b> 🚧
   <br>
 </p>
 
-The goal of `notaurin` is to provide an easy way for R users to access **MORE THAN 5000 OPEN DATASETS** on [AURIN](https://aurin.org.au/) using their [API](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/).
-You can request a **FREE** API key from:
+The official AURIN R tutorial can be found [here](https://aurin.org.au/resources/training/explore-r/). 
+Want to know a more convenient way to access the AURIN data portal from R which AURIN simply doesn't seem to offer? Maybe give {notaurin} a try. 😬
 
-> <https://aurin.org.au/resources/aurin-apis/sign-up/>
+The goal of {notaurin} is to provide an easy way for R users to access **MORE THAN 5000 OPEN DATASETS** on [AURIN](https://aurin.org.au/) using their [Data Portal](https://data.aurin.org.au/).
+You can request an API key from:
+
+> <https://aurin.org.au/resources/einfrastructure/>
 
 **AURIN** is "*Australia’s :kangaroo: single largest resource for accessing clean, integrated, spatially enabled and research-ready data on issues surrounding health and wellbeing, socio-economic metrics, transportation, and land-use.*"
 
@@ -59,8 +60,6 @@ This package requires the [sf](https://github.com/r-spatial/sf) package.
 Please see the sf package's [GitHub page](https://github.com/r-spatial/sf) to install its non R dependencies.
 
 ## Example
-
-Let's recreate this [AURIN API AND R](https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/) example using `notaurin`.
 
 First, you must add your [AURIN API username and password](https://aurin.org.au/resources/aurin-apis/sign-up/) as an R environment variable to your `.Renviron` file.
 `notaurin` provides `aur_register()` function to help you with this step.
